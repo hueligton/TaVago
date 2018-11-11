@@ -28,7 +28,6 @@ public class UsuarioProprietario extends Usuario {
         this.hotel = hotel;
     }
 
-
     public Collection<Hotel> getHotel() {
         return hotel;
     }

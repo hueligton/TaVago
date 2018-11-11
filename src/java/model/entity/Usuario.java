@@ -8,7 +8,7 @@ public class Usuario extends Pessoa {
 
     public Usuario() {
     }
-    
+  
     public Usuario(String email, String senha) {
         this.email = email;
         this.senha = senha;

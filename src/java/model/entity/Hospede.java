@@ -16,6 +16,7 @@ public class Hospede extends Pessoa {
     }
 
     public Hospede(String rua, int numeroCasa, String cidade, String estado, String pais) {
+
         this.rua = rua;
         this.numeroCasa = numeroCasa;
         this.cidade = cidade;

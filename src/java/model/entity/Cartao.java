@@ -10,6 +10,7 @@ public class Cartao {
 
     private int codigoSeguranca;
 
+
     public Cartao() {
     }
 
