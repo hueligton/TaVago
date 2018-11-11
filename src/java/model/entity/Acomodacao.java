@@ -6,20 +6,20 @@ public class Acomodacao {
 
     private String descricao;
 
-    private int valor;
+    private float valor;
 
     private Categoria categoria;
 
     public Acomodacao() {
     }
 
-    public Acomodacao(String descricao, int valor, Categoria categoria) {
+    public Acomodacao(String descricao, float valor, Categoria categoria) {
         this.descricao = descricao;
         this.valor = valor;
         this.categoria = categoria;
     }
 
-    public Acomodacao(int idAcomodacao, String descricao, int valor, Categoria categoria) {
+    public Acomodacao(int idAcomodacao, String descricao, float valor, Categoria categoria) {
         this.idAcomodacao = idAcomodacao;
         this.descricao = descricao;
         this.valor = valor;
@@ -42,11 +42,11 @@ public class Acomodacao {
         this.descricao = descricao;
     }
 
-    public int getValor() {
+    public float getValor() {
         return valor;
     }
 
-    public void setValor(int valor) {
+    public void setValor(float valor) {
         this.valor = valor;
     }
 
