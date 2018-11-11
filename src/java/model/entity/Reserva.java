@@ -6,16 +6,13 @@ public class Reserva {
 
     private int idReserva;
 
-    private UsuarioHospede usuarioHospede;
-
     private Collection<ItemReserva> itemReserva;
 
     public Reserva() {
     }
 
-    public Reserva(int idReserva, UsuarioHospede usuarioHospede, Collection<ItemReserva> itemReserva) {
+    public Reserva(int idReserva, Collection<ItemReserva> itemReserva) {
         this.idReserva = idReserva;
-        this.usuarioHospede = usuarioHospede;
         this.itemReserva = itemReserva;
     }
 
@@ -25,14 +22,6 @@ public class Reserva {
 
     public void setIdReserva(int idReserva) {
         this.idReserva = idReserva;
-    }
-
-    public UsuarioHospede getUsuarioHospede() {
-        return usuarioHospede;
-    }
-
-    public void setUsuarioHospede(UsuarioHospede usuarioHospede) {
-        this.usuarioHospede = usuarioHospede;
     }
 
     public Collection<ItemReserva> getItemReserva() {

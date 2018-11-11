@@ -10,17 +10,15 @@ public class Cartao {
 
     private int codigoSeguranca;
 
-    private UsuarioHospede usuarioHospede;
 
     public Cartao() {
     }
 
-    public Cartao(String titular, String numeroCartao, String vencimento, int codigoSeguranca, UsuarioHospede usuarioHospede) {
+    public Cartao(String titular, String numeroCartao, String vencimento, int codigoSeguranca) {
         this.titular = titular;
         this.numeroCartao = numeroCartao;
         this.vencimento = vencimento;
         this.codigoSeguranca = codigoSeguranca;
-        this.usuarioHospede = usuarioHospede;
     }
 
     public String getTitular() {
@@ -54,13 +52,4 @@ public class Cartao {
     public void setCodigoSeguranca(int codigoSeguranca) {
         this.codigoSeguranca = codigoSeguranca;
     }
-
-    public UsuarioHospede getUsuarioHospede() {
-        return usuarioHospede;
-    }
-
-    public void setUsuarioHospede(UsuarioHospede usuarioHospede) {
-        this.usuarioHospede = usuarioHospede;
-    }
-
 }
