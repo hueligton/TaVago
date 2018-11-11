@@ -22,14 +22,12 @@ public class Hotel {
 
     private String pais;
 
-    private UsuarioProprietario usuarioProprietario;
-
     private Collection<Acomodacao> acomodacao;
 
     public Hotel() {
     }
 
-    public Hotel(String nome, int quantidadeEstrela, String telefone, String rua, int numeroHotel, String cidade, String estado, String pais, UsuarioProprietario usuarioProprietario, Collection<Acomodacao> acomodacao) {
+    public Hotel(String nome, int quantidadeEstrela, String telefone, String rua, int numeroHotel, String cidade, String estado, String pais, Collection<Acomodacao> acomodacao) {
         this.nome = nome;
         this.quantidadeEstrela = quantidadeEstrela;
         this.telefone = telefone;
@@ -38,11 +36,10 @@ public class Hotel {
         this.cidade = cidade;
         this.estado = estado;
         this.pais = pais;
-        this.usuarioProprietario = usuarioProprietario;
         this.acomodacao = acomodacao;
     }
 
-    public Hotel(int idHotel, String nome, int quantidadeEstrela, String telefone, String rua, int numeroHotel, String cidade, String estado, String pais, UsuarioProprietario usuarioProprietario, Collection<Acomodacao> acomodacao) {
+    public Hotel(int idHotel, String nome, int quantidadeEstrela, String telefone, String rua, int numeroHotel, String cidade, String estado, String pais, Collection<Acomodacao> acomodacao) {
         this.idHotel = idHotel;
         this.nome = nome;
         this.quantidadeEstrela = quantidadeEstrela;
@@ -52,7 +49,6 @@ public class Hotel {
         this.cidade = cidade;
         this.estado = estado;
         this.pais = pais;
-        this.usuarioProprietario = usuarioProprietario;
         this.acomodacao = acomodacao;
     }
 
@@ -126,14 +122,6 @@ public class Hotel {
 
     public void setPais(String pais) {
         this.pais = pais;
-    }
-
-    public UsuarioProprietario getUsuarioProprietario() {
-        return usuarioProprietario;
-    }
-
-    public void setUsuarioProprietario(UsuarioProprietario usuarioProprietario) {
-        this.usuarioProprietario = usuarioProprietario;
     }
 
     public Collection<Acomodacao> getAcomodacao() {

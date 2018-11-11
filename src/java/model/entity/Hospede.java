@@ -12,38 +12,33 @@ public class Hospede extends Pessoa {
 
     private String pais;
 
-    private ItemReserva itemReserva;
-
     public Hospede() {
     }
 
-    public Hospede(String rua, int numeroCasa, String cidade, String estado, String pais, ItemReserva itemReserva) {
+    public Hospede(String rua, int numeroCasa, String cidade, String estado, String pais) {
         this.rua = rua;
         this.numeroCasa = numeroCasa;
         this.cidade = cidade;
         this.estado = estado;
         this.pais = pais;
-        this.itemReserva = itemReserva;
     }
 
-    public Hospede(String rua, int numeroCasa, String cidade, String estado, String pais, ItemReserva itemReserva, int id, String nome, long cpf, int telefone) {
+    public Hospede(int id, String nome, long cpf, int telefone, String rua, int numeroCasa, String cidade, String estado, String pais) {
         super(id, nome, cpf, telefone);
         this.rua = rua;
         this.numeroCasa = numeroCasa;
         this.cidade = cidade;
         this.estado = estado;
         this.pais = pais;
-        this.itemReserva = itemReserva;
     }
 
-    public Hospede(String rua, int numeroCasa, String cidade, String estado, String pais, ItemReserva itemReserva, String nome, long cpf, int telefone) {
+    public Hospede(String nome, long cpf, int telefone, String rua, int numeroCasa, String cidade, String estado, String pais) {
         super(nome, cpf, telefone);
         this.rua = rua;
         this.numeroCasa = numeroCasa;
         this.cidade = cidade;
         this.estado = estado;
         this.pais = pais;
-        this.itemReserva = itemReserva;
     }
 
     public String getRua() {
@@ -85,13 +80,4 @@ public class Hospede extends Pessoa {
     public void setPais(String pais) {
         this.pais = pais;
     }
-
-    public ItemReserva getItemReserva() {
-        return itemReserva;
-    }
-
-    public void setItemReserva(ItemReserva itemReserva) {
-        this.itemReserva = itemReserva;
-    }
-
 }

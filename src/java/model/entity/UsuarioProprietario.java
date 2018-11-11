@@ -13,10 +13,21 @@ public class UsuarioProprietario extends Usuario {
         this.hotel = hotel;
     }
 
-    public UsuarioProprietario(Collection<Hotel> hotel, String email, String senha) {
+    public UsuarioProprietario(String email, String senha, Collection<Hotel> hotel) {
         super(email, senha);
         this.hotel = hotel;
     }
+
+    public UsuarioProprietario(int id, String nome, long cpf, int telefone, String email, String senha, Collection<Hotel> hotel) {
+        super(id, nome, cpf, telefone, email, senha);
+        this.hotel = hotel;
+    }
+
+    public UsuarioProprietario(String nome, long cpf, int telefone, String email, String senha, Collection<Hotel> hotel) {
+        super(nome, cpf, telefone, email, senha);
+        this.hotel = hotel;
+    }
+
 
     public Collection<Hotel> getHotel() {
         return hotel;

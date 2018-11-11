@@ -1,27 +1,21 @@
 package model.entity;
 
-import java.util.Collection;
-
 public class Categoria {
 
     private int id;
 
     private int descricao;
 
-    private Collection<Acomodacao> acomodacao;
-
     public Categoria() {
     }
 
-    public Categoria(int descricao, Collection<Acomodacao> acomodacao) {
+    public Categoria(int descricao) {
         this.descricao = descricao;
-        this.acomodacao = acomodacao;
     }
 
-    public Categoria(int id, int descricao, Collection<Acomodacao> acomodacao) {
+    public Categoria(int id, int descricao) {
         this.id = id;
         this.descricao = descricao;
-        this.acomodacao = acomodacao;
     }
 
     public int getId() {
@@ -39,13 +33,4 @@ public class Categoria {
     public void setDescricao(int descricao) {
         this.descricao = descricao;
     }
-
-    public Collection<Acomodacao> getAcomodacao() {
-        return acomodacao;
-    }
-
-    public void setAcomodacao(Collection<Acomodacao> acomodacao) {
-        this.acomodacao = acomodacao;
-    }
-
 }

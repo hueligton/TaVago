@@ -8,8 +8,20 @@ public class Usuario extends Pessoa {
 
     public Usuario() {
     }
-
+    
     public Usuario(String email, String senha) {
+        this.email = email;
+        this.senha = senha;
+    }
+
+    public Usuario(int id, String nome, long cpf, int telefone, String email, String senha) {
+        super(id, nome, cpf, telefone);
+        this.email = email;
+        this.senha = senha;
+    }
+
+    public Usuario(String nome, long cpf, int telefone, String email, String senha) {
+        super(nome, cpf, telefone);
         this.email = email;
         this.senha = senha;
     }
