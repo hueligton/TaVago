@@ -1,0 +1,161 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+#home-page {
+    background-image: url("../images/background-home.jpg"); /* Photo by Omar Ky on Unsplash */
+    background-color: #cccccc;
+    height: 1000px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+ul, h1, h2{
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ================== ENVOLTÓRIO DO CABEÇALHO ================== */
+.container-to-grid {
+    width:100%;
+    margin-top: 10px;
+}
+
+.container-to-grid .top-bar {
+    max-width:62.5em;
+    margin:0 auto;
+}
+
+.logo-tavago, .top-bar-section {
+    display: inline-block;
+    vertical-align: center;
+}
+
+.top-bar .a, .top-bar .ul {
+    text-decoration: none;
+}
+
+ul.options {
+    list-style-type: none;
+}
+
+.top-bar-section {
+    float: right;
+}
+
+.logo-tavago {
+    height: 30px;
+    width: 150px;
+}
+
+.header-welcome {
+    text-align: center;
+    margin: 100px 0;
+    /* 
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    */
+    color: white;
+}
+
+.header-welcome h1 {
+    font-size: 50px;
+}
+
+
+
+
+/* ================== CONTEÚDO DA PÁGINA PRINCIPAL ================== */
+.main-content {
+    height: 200px;
+    width: 1500px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.home-content {
+    position: relative;;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.main-content .home-content {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+
+
+    /* ----------------------- FORMULÁRIO ----------------------- */
+    .formulario-consulta {
+        background-color: white;
+        padding: 10px;
+        opacity: 0.9;
+    }
+
+    .formulario-consulta label {
+        font-size: 12px;
+        color: #FF7719;
+        text-transform: uppercase;
+    }
+
+    .formulario-consulta .destino, .formulario-consulta .datas, .formulario-consulta .datas .entrada, .formulario-consulta .datas .saida, .formulario-consulta .quantidade-pessoas {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    input[type=text] {
+        width: 100%;
+        max-width: 700px;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=date] {
+        width: 100%;
+        padding: 12px 10px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0 0 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
