@@ -31,15 +31,15 @@
                     </div>
                     
                     <!-- Seção de opções de navegação -->
-                    <section class="top-bar-section">
+                    <div class="top-bar-section">
                         <ul class="options">
                             <li>
-                                <a href="">
+                                <a href="./carrinho.html">
                                     <img class="carrinho" src="images/carrinho.png" alt="carrinho"/>
                                 </a>
                             </li>
                         </ul>
-                    </section>
+                    </div>
                 </nav>
             </div>
 
@@ -51,11 +51,11 @@
         </div>
         
         <!-- Conteúdo da página principal -->
-        <section class="main-content"> 
+        <div class="main-content"> 
             
             <!-- <header id="home-top"></header> Espaço para cabeçalho secundário -->
             
-            <section class="home-content">
+            <div class="home-content">
 
                 <!-- Formulário de consulta definido no diagrama de navegação -->
                 <form class="formulario-consulta">
@@ -68,18 +68,18 @@
                     <div class="datas">
                         <div class="entrada">
                             <label for="data-entrada">Data de check-in</label><br>
-                            <input type="date" name="data-entrada" id="data-entrada" placeholder="Ex.: 19/12/2018" required><br>
+                            <input type="date" name="data-entrada" id="data-entrada" required><br>
                         </div>
 
                         <div class="saida">
                             <label for="data-saida">Data de check-out</label><br>
-                            <input type="date" name="data-saida" id="data-saida" placeholder="Ex.: 29/12/2018" required><br>
+                            <input type="date" name="data-saida" id="data-saida" required><br>
                         </div>
                     </div>
 
                     <div class="quantidade-pessoas">
                         <label for="quantidade-pessoas">Quantidade hóspedes</label><br>
-                        <select name="quantidade-pessoas">
+                        <select name="quantidade-pessoas" id="quantidade-pessoas">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -96,9 +96,9 @@
                     
                 </form>
             
-            </section>
+            </div>
 
-        </section>
+        </div>
 
         <!-- #TODO - Verificar necessidade de implementação do footer -->
         <!-- <footer></footer> -->
