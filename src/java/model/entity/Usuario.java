@@ -1,9 +1,18 @@
 package model.entity;
 
-public class Usuario extends Pessoa {
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "USUARIO", schema = "TaVagoDB")
+public class Usuario extends Pessoa implements Serializable {
+
+    @Column(nullable = false, length = 255)
     private String email;
 
+    @Column(nullable = false, length = 255)
     private String senha;
 
     public Usuario() {

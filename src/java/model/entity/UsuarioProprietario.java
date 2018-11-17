@@ -1,9 +1,16 @@
 package model.entity;
 
+import java.io.Serializable;
 import java.util.Collection;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-public class UsuarioProprietario extends Usuario {
+@Entity
+@Table(name = "USUARIOPROPRIETARIO", schema = "TaVagoDB")
+public class UsuarioProprietario extends Usuario implements Serializable{
 
+    @OneToMany
     private Collection<Hotel> hotel;
 
     public UsuarioProprietario() {

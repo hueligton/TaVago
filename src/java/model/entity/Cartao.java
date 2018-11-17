@@ -1,20 +1,37 @@
 package model.entity;
 
-public class Cartao {
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "CARTAO", schema = "TaVagoDB")
+public class Cartao implements Serializable{
+
+    @Column(nullable = false, length = 255)
     private String titular;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cartao_sequence")
+    @SequenceGenerator(name = "cartao_sequence", sequenceName = "cartao_seq", allocationSize = 1)
+    @Column(nullable = false, length = 16)
     private String numeroCartao;
 
+    @Column(nullable = false, length = 255)
     private String vencimento;
 
-    private int codigoSeguranca;
-
-
+    @Column(nullable = false)
+    private Integer codigoSeguranca;
+    
     public Cartao() {
     }
 
-    public Cartao(String titular, String numeroCartao, String vencimento, int codigoSeguranca) {
+    public Cartao(String titular, String numeroCartao, String vencimento, Integer codigoSeguranca) {
         this.titular = titular;
         this.numeroCartao = numeroCartao;
         this.vencimento = vencimento;
@@ -45,11 +62,11 @@ public class Cartao {
         this.vencimento = vencimento;
     }
 
-    public int getCodigoSeguranca() {
+    public Integer getCodigoSeguranca() {
         return codigoSeguranca;
     }
 
-    public void setCodigoSeguranca(int codigoSeguranca) {
+    public void setCodigoSeguranca(Integer codigoSeguranca) {
         this.codigoSeguranca = codigoSeguranca;
     }
 }

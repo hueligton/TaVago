@@ -1,36 +1,56 @@
 package model.entity;
 
-public class Acomodacao {
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
-    private int idAcomodacao;
 
+@Entity
+@Table(name = "ACOMODACAO", schema = "TaVagoDB")
+public class Acomodacao implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "acomodacao_sequence")
+    @SequenceGenerator(name = "acomodacao_sequence", sequenceName = "acomodacao_seq", allocationSize = 1)
+    @Column(nullable = false)
+    private Integer idAcomodacao;
+
+    @Column(nullable = false, length = 255)
     private String descricao;
 
-    private float valor;
+    @Column(nullable = false)
+    private Float valor;
 
+    @ManyToOne
     private Categoria categoria;
 
     public Acomodacao() {
     }
 
-    public Acomodacao(String descricao, float valor, Categoria categoria) {
+    public Acomodacao(String descricao, Float valor, Categoria categoria) {
         this.descricao = descricao;
         this.valor = valor;
         this.categoria = categoria;
     }
 
-    public Acomodacao(int idAcomodacao, String descricao, float valor, Categoria categoria) {
+    public Acomodacao(Integer idAcomodacao, String descricao, Float valor, Categoria categoria) {
         this.idAcomodacao = idAcomodacao;
         this.descricao = descricao;
         this.valor = valor;
         this.categoria = categoria;
     }
 
-    public int getIdAcomodacao() {
+    public Integer getIdAcomodacao() {
         return idAcomodacao;
     }
 
-    public void setIdAcomodacao(int idAcomodacao) {
+    public void setIdAcomodacao(Integer idAcomodacao) {
         this.idAcomodacao = idAcomodacao;
     }
 
@@ -42,11 +62,11 @@ public class Acomodacao {
         this.descricao = descricao;
     }
 
-    public float getValor() {
+    public Float getValor() {
         return valor;
     }
 
-    public void setValor(float valor) {
+    public void setValor(Float valor) {
         this.valor = valor;
     }
 

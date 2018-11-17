@@ -1,25 +1,49 @@
 package model.entity;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
 
-public class ItemReserva {
+@Entity
+@Table(name = "ITEMRESERVA", schema = "TaVagoDB")
+public class ItemReserva implements Serializable {
 
-    private int idItemReserva;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "itemreserva_sequence")
+    @SequenceGenerator(name = "itemreserva_sequence", sequenceName = "itemreserva_seq", allocationSize = 1)
+    @Column(nullable = false)
+    private Integer idItemReserva;
 
+    @Column(nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataInicial;
 
+    @Column(nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataFinal;
 
-    private float valor;
+    @Column(nullable = false)
+    private Float valor;
 
+    @ManyToOne
     private Acomodacao acomodacao;
 
+    @OneToOne
     private Hospede hospede;
 
     public ItemReserva() {
     }
 
-    public ItemReserva(int idItemReserva, Date dataInicial, Date dataFinal, float valor, Acomodacao acomodacao, Hospede hospede) {
+    public ItemReserva(Integer idItemReserva, Date dataInicial, Date dataFinal, float valor, Acomodacao acomodacao, Hospede hospede) {
         this.idItemReserva = idItemReserva;
         this.dataInicial = dataInicial;
         this.dataFinal = dataFinal;
@@ -28,7 +52,7 @@ public class ItemReserva {
         this.hospede = hospede;
     }
 
-    public ItemReserva(Date dataInicial, Date dataFinal, float valor, Acomodacao acomodacao, Hospede hospede) {
+    public ItemReserva(Date dataInicial, Date dataFinal, Float valor, Acomodacao acomodacao, Hospede hospede) {
         this.dataInicial = dataInicial;
         this.dataFinal = dataFinal;
         this.valor = valor;
@@ -36,11 +60,11 @@ public class ItemReserva {
         this.hospede = hospede;
     }
 
-    public int getIdItemReserva() {
+    public Integer getIdItemReserva() {
         return idItemReserva;
     }
 
-    public void setIdItemReserva(int idItemReserva) {
+    public void setIdItemReserva(Integer idItemReserva) {
         this.idItemReserva = idItemReserva;
     }
 
@@ -60,11 +84,11 @@ public class ItemReserva {
         this.dataFinal = dataFinal;
     }
 
-    public float getValor() {
+    public Float getValor() {
         return valor;
     }
 
-    public void setValor(float valor) {
+    public void setValor(Float valor) {
         this.valor = valor;
     }
 

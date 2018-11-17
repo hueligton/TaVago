@@ -1,36 +1,54 @@
 package model.entity;
 
-public class Pessoa {
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
-    private int id;
+@Entity
+@Table(name = "PESSOA", schema = "TaVagoDB")
+public class Pessoa implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pessoa_sequence")
+    @SequenceGenerator(name = "pessoa_sequence", sequenceName = "pessoa_seq", allocationSize = 1)
+    @Column(name = "idPessoa")
+    private Integer id;
+
+    @Column(nullable = false, length = 255)
     private String nome;
 
-    private long cpf;
+    @Column(unique = true, nullable = false, length = 11)
+    private Long cpf;
 
-    private int telefone;
+    @Column
+    private Integer telefone;
 
     public Pessoa() {
     }
 
-    public Pessoa(int id, String nome, long cpf, int telefone) {
+    public Pessoa(Integer id, String nome, Long cpf, Integer telefone) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
     }
 
-    public Pessoa(String nome, long cpf, int telefone) {
+    public Pessoa(String nome, Long cpf, Integer telefone) {
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -42,19 +60,19 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public long getCpf() {
+    public Long getCpf() {
         return cpf;
     }
 
-    public void setCpf(long cpf) {
+    public void setCpf(Long cpf) {
         this.cpf = cpf;
     }
 
-    public int getTelefone() {
+    public Integer getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(Integer telefone) {
         this.telefone = telefone;
     }
 
