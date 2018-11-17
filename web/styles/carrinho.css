@@ -1,0 +1,172 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#carrinho-page {
+    background-color: white;
+}
+
+ul, h1, h2, div, p{
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: red;
+}
+
+/* ================== ENVOLTÓRIO DO CABEÇALHO ================== */
+.container-to-grid {
+    width:100%;
+    padding: 25px 0; 
+}
+
+.container-to-grid .top-bar {
+    max-width:62.5em;
+    margin:0 auto;
+}
+
+.logo-tavago, .top-bar-section {
+    display: inline-block;
+    vertical-align: center;
+}
+
+.top-bar .a, .top-bar .ul {
+    text-decoration: none;
+}
+
+ul.options {
+    list-style-type: none;
+}
+
+.top-bar-section {
+    float: right;
+}
+
+.logo-tavago {
+    height: 30px;
+    width: 150px;
+}
+
+/* ================== ENVOLTÓRIO DO CABEÇALHO ================== */
+.main-content, .home-content, .basket-room, .basket-summary {
+    margin: 0;
+    padding: 0;
+}
+
+.main-content {
+    width: 90%;
+    margin: 30px auto;
+    opacity: 1;
+}
+
+.cart-name {
+    margin: 20px 0px 0px 20px;
+}
+
+.basket-wrap {
+    display: flex;
+    flex-direction: row;
+}
+
+    /* ------------------ BASQUET-ROOM ------------------ */
+    .basket-room {
+        flex: 3;
+        height: 100%;
+        width: 100%;
+        margin: 20px 10px 0 20px;
+    }
+
+        /* ------------------ TABLE ------------------ */
+        table, th, td, select, a {
+            margin: 0;
+            padding: 0;
+        }
+
+        .list-rooms {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border-bottom: 1px solid #e9e9e9;
+            font-size: 14px;
+        }
+
+        tr {
+            display: flex;
+        }
+
+        th.collumn1, td.collumn1{
+            flex: 2;
+        }
+
+        th.collumn2, td.collumn2{
+            flex: 1;
+        }
+
+        th.collumn3, td.collumn3{
+            flex: 1;
+        }
+
+        .collumn1, .collumn2, .collumn3 {
+            text-align: center;
+        }
+
+        .room {
+            padding: 20px 0;
+        }
+
+        .quantidade-quartos {
+            margin: 15px 0;   
+        }
+
+        .total-price-room {
+            padding: 20px 0;
+        }
+
+    /* ------------------ BASQUET-SUMMARY ------------------ */
+    .basket-summary{
+        flex: 1;
+        height: 100%;
+        width: 100%;
+        background-color: whitesmoke;
+        opacity: 1;
+        margin: 0 20px 0 10px;
+        text-align: center;
+    }
+
+    .total-price p, .total-price h3 {
+        margin: 15px 0;
+        font-size: 20px;
+        min-width: 200px;
+    }
+
+    .confirm {
+        padding: 14px 20px;
+        margin-bottom: 15px;
+    }
+
+    a.complete-purchase:hover {
+        text-decoration: none;
+        color: white;
+    }
+
+    .complete-purchase {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .complete-purchase:hover {
+        background-color: #45a049;
+    }
