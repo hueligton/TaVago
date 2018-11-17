@@ -1,4 +1,0 @@
-INSERT INTO pessoa VALUES(1, 'Tesouro de Noronha Pousada', 4, '(81) 3619-0191', 'Rua Nice Cordeiro', '25', 'Fernando de Noronha', 'Pernambuco', Brasil'),
-INSERT INTO pessoa VALUES(2, 'Pousada Lua Bela', 4, '(81) 3619-0227', 'Rua Amaro Preto', 113, 'Fernando de Noronha', 'Pernambuco', 'Brasil'),
-INSERT INTO pessoa VALUES(3, 'Pousada Zé Maria', 4, '(81) 3619-1258', 'Rua Nice Cordeiro', 1, 'Fernando de Noronha', 'Pernambuco', 'Brasil'),
-INSERT INTO pessoa VALUES(4, 'Pousada do Vale', 4, '(81) 3619-1293', 'Rua Pescador Sérgio Lino', 18, 'Fernando de Noronha', 'Pernambuco', 'Brasil'),

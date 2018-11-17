@@ -1,4 +1,0 @@
-INSERT INTO usuario VALUES (1, 'patrica@gmail.com' 'pati123'),
-INSERT INTO usuario VALUES (2, 'joao@gmail.com' 'joao123'),
-INSERT INTO usuario VALUES (3, 'ana@gmail.com' 'ana123'),
-INSERT INTO usuario VALUES (4, 'pedro@gmail.com' 'pedro123'),
