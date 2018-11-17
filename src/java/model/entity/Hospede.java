@@ -1,21 +1,33 @@
 package model.entity;
 
-public class Hospede extends Pessoa {
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "HOSPEDE")
+public class Hospede extends Pessoa implements Serializable{
+
+    @Column(nullable = false, length = 255)
     private String rua;
 
-    private int numeroCasa;
+    @Column(nullable = false)
+    private Integer numeroCasa;
 
+    @Column(nullable = false, length = 255)
     private String cidade;
 
+    @Column(nullable = false, length = 255)
     private String estado;
 
+    @Column(nullable = false, length = 255)
     private String pais;
 
     public Hospede() {
     }
 
-    public Hospede(String rua, int numeroCasa, String cidade, String estado, String pais) {
+    public Hospede(String rua, Integer numeroCasa, String cidade, String estado, String pais) {
 
         this.rua = rua;
         this.numeroCasa = numeroCasa;
@@ -24,7 +36,7 @@ public class Hospede extends Pessoa {
         this.pais = pais;
     }
 
-    public Hospede(int id, String nome, long cpf, int telefone, String rua, int numeroCasa, String cidade, String estado, String pais) {
+    public Hospede(Integer id, String nome, Long cpf, Integer telefone, String rua, Integer numeroCasa, String cidade, String estado, String pais) {
         super(id, nome, cpf, telefone);
         this.rua = rua;
         this.numeroCasa = numeroCasa;
@@ -33,7 +45,7 @@ public class Hospede extends Pessoa {
         this.pais = pais;
     }
 
-    public Hospede(String nome, long cpf, int telefone, String rua, int numeroCasa, String cidade, String estado, String pais) {
+    public Hospede(String nome, Long cpf, Integer telefone, String rua, Integer numeroCasa, String cidade, String estado, String pais) {
         super(nome, cpf, telefone);
         this.rua = rua;
         this.numeroCasa = numeroCasa;
@@ -50,11 +62,11 @@ public class Hospede extends Pessoa {
         this.rua = rua;
     }
 
-    public int getNumeroCasa() {
+    public Integer getNumeroCasa() {
         return numeroCasa;
     }
 
-    public void setNumeroCasa(int numeroCasa) {
+    public void setNumeroCasa(Integer numeroCasa) {
         this.numeroCasa = numeroCasa;
     }
 

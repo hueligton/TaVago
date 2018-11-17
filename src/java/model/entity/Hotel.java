@@ -1,33 +1,57 @@
 package model.entity;
 
+import java.io.Serializable;
 import java.util.Collection;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
-public class Hotel {
+@Entity
+@Table(name = "HOTEL")
+public class Hotel implements Serializable {
 
-    private int idHotel;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hotel_sequence")
+    @SequenceGenerator(name = "hotel_sequence", sequenceName = "hotel_seq", allocationSize = 1)
+    @Column(nullable = false)
+    private Integer idHotel;
 
+    @Column(nullable = false, length = 255)
     private String nome;
 
-    private int quantidadeEstrela;
+    @Column(nullable = false)
+    private Integer quantidadeEstrela;
 
+    @Column(nullable = false, length = 255)
     private String telefone;
 
+    @Column(nullable = false, length = 255)
     private String rua;
 
-    private int numeroHotel;
+    @Column(nullable = false)
+    private Integer numeroHotel;
 
+    @Column(nullable = false, length = 255)
     private String cidade;
 
+    @Column(nullable = false, length = 255)
     private String estado;
 
+    @Column(nullable = false, length = 255)
     private String pais;
 
+    @OneToMany
     private Collection<Acomodacao> acomodacao;
 
     public Hotel() {
     }
 
-    public Hotel(String nome, int quantidadeEstrela, String telefone, String rua, int numeroHotel, String cidade, String estado, String pais, Collection<Acomodacao> acomodacao) {
+    public Hotel(String nome, Integer quantidadeEstrela, String telefone, String rua, Integer numeroHotel, String cidade, String estado, String pais, Collection<Acomodacao> acomodacao) {
         this.nome = nome;
         this.quantidadeEstrela = quantidadeEstrela;
         this.telefone = telefone;
@@ -39,7 +63,7 @@ public class Hotel {
         this.acomodacao = acomodacao;
     }
 
-    public Hotel(int idHotel, String nome, int quantidadeEstrela, String telefone, String rua, int numeroHotel, String cidade, String estado, String pais, Collection<Acomodacao> acomodacao) {
+    public Hotel(Integer idHotel, String nome, Integer quantidadeEstrela, String telefone, String rua, Integer numeroHotel, String cidade, String estado, String pais, Collection<Acomodacao> acomodacao) {
         this.idHotel = idHotel;
         this.nome = nome;
         this.quantidadeEstrela = quantidadeEstrela;
@@ -52,11 +76,11 @@ public class Hotel {
         this.acomodacao = acomodacao;
     }
 
-    public int getIdHotel() {
+    public Integer getIdHotel() {
         return idHotel;
     }
 
-    public void setIdHotel(int idHotel) {
+    public void setIdHotel(Integer idHotel) {
         this.idHotel = idHotel;
     }
 
@@ -68,11 +92,11 @@ public class Hotel {
         this.nome = nome;
     }
 
-    public int getQuantidadeEstrela() {
+    public Integer getQuantidadeEstrela() {
         return quantidadeEstrela;
     }
 
-    public void setQuantidadeEstrela(int quantidadeEstrela) {
+    public void setQuantidadeEstrela(Integer quantidadeEstrela) {
         this.quantidadeEstrela = quantidadeEstrela;
     }
 
@@ -92,11 +116,11 @@ public class Hotel {
         this.rua = rua;
     }
 
-    public int getNumeroHotel() {
+    public Integer getNumeroHotel() {
         return numeroHotel;
     }
 
-    public void setNumeroHotel(int numeroHotel) {
+    public void setNumeroHotel(Integer numeroHotel) {
         this.numeroHotel = numeroHotel;
     }
 
