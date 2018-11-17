@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "HOSPEDE", schema = "TaVagoDB")
+@Table(name = "HOSPEDE")
 public class Hospede extends Pessoa implements Serializable{
 
     @Column(nullable = false, length = 255)

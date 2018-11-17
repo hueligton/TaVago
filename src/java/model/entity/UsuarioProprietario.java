@@ -7,7 +7,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "USUARIOPROPRIETARIO", schema = "TaVagoDB")
+@Table(name = "USUARIOPROPRIETARIO")
 public class UsuarioProprietario extends Usuario implements Serializable{
 
     @OneToMany

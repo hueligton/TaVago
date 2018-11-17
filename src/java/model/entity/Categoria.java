@@ -10,7 +10,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "CATEGORIA", schema = "TaVagoDB")
+@Table(name = "CATEGORIA")
 public class Categoria implements Serializable {
 
     @Id

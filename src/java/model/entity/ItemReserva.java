@@ -14,7 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 @Entity
-@Table(name = "ITEMRESERVA", schema = "TaVagoDB")
+@Table(name = "ITEMRESERVA")
 public class ItemReserva implements Serializable {
 
     @Id
