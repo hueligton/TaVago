@@ -10,7 +10,6 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    position: relative;
 }
 
 ul, h1, h2{
@@ -22,7 +21,7 @@ ul, h1, h2{
 /* ================== ENVOLTÓRIO DO CABEÇALHO ================== */
 .container-to-grid {
     width:100%;
-    margin-top: 10px;
+    padding: 25px 0; 
 }
 
 .container-to-grid .top-bar {
@@ -74,7 +73,8 @@ ul.options {
 /* ================== CONTEÚDO DA PÁGINA PRINCIPAL ================== */
 .main-content {
     height: 200px;
-    width: 1500px;
+    width: 80%;
+    max-width: 750px;
     position: relative;
     margin: 0 auto;
 }
@@ -87,11 +87,6 @@ ul.options {
 
 .main-content .home-content {
     margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
 }
 
 
