@@ -1,4 +1,0 @@
-INSERT INTO acomodacao VALUES(1, 'Quarto Deluxe com Cama Queen-size, acomoda duas pessoas', 880,00, 1),
-INSERT INTO acomodacao VALUES(2, 'Quarto Duplo, acomoda duas pessoas', 680,00, 1),
-INSERT INTO acomodacao VALUES(3, 'Quarto Duplo com Vista do Jardim, acomoda duas pessoas', 764,00, 1),
-INSERT INTO acomodacao VALUES(3, 'Quarto Duplo Deluxe com Vista do Mar, acomoda duas pessoas', 779,00, 1);
