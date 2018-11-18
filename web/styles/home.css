@@ -70,7 +70,7 @@ ul.options {
 
 
 
-/* ================== CONTEÚDO DA PÁGINA PRINCIPAL ================== */
+/* ================== ENVOLTÓRIO DO CONTEÚDO PRINCIPAL DA HOME ================== */
 .main-content {
     height: 200px;
     width: 80%;
@@ -104,7 +104,7 @@ ul.options {
         text-transform: uppercase;
     }
 
-    .formulario-consulta .destino, .formulario-consulta .datas, .formulario-consulta .datas .entrada, .formulario-consulta .datas .saida, .formulario-consulta .quantidade-pessoas {
+    .formulario-consulta .destino, .formulario-consulta .datas, .formulario-consulta .datas .entrada, .formulario-consulta .datas .saida, .formulario-consulta .quantidade {
         display: inline-block;
         vertical-align: top;
     }
