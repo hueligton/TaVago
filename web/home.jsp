@@ -46,7 +46,7 @@
             <!-- Cabeçalho -->
             <header class="header-welcome">
                 <h1>Bem-vindo ao TaVago!</h1>
-                <h3>O melhor hotal você encontra aqui</h3>
+                <h3>O melhor hotel você encontra aqui</h3>
             </header>
         </div>
         

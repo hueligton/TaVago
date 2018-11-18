@@ -44,6 +44,10 @@ public class Pessoa implements Serializable {
         this.telefone = telefone;
     }
 
+    public Pessoa(String nome, String cpf, String telefone) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public Integer getId() {
         return id;
     }

@@ -1,11 +1,30 @@
 package model.manager;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import model.entity.Reserva;
 import model.entity.Carrinho;
 import java.util.Date;
 
 public class ReservaManager {
+    private final String database = "jdbc:derby://localhost:5432/tavagodb";
+    private final String user = "root";
+    private final String password = "root";
 
+    protected Connection conn;
+    public ReservaManager(){
+         try {
+
+            conn = DriverManager.getConnection(database + ";user="
+                    + user + ";password=" + password);
+
+            System.out.println("Conectado com sucesso!");
+
+        } catch (SQLException ex) {
+            System.out.println("Ocorreu um erro. " + ex);
+        }
+    }
     public void cadastrarReserva(int idUsuarioHospede) {
 
     }

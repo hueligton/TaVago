@@ -1,5 +1,12 @@
 package model.manager;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import model.entity.Acomodacao;
 import model.entity.Categoria;
 import model.entity.Hotel;
@@ -10,12 +17,27 @@ import org.hibernate.cfg.Configuration;
 
 public class HotelManager {
 
-    private final SessionFactory conexao;
+    private final String database = "jdbc:derby://localhost:5432/tavagodb";
+    private final String user = "root";
+    private final String password = "root";
 
+    protected Connection conn;
+   
     public HotelManager() {
-        conexao = new Configuration().configure().buildSessionFactory();
+       try {
+
+            conn = DriverManager.getConnection(database + ";user="
+                    + user + ";password=" + password);
+
+            System.out.println("Conectado com sucesso!");
+
+        } catch (SQLException ex) {
+            System.out.println("Ocorreu um erro. " + ex);
+        }
     }
 
+    
+    
     public void cadastrarHotel(String nome, int quantidadeEstrela, String telefone, String rua, int numero, String cidade, String estado, String pais) {
 
     }
@@ -25,7 +47,7 @@ public class HotelManager {
     }
 
     public void cadastrarCategoria(String descricao) {
-        Session session = conexao.openSession();
+    /*   Session session = conexao.openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
@@ -38,7 +60,7 @@ public class HotelManager {
             }
         } finally {
             session.close();
-        }
+        }*/
     }
 
     public void excluirHotel(int id) {
@@ -57,8 +79,22 @@ public class HotelManager {
 
     }
 
-    public void listaHotel() {
-
+    public List<Hotel> listaHotel() throws SQLException {
+        List<Hotel> lista = new ArrayList();
+       
+            Statement statement = conn.createStatement();
+            ResultSet resultado = statement.executeQuery("SELECT * FROM HOTEL");
+            while(resultado.next()){
+                //teste, ainda não foram colocados todos os dados de hotel
+               String nome = resultado.getString("NOME");
+               int qtdEstrelas = resultado.findColumn("QUANTIDADEESTRELA");
+                
+                Hotel hotel = new Hotel(nome,qtdEstrelas);
+                
+                lista.add(hotel);
+        }
+                return lista;
+        
     }
 
     public void atualizarHotel(int id, String nome, int quantidadeEstrela, String telefone, String rua, int numero, String cidade, String estado, String pais) {

@@ -7,6 +7,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,19 +28,26 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+// controller não conhece entidades, apenas managers
 import model.entity.Acomodacao;
 import model.entity.Carrinho;
 import model.entity.Categoria;
 import model.entity.ItemCarrinho;
 
+import model.manager.HotelManager;
+import model.manager.PessoaManager;
+import model.manager.ReservaManager;
+
+
 /**
  *
- * @author hueli
+ * @author hueli, AnaGMendesPedroso
  */
 public class ReservaServletController extends HttpServlet {
-
-    /**
+ HotelManager hotelManager = new HotelManager();
+ PessoaManager pessoaManager = new PessoaManager();
+ ReservaManager reservaManager = new ReservaManager();
+ /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
@@ -55,18 +63,19 @@ public class ReservaServletController extends HttpServlet {
         if (request.getRequestURI().endsWith("/home")) {
             jsp = "/home.jsp";
         } else if (request.getRequestURI().endsWith("/carrinho")) {
-                jsp = "/carrinho.jsp";
+            carrinho(request);
+            jsp = "/carrinho.jsp";
         } else if (request.getRequestURI().endsWith("/confirmacao")) {
             jsp = "/confirmacao.jsp";
         } else if (request.getRequestURI().endsWith("/consulta")) {
             
-//          ESTÁ ERRADO, MUDANÇA FEITA PARA TESTES NA PÁGINA CARRINHO
+/*         ESTÁ ERRADO, MUDANÇA FEITA PARA TESTES NA PÁGINA CARRINHO
             carrinho(request);
-            jsp = "/carrinho.jsp";
-            
-//          VERSÃO CORRETA   
-//          consulta(request);
-//          jsp = "/consulta.jsp";
+            jsp = "/carrinho.jsp";         
+          VERSÃO CORRETA   */
+
+          consulta(request);
+          jsp = "/consulta.jsp";
             
         } else if (request.getRequestURI().endsWith("/dadoshospede")) {
             jsp = "/dadoshospede.jsp";
@@ -119,17 +128,39 @@ public class ReservaServletController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    public void home() {
-
+    
+/* consulta: Método responsável por guardar os dados da busca feita pelo usuário,
+    delegar à manager responsável a busca pelo dados com match e designar 
+    a página jsp resultante com os dados correspondentes a busca
+    */   
+public void consulta(HttpServletRequest request) {
+       
+        try {
+            String destino = request.getParameter("destino");
+            String dataInicial = request.getParameter("dataInicial");
+            String dataFinal = request.getParameter("dataFinal");
+            
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            
+            Date initialDate = sdf.parse(dataInicial);
+            Date finalDate = sdf.parse(dataFinal);
+            
+            String quantidadePessoas = request.getParameter("quantidadePessoas");
+            
+             List listaConsulta = hotelManager.listaHotel();
+            
+            request.setAttribute("consulta", listaConsulta);
+            
+        } catch (ParseException ex) {
+            Logger.getLogger(ReservaServletController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+         Logger.getLogger(ReservaServletController.class.getName()).log(Level.SEVERE, null, ex);
+     }
+            
     }
 
-    public void consulta() {
-
-    }
-
-    public void detalhe() {
-
+    public void detalhe(HttpServletRequest request) {
+  
     }
     
     ///////////////////////////////////////////////////////////////
@@ -176,19 +207,20 @@ public class ReservaServletController extends HttpServlet {
         }
     }
 
-    public void dadosHospede() {
+    public void dadosHospede(HttpServletRequest request) {
+       String idPessoa = request.getParameter("idPessoa");
+        pessoaManager.consulta(idPessoa);
+    }
+
+    public void dadosPagamento(HttpServletRequest request) {
+        
+    }
+
+    public void confirmacao(HttpServletRequest request) {
 
     }
 
-    public void dadosPagamento() {
-
-    }
-
-    public void confirmacao() {
-
-    }
-
-    public void resultado() {
+    public void resultado(HttpServletRequest request) {
 
     }
 

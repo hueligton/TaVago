@@ -75,6 +75,11 @@ public class Hotel implements Serializable {
         this.pais = pais;
         this.acomodacao = acomodacao;
     }
+// MÉTODO PROVISÓRIO PARA TESTE
+    public Hotel(String nome, int qtdEstrelas) {
+       this.nome = nome;
+       this.quantidadeEstrela = qtdEstrelas;
+    }
 
     public Integer getIdHotel() {
         return idHotel;
