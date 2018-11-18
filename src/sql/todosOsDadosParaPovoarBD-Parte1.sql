@@ -23,10 +23,10 @@ INSERT INTO HOTEL VALUES(2, 'Pousada Lua Bela', 4, '8136190227', 'Rua Amaro Pret
 INSERT INTO HOTEL VALUES(3, 'Pousada Ze Maria', 4, '8136191258', 'Rua Nice Cordeiro', 1, 'Fernando de Noronha', 'Pernambuco', 'Brasil', 4);
 INSERT INTO HOTEL VALUES(4, 'Pousada do Vale', 4, '8136191293', 'Rua Pescador Sérgio Lino', 18, 'Fernando de Noronha', 'Pernambuco', 'Brasil', 4);
 
-INSERT INTO CATEGORIA VALUES(1, 'De luxo'),
-INSERT INTO CATEGORIA VALUES(2, 'Muito confortavel'),
-INSERT INTO CATEGORIA VALUES(3, 'Confortavel'),
-INSERT INTO CATEGORIA VALUES(4, 'Simples'),
+INSERT INTO CATEGORIA VALUES(1, 'De luxo');
+INSERT INTO CATEGORIA VALUES(2, 'Muito confortavel');
+INSERT INTO CATEGORIA VALUES(3, 'Confortavel');
+INSERT INTO CATEGORIA VALUES(4, 'Simples');
 INSERT INTO CATEGORIA VALUES(5, 'Sem classificação');
 
 INSERT INTO ACOMODACAO VALUES(1, 1, 1, 'Quarto Deluxe com Cama Queen size, acomoda duas pessoas', 880.00);
