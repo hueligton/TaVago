@@ -1,23 +1,27 @@
 package model.entity;
 
-import java.util.Collection;
+import java.util.LinkedList;
 
 public class Carrinho {
 
-    private Collection<ItemCarrinho> itemCarrinho;
+    // EM ANÁLISE
+    //  - O tipo do atributo  itemCarrinho foi alterado de 
+    //    Collection para LinkedList devido a problemas de
+    //    integração na controladora
+    private LinkedList<ItemCarrinho> itemCarrinho;
 
     public Carrinho() {
     }
-
-    public Carrinho(Collection<ItemCarrinho> itemCarrinho) {
+    
+    public Carrinho(LinkedList<ItemCarrinho> itemCarrinho) {
         this.itemCarrinho = itemCarrinho;
     }
 
-    public Collection<ItemCarrinho> getItemCarrinho() {
+    public LinkedList<ItemCarrinho> getItemCarrinho() {
         return itemCarrinho;
     }
 
-    public void setItemCarrinho(Collection<ItemCarrinho> itemCarrinho) {
+    public void setItemCarrinho(LinkedList<ItemCarrinho> itemCarrinho) {
         this.itemCarrinho = itemCarrinho;
     }
 
