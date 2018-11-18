@@ -7,10 +7,31 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.ServletException;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+import javax.servlet.http.HttpSession;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import model.entity.Acomodacao;
+import model.entity.Carrinho;
+import model.entity.Categoria;
+import model.entity.ItemCarrinho;
 
 /**
  *
@@ -34,11 +55,19 @@ public class ReservaServletController extends HttpServlet {
         if (request.getRequestURI().endsWith("/home")) {
             jsp = "/home.jsp";
         } else if (request.getRequestURI().endsWith("/carrinho")) {
-            jsp = "/carrinho.jsp";
+                jsp = "/carrinho.jsp";
         } else if (request.getRequestURI().endsWith("/confirmacao")) {
             jsp = "/confirmacao.jsp";
         } else if (request.getRequestURI().endsWith("/consulta")) {
-            jsp = "/consulta.jsp";
+            
+//          ESTÁ ERRADO, MUDANÇA FEITA PARA TESTES NA PÁGINA CARRINHO
+            carrinho(request);
+            jsp = "/carrinho.jsp";
+            
+//          VERSÃO CORRETA   
+//          consulta(request);
+//          jsp = "/consulta.jsp";
+            
         } else if (request.getRequestURI().endsWith("/dadoshospede")) {
             jsp = "/dadoshospede.jsp";
         } else if (request.getRequestURI().endsWith("/detalhes")) {
@@ -102,9 +131,49 @@ public class ReservaServletController extends HttpServlet {
     public void detalhe() {
 
     }
+    
+    ///////////////////////////////////////////////////////////////
+    //                                                           //
+    //            CÓDIGO TESTE DA PÁGINA CARRINHO                //
+    //        APENAS TESTE, PODEM ATUALIZAR À VONTADE            //
+    //                                                           //
+    ///////////////////////////////////////////////////////////////
 
-    public void carrinho() {
-
+    public void carrinho(HttpServletRequest request) {
+        try {
+            
+            String dataInicial = request.getParameter("dataInicial");
+            String dataFinal = request.getParameter("dataFinal");
+            
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            
+            Date initialDate = sdf.parse(dataInicial);
+            Date finalDate = sdf.parse(dataFinal);
+                     
+            Categoria category = new Categoria(1, "De luxo");
+            Acomodacao accommodation = new Acomodacao(1, "Quarto Deluxe com Cama Queen size, acomoda duas pessoas", 880.00F, category);
+            ItemCarrinho itemCart = new ItemCarrinho(initialDate, finalDate, accommodation);
+            
+            LinkedList listItem = new LinkedList();
+            listItem.add(itemCart);
+            
+            Carrinho cart = new Carrinho(listItem);
+            
+            String roomQuantity = "3";
+            Float totalValuePerAccommodation = 880.00F;
+            Float totalValueCart = 880.00F;
+            
+            List item = new ArrayList();
+            item = cart.getItemCarrinho();
+            
+            request.setAttribute("carrinho", item);
+            request.setAttribute("quantidadeQuartos", roomQuantity);
+            request.setAttribute("valorTotalPorAcomodacao", totalValuePerAccommodation);
+            request.setAttribute("valorTotalCarrinho", totalValueCart);
+            
+        } catch (ParseException ex) {            
+            Logger.getLogger(ReservaServletController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void dadosHospede() {
