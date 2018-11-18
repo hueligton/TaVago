@@ -54,8 +54,8 @@ ul.options {
     width: 150px;
 }
 
-/* ================== ENVOLTÓRIO DO CABEÇALHO ================== */
-.main-content, .home-content, .basket-room, .basket-summary {
+/* ================== ENVOLTÓRIO DO CONTEÚDO PRINCIPAL DO CARRINHO ================== */
+.main-content, .home-content, .cart-room, .cart-summary {
     margin: 0;
     padding: 0;
 }
@@ -70,13 +70,25 @@ ul.options {
     margin: 20px 0px 0px 20px;
 }
 
-.basket-wrap {
+.cart-wrap {
     display: flex;
     flex-direction: row;
 }
 
+.empty-cart {
+    background-color: whitesmoke;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.empty-cart p {
+    margin: 100px 0;
+    font-size: 30px;
+}
+
     /* ------------------ BASQUET-ROOM ------------------ */
-    .basket-room {
+    .cart-room {
         flex: 3;
         height: 100%;
         width: 100%;
@@ -89,7 +101,7 @@ ul.options {
             padding: 0;
         }
 
-        .list-rooms {
+        .room-items {
             border-collapse: collapse;
             width: 100%;
         }
@@ -103,19 +115,19 @@ ul.options {
             display: flex;
         }
 
-        th.collumn1, td.collumn1{
+        th.description-collumn, td.description-collumn{
             flex: 2;
         }
 
-        th.collumn2, td.collumn2{
+        th.quantity-collumn, td.quantity-collumn{
             flex: 1;
         }
 
-        th.collumn3, td.collumn3{
+        th.value-collumn, td.value-collumn{
             flex: 1;
         }
 
-        .collumn1, .collumn2, .collumn3 {
+        .description-collumn, .quantity-collumn, .value-collumn {
             text-align: center;
         }
 
@@ -123,7 +135,7 @@ ul.options {
             padding: 20px 0;
         }
 
-        .quantidade-quartos {
+        .room-quantity {
             margin: 15px 0;   
         }
 
@@ -132,7 +144,7 @@ ul.options {
         }
 
     /* ------------------ BASQUET-SUMMARY ------------------ */
-    .basket-summary{
+    .cart-summary{
         flex: 1;
         height: 100%;
         width: 100%;

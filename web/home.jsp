@@ -25,8 +25,8 @@
                 
                     <!-- Logotipo TaVago -->
                     <div class="logo-tavago">
-                        <a href="">
-                            <img class="logo-tavago" src="images/logo-tavago.png" alt="TAVAGO"/>
+                        <a href="${pageContext.request.contextPath}/home">
+                            <img class="logo-tavago" src="images/logo-tavago.png" alt="tavago"/>
                         </a>
                     </div>
                     
@@ -34,7 +34,7 @@
                     <div class="top-bar-section">
                         <ul class="options">
                             <li>
-                                <a href="./carrinho.html">
+                                <a href="${pageContext.request.contextPath}/carrinho">
                                     <img class="carrinho" src="images/carrinho.png" alt="carrinho"/>
                                 </a>
                             </li>
@@ -58,7 +58,7 @@
             <div class="home-content">
 
                 <!-- Formulário de consulta definido no diagrama de navegação -->
-                <form class="formulario-consulta">
+                <form class="formulario-consulta" method="POST" action="${pageContext.request.contextPath}/consulta">
                     
                     <div class="destino">
                         <label for="destino">Destino</label><br>
@@ -67,19 +67,19 @@
                     
                     <div class="datas">
                         <div class="entrada">
-                            <label for="data-entrada">Data de check-in</label><br>
-                            <input type="date" name="data-entrada" id="data-entrada" required><br>
+                            <label for="dataInicial">Data de check-in</label><br>
+                            <input type="date" name="dataInicial" id="dataInicial" required><br>
                         </div>
 
                         <div class="saida">
-                            <label for="data-saida">Data de check-out</label><br>
-                            <input type="date" name="data-saida" id="data-saida" required><br>
+                            <label for="dataFinal">Data de check-out</label><br>
+                            <input type="date" name="dataFinal" id="dataFinal" required><br>
                         </div>
                     </div>
 
-                    <div class="quantidade-pessoas">
-                        <label for="quantidade-pessoas">Quantidade hóspedes</label><br>
-                        <select name="quantidade-pessoas" id="quantidade-pessoas">
+                    <div class="quantidade">
+                        <label for="quantidadePessoas">Quantidade hóspedes</label><br>
+                        <select name="quantidadePessoas" id="quantidadePessoas">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
