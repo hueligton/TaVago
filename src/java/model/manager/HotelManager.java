@@ -10,9 +10,11 @@ import java.util.List;
 import model.entity.Acomodacao;
 import model.entity.Categoria;
 import model.entity.Hotel;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 
 public class HotelManager {
@@ -22,9 +24,9 @@ public class HotelManager {
     private final String password = "root";
 
     protected Connection conn;
-   
+
     public HotelManager() {
-       try {
+        try {
 
             conn = DriverManager.getConnection(database + ";user="
                     + user + ";password=" + password);
@@ -36,8 +38,6 @@ public class HotelManager {
         }
     }
 
-    
-    
     public void cadastrarHotel(String nome, int quantidadeEstrela, String telefone, String rua, int numero, String cidade, String estado, String pais) {
 
     }
@@ -47,7 +47,7 @@ public class HotelManager {
     }
 
     public void cadastrarCategoria(String descricao) {
-    /*   Session session = conexao.openSession();
+        /*   Session session = conexao.openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
@@ -80,7 +80,28 @@ public class HotelManager {
     }
 
     public List<Hotel> listaHotel() throws SQLException {
-        List<Hotel> lista = new ArrayList();
+        List<Hotel> list = null;
+        SessionFactory sessions = new AnnotationConfiguration().configure("src/java/hibernate.cfg.xml").buildSessionFactory();
+        Session session = sessions.openSession();
+
+        try{
+            session.beginTransaction();
+            list = session.createQuery("SELECT * FROM HOTEL").list();
+            session.getTransaction().commit();
+
+            for (Hotel hot : list) {
+                System.out.println(hot.toString());
+            }
+        }catch ( HibernateException e ) {
+            if ( session.getTransaction() != null )
+                session.getTransaction().rollback();
+        }finally {
+            session.close();
+        }
+
+            /* CODIGO ANTIGO 
+        
+            List<Hotel> lista = new ArrayList();
        
             Statement statement = conn.createStatement();
             ResultSet resultado = statement.executeQuery("SELECT * FROM HOTEL");
@@ -94,8 +115,11 @@ public class HotelManager {
                 lista.add(hotel);
         }
                 return lista;
-        
-    }
+             */
+        return list;
+        }
+
+    
 
     public void atualizarHotel(int id, String nome, int quantidadeEstrela, String telefone, String rua, int numero, String cidade, String estado, String pais) {
 
