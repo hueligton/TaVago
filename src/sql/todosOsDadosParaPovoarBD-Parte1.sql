@@ -23,10 +23,10 @@ INSERT INTO HOTEL VALUES(2, 'Pousada Lua Bela', 4, '8136190227', 'Rua Amaro Pret
 INSERT INTO HOTEL VALUES(3, 'Pousada Ze Maria', 4, '8136191258', 'Rua Nice Cordeiro', 1, 'Fernando de Noronha', 'Pernambuco', 'Brasil', 4);
 INSERT INTO HOTEL VALUES(4, 'Pousada do Vale', 4, '8136191293', 'Rua Pescador Sérgio Lino', 18, 'Fernando de Noronha', 'Pernambuco', 'Brasil', 4);
 
-INSERT INTO CATEGORIA VALUES(1, 'De luxo'),
-INSERT INTO CATEGORIA VALUES(2, 'Muito confortavel'),
-INSERT INTO CATEGORIA VALUES(3, 'Confortavel'),
-INSERT INTO CATEGORIA VALUES(4, 'Simples'),
+INSERT INTO CATEGORIA VALUES(1, 'De luxo');
+INSERT INTO CATEGORIA VALUES(2, 'Muito confortavel');
+INSERT INTO CATEGORIA VALUES(3, 'Confortavel');
+INSERT INTO CATEGORIA VALUES(4, 'Simples');
 INSERT INTO CATEGORIA VALUES(5, 'Sem classificação');
 
 INSERT INTO ACOMODACAO VALUES(1, 1, 1, 'Quarto Deluxe com Cama Queen size, acomoda duas pessoas', 880.00);
@@ -42,10 +42,16 @@ INSERT INTO ACOMODACAO VALUES(3, 10, 1,'Apartamento Standard, acomoda duas pesso
 INSERT INTO ACOMODACAO VALUES(4, 11, 1, 'Suite Standard - ARRAIA, acomoda uma pessoa', 950.00);
 INSERT INTO ACOMODACAO VALUES(4, 12, 1, 'Suite Superior - Mero, acomoda duas pessoas', 1350.00);
 
-INSERT INTO RESERVA VALUES (1, 1), ##Reserva em nome de Patricia Campos
-INSERT INTO RESERVA VALUES (2, 2), ##Reserva em nome de Joao Almeida
-INSERT INTO RESERVA VALUES (3, 3); ##Reserva em nome de Ana Maria 
+INSERT INTO HOSPEDE VALUES(1, 'Patricia Campos', 'Rua Filomena Segundo Nascimento', 123, 'Campo Grande', 'MS', 'Brasil');
+INSERT INTO HOSPEDE VALUES(2, 'João Almeida', 'Rua Do Dinar', 213, 'Campo Grande', 'MS', 'Brasil');
+INSERT INTO HOSPEDE VALUES(3, 'Ana Maria', 'Rua Golf', 313, 'Campo Grande', 'MS', 'Brasil');
 
-INSERT INTO ITEMRESERVA VALUES(1, 1, 1, 1, '2018-12-31', '2019-01-07', 5600),
-INSERT INTO ITEMRESERVA VALUES(2, 2, 2, 2, '2019-10-25', '2019-10-27', 1360),
+INSERT INTO RESERVA VALUES (1, 1); --Reserva em nome de Patricia Campos--
+INSERT INTO RESERVA VALUES (2, 2); --Reserva em nome de Joao Almeida--
+INSERT INTO RESERVA VALUES (3, 3); --Reserva em nome de Ana Maria-- 
+
+INSERT INTO ITEMRESERVA VALUES(1, 1, 1, 1, '2018-12-31', '2019-01-07', 5600);
+INSERT INTO ITEMRESERVA VALUES(2, 2, 2, 2, '2019-10-25', '2019-10-27', 1360);
 INSERT INTO ITEMRESERVA VALUES(3, 3, 3, 3, '2018-11-30', '2019-02-04', 51188);
+
+
