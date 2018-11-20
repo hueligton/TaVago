@@ -73,7 +73,7 @@ public class ReservaServletController extends HttpServlet {
             carrinho(request);
             jsp = "/carrinho.jsp";         
           VERSÃO CORRETA   */
-
+            System.out.println("chamou cosulta controller");
           consulta(request);
           jsp = "/consulta.jsp";
             
@@ -134,7 +134,7 @@ public class ReservaServletController extends HttpServlet {
     a página jsp resultante com os dados correspondentes a busca
     */   
 public void consulta(HttpServletRequest request) {
-       
+       System.out.println("iniciou consulta");
         try {
             String destino = request.getParameter("destino");
             String dataInicial = request.getParameter("dataInicial");
@@ -146,10 +146,11 @@ public void consulta(HttpServletRequest request) {
             Date finalDate = sdf.parse(dataFinal);
             
             String quantidadePessoas = request.getParameter("quantidadePessoas");
+            System.out.println("chamou manager");
+            List <Object[]> consulta = hotelManager.listaHotel();
+            System.out.println("recebeu lista com size = " + consulta.size()); 
             
-             hotelManager.listaHotel();
-            
-            //request.setAttribute("consulta", listaConsulta);
+            request.setAttribute("consulta", consulta);
             
         } catch (ParseException ex) {
             Logger.getLogger(ReservaServletController.class.getName()).log(Level.SEVERE, null, ex);

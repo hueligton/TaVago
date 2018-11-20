@@ -60,19 +60,23 @@ public class HotelManager {
 
     }
 
-    public void listaHotel() {
+    public List<Object[]> listaHotel() {
         Session session = conexao.openSession();
         Transaction tx = null;
+        List<Object[]> rows = null;
         try {
             tx = session.beginTransaction();
-           SQLQuery query = session.createSQLQuery("select nome from hotel");
-           List<Object[]> rows = query.list();
-           
-           for(Object[] row : rows){
+           SQLQuery query = session.createSQLQuery("select nome from tavagoschema.hotel;");
+            rows = query.list();
+            System.out.println(query.getQueryReturns());
+            for(int i = 0; i< rows.size(); i++){
+            System.out.println(rows.get(i));
+            }
+           /*for(Object[] row : rows){
                Hotel hot = new Hotel();
                hot.setNome(row[1].toString());
-               System.out.println(hot);
-           }
+               System.out.println(hot.getNome());
+           }*/
             tx.commit();
         } catch (Exception e) {
             if (tx != null) {
@@ -81,6 +85,7 @@ public class HotelManager {
         } finally {
             session.close();
         }
+        return rows;
     }
 
     public void atualizarHotel(int id, String nome, int quantidadeEstrela, String telefone, String rua, int numero, String cidade, String estado, String pais) {

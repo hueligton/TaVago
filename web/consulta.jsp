@@ -7,7 +7,7 @@
     //                                                           //
     ///////////////////////////////////////////////////////////////
 --%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -30,15 +30,13 @@
                     <thead>
                         <tr>
                             <th>Nome</th>
-                            <th>Estrelas</th>
                         </tr>
                     </thead>
                     <tbody>
 
-                        <c:forEach var="hotel" items="${consulta}">
+                        <c:forEach var="consulta" items="${consulta}">
                             <tr>
-                                <td>${hotel.nome}</td>
-                                <td>${hotel.qtdEstrela}</td>
+                                <td>${consulta}</td>
                             </tr>
                         </c:forEach>
                     </tbody>
