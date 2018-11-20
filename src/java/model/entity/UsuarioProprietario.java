@@ -1,5 +1,6 @@
 package model.entity;
 
+import model.entity.Hotel;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Entity;

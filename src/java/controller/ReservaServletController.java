@@ -147,15 +147,13 @@ public void consulta(HttpServletRequest request) {
             
             String quantidadePessoas = request.getParameter("quantidadePessoas");
             
-             List listaConsulta = hotelManager.listaHotel();
+             hotelManager.listaHotel();
             
-            request.setAttribute("consulta", listaConsulta);
+            //request.setAttribute("consulta", listaConsulta);
             
         } catch (ParseException ex) {
             Logger.getLogger(ReservaServletController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-         Logger.getLogger(ReservaServletController.class.getName()).log(Level.SEVERE, null, ex);
-     }
+        }
             
     }
 
