@@ -47,7 +47,7 @@ public class HotelManager {
     }
 
     public void cadastrarCategoria(String descricao) {
-        /*   Session session = conexao.openSession();
+       /*  Session session = conexao.openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
@@ -99,9 +99,7 @@ public class HotelManager {
             session.close();
         }
 
-            /* CODIGO ANTIGO 
-        
-            List<Hotel> lista = new ArrayList();
+            /* CODIGO List<Hotel> lista = new ArrayList();
        
             Statement statement = conn.createStatement();
             ResultSet resultado = statement.executeQuery("SELECT * FROM HOTEL");
