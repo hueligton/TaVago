@@ -32,13 +32,11 @@ import model.entity.Acomodacao;
 import model.entity.Carrinho;
 import model.entity.Categoria;
 import model.entity.ItemCarrinho;
+import model.manager.HotelManager;
 
-/**
- *
- * @author hueli
- */
+
 public class ReservaServletController extends HttpServlet {
-
+HotelManager hotelManager = new HotelManager();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -59,15 +57,8 @@ public class ReservaServletController extends HttpServlet {
         } else if (request.getRequestURI().endsWith("/confirmacao")) {
             jsp = "/confirmacao.jsp";
         } else if (request.getRequestURI().endsWith("/consulta")) {
-            
-//          ESTÁ ERRADO, MUDANÇA FEITA PARA TESTES NA PÁGINA CARRINHO
-            carrinho(request);
-            jsp = "/carrinho.jsp";
-            
-//          VERSÃO CORRETA   
-//          consulta(request);
-//          jsp = "/consulta.jsp";
-            
+            consulta(request);
+            jsp = "/consulta.jsp";
         } else if (request.getRequestURI().endsWith("/dadoshospede")) {
             jsp = "/dadoshospede.jsp";
         } else if (request.getRequestURI().endsWith("/detalhes")) {
@@ -124,11 +115,30 @@ public class ReservaServletController extends HttpServlet {
 
     }
 
-    public void consulta() {
-
+    public void consulta(HttpServletRequest request) {
+          try {
+            String destino = request.getParameter("destino");
+            String dataInicial = request.getParameter("dataInicial");
+            String dataFinal = request.getParameter("dataFinal");
+            
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            
+            Date initialDate = sdf.parse(dataInicial);
+            Date finalDate = sdf.parse(dataFinal);
+            
+            String quantidadePessoas = request.getParameter("quantidadePessoas");
+            
+            List <Object[]> consulta = hotelManager.listaHotel();
+         
+            
+            request.setAttribute("consulta", consulta);
+            
+        } catch (ParseException ex) {
+            Logger.getLogger(ReservaServletController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-    public void detalhe() {
+    public void detalhe(HttpServletRequest request) {
 
     }
     
@@ -176,19 +186,19 @@ public class ReservaServletController extends HttpServlet {
         }
     }
 
-    public void dadosHospede() {
+    public void dadosHospede(HttpServletRequest request) {
 
     }
 
-    public void dadosPagamento() {
+    public void dadosPagamento(HttpServletRequest request) {
 
     }
 
-    public void confirmacao() {
+    public void confirmacao(HttpServletRequest request) {
 
     }
 
-    public void resultado() {
+    public void resultado(HttpServletRequest request) {
 
     }
 
