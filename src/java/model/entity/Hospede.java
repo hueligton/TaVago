@@ -1,14 +1,22 @@
 package model.entity;
 
 import java.io.Serializable;
+import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "HOSPEDE")
 public class Hospede extends Pessoa implements Serializable{
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idPessoa", referencedColumnName = "idPessoa", table = "USUARIO")
+    private Pessoa pessoa;
+    
     @Column(nullable = false, length = 255)
     private String rua;
 
@@ -54,6 +62,43 @@ public class Hospede extends Pessoa implements Serializable{
         this.pais = pais;
     }
 
+    public Hospede(Pessoa pessoa, String rua, Integer numeroCasa, String cidade, String estado, String pais) {
+        this.pessoa = pessoa;
+        this.rua = rua;
+        this.numeroCasa = numeroCasa;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.pais = pais;
+    }
+
+    public Hospede(Pessoa pessoa, String rua, Integer numeroCasa, String cidade, String estado, String pais, Integer id, String nome, Long cpf, Integer telefone) {
+        super(id, nome, cpf, telefone);
+        this.pessoa = pessoa;
+        this.rua = rua;
+        this.numeroCasa = numeroCasa;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.pais = pais;
+    }
+
+    public Hospede(Pessoa pessoa, String rua, Integer numeroCasa, String cidade, String estado, String pais, String nome, Long cpf, Integer telefone) {
+        super(nome, cpf, telefone);
+        this.pessoa = pessoa;
+        this.rua = rua;
+        this.numeroCasa = numeroCasa;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.pais = pais;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
+
     public String getRua() {
         return rua;
     }
@@ -93,4 +138,51 @@ public class Hospede extends Pessoa implements Serializable{
     public void setPais(String pais) {
         this.pais = pais;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 53 * hash + Objects.hashCode(this.pessoa);
+        hash = 53 * hash + Objects.hashCode(this.rua);
+        hash = 53 * hash + Objects.hashCode(this.numeroCasa);
+        hash = 53 * hash + Objects.hashCode(this.cidade);
+        hash = 53 * hash + Objects.hashCode(this.estado);
+        hash = 53 * hash + Objects.hashCode(this.pais);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Hospede other = (Hospede) obj;
+        if (!Objects.equals(this.rua, other.rua)) {
+            return false;
+        }
+        if (!Objects.equals(this.cidade, other.cidade)) {
+            return false;
+        }
+        if (!Objects.equals(this.estado, other.estado)) {
+            return false;
+        }
+        if (!Objects.equals(this.pais, other.pais)) {
+            return false;
+        }
+        if (!Objects.equals(this.pessoa, other.pessoa)) {
+            return false;
+        }
+        if (!Objects.equals(this.numeroCasa, other.numeroCasa)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 }

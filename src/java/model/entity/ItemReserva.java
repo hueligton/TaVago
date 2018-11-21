@@ -2,11 +2,14 @@ package model.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -34,13 +37,29 @@ public class ItemReserva implements Serializable {
     @Column(nullable = false)
     private Float valor;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idAcomodacao", referencedColumnName = "idAcomodacao")
     private Acomodacao acomodacao;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idHospede", referencedColumnName = "idPessoa")
     private Hospede hospede;
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idReserva", referencedColumnName = "idReserva")
+    private Reserva reserva;
 
     public ItemReserva() {
+    }
+
+    public ItemReserva(Integer idItemReserva, Date dataInicial, Date dataFinal, Float valor, Acomodacao acomodacao, Hospede hospede, Reserva reserva) {
+        this.idItemReserva = idItemReserva;
+        this.dataInicial = dataInicial;
+        this.dataFinal = dataFinal;
+        this.valor = valor;
+        this.acomodacao = acomodacao;
+        this.hospede = hospede;
+        this.reserva = reserva;
     }
 
     public ItemReserva(Integer idItemReserva, Date dataInicial, Date dataFinal, float valor, Acomodacao acomodacao, Hospede hospede) {
@@ -108,4 +127,63 @@ public class ItemReserva implements Serializable {
         this.hospede = hospede;
     }
 
+    public Reserva getReserva() {
+        return reserva;
+    }
+
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.idItemReserva);
+        hash = 97 * hash + Objects.hashCode(this.dataInicial);
+        hash = 97 * hash + Objects.hashCode(this.dataFinal);
+        hash = 97 * hash + Objects.hashCode(this.valor);
+        hash = 97 * hash + Objects.hashCode(this.acomodacao);
+        hash = 97 * hash + Objects.hashCode(this.hospede);
+        hash = 97 * hash + Objects.hashCode(this.reserva);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ItemReserva other = (ItemReserva) obj;
+        if (!Objects.equals(this.idItemReserva, other.idItemReserva)) {
+            return false;
+        }
+        if (!Objects.equals(this.dataInicial, other.dataInicial)) {
+            return false;
+        }
+        if (!Objects.equals(this.dataFinal, other.dataFinal)) {
+            return false;
+        }
+        if (!Objects.equals(this.valor, other.valor)) {
+            return false;
+        }
+        if (!Objects.equals(this.acomodacao, other.acomodacao)) {
+            return false;
+        }
+        if (!Objects.equals(this.hospede, other.hospede)) {
+            return false;
+        }
+        if (!Objects.equals(this.reserva, other.reserva)) {
+            return false;
+        }
+        return true;
+    }
+
+    
+    
 }

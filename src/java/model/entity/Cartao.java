@@ -1,6 +1,7 @@
 package model.entity;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -69,4 +70,43 @@ public class Cartao implements Serializable{
     public void setCodigoSeguranca(Integer codigoSeguranca) {
         this.codigoSeguranca = codigoSeguranca;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 31 * hash + Objects.hashCode(this.titular);
+        hash = 31 * hash + Objects.hashCode(this.numeroCartao);
+        hash = 31 * hash + Objects.hashCode(this.vencimento);
+        hash = 31 * hash + Objects.hashCode(this.codigoSeguranca);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cartao other = (Cartao) obj;
+        if (!Objects.equals(this.titular, other.titular)) {
+            return false;
+        }
+        if (!Objects.equals(this.numeroCartao, other.numeroCartao)) {
+            return false;
+        }
+        if (!Objects.equals(this.vencimento, other.vencimento)) {
+            return false;
+        }
+        if (!Objects.equals(this.codigoSeguranca, other.codigoSeguranca)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 }
