@@ -49,6 +49,8 @@ Contributor(s):
     <property name="hibernate.hbm2ddl.auto">update</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.default_schema">tavagoschema</property>
+    <mapping class="model.entity.Hotel"/>
+    <mapping class="model.entity.Acomodacao"/>
     <mapping class="model.entity.Categoria"/>
   </session-factory>
 </hibernate-configuration>

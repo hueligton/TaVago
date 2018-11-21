@@ -1,8 +1,10 @@
 package model.manager;
 
+import java.util.List;
 import model.entity.Acomodacao;
 import model.entity.Categoria;
 import model.entity.Hotel;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -56,9 +58,24 @@ public class HotelManager {
     public void buscarHotel(int id) {
 
     }
-
-    public void listaHotel() {
-
+    
+    public List<Object[]> listaHotel() {
+        Session session = conexao.openSession();
+        Transaction tx = null;
+        List<Object[]> rows = null;
+            try {
+                tx = session.beginTransaction();
+                SQLQuery query = session.createSQLQuery("select nome from tavagoschema.hotel;");
+                rows = query.list();        
+                tx.commit();
+            } catch (Exception e) {
+                if (tx != null) {
+                    tx.rollback();
+                }
+            } finally {
+                session.close();
+            }
+        return rows;
     }
 
     public void atualizarHotel(int id, String nome, int quantidadeEstrela, String telefone, String rua, int numero, String cidade, String estado, String pais) {
