@@ -5,6 +5,7 @@ import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,8 +34,8 @@ public class Acomodacao implements Serializable {
     @JoinColumn(name = "idCategoria", referencedColumnName = "idCategoria")
     private Categoria categoria;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idHotel", referencedColumnName = "idHotel")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idHotel")
     private Hotel hotel;
 
     public Acomodacao() {
