@@ -5,8 +5,6 @@
  */
 package model.manager;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -18,41 +16,42 @@ import org.hibernate.cfg.Configuration;
  *
  * @author hueli
  */
-public class AbstractFactory {
+public class DAO {
 
     private final SessionFactory conexao;
-    private static AbstractFactory factory;
+    private static DAO factory;
 
-    private AbstractFactory() {
+    private DAO() {
         conexao = new Configuration().configure().buildSessionFactory();
     }
 
-    public static AbstractFactory getFactory() {
+    public static DAO getFactory() {
         if (factory == null) {
-            factory = new AbstractFactory();
+            factory = new DAO();
         }
         return factory;
     }
 
-    public void salvar(Object objeto) {
+    public boolean salvar(Object objeto) {
+        boolean sucesso = false;
         Session session = conexao.openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
             session.save(objeto.getClass().cast(objeto));
             tx.commit();
-            System.out.println("deu");
+            sucesso = true;
         } catch (HibernateException e) {
             if (tx != null) {
                 tx.rollback();
             }
-            System.out.println("não deu " + e.getMessage());
+            sucesso=false;
         } finally {
             session.flush();
             session.clear();
             session.close();
-            System.out.println("fechado");
         }
+        return sucesso;
     }
 
     public void editar(Object objeto) {

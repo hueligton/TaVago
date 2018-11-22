@@ -2,7 +2,10 @@ package model.manager;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
+import javax.ejb.CreateException;
 import model.entity.Acomodacao;
 import model.entity.Categoria;
 import model.entity.Hotel;
@@ -16,29 +19,35 @@ import org.hibernate.cfg.Configuration;
 public class HotelManager {
 
     private final SessionFactory conexao;
-    AbstractFactory factory;
+    DAO factory;
 
     public HotelManager() {
-        factory = AbstractFactory.getFactory();
+        factory = DAO.getFactory();
         conexao = new Configuration().configure().buildSessionFactory();
     }
 
-    public void cadastrarHotel(String nome, int quantidadeEstrela, String telefone, String rua, int numero, String cidade, String estado, String pais, List<Integer> idCategoria, List<String> descricao, List<Float> valor, Integer idProprietario) {
+    public void cadastrarHotel(String nome, int quantidadeEstrela, String telefone, String rua, int numero, String cidade, String estado, String pais, List<Integer> idCategoria, List<String> descricao, List<Float> valor, Integer idProprietario) throws CreateException {
+        UsuarioProprietario proprietario = (UsuarioProprietario) factory.buscar(new UsuarioProprietario(), idProprietario);
+        Hotel hotel = new Hotel(nome, quantidadeEstrela, telefone, rua, numero, cidade, estado, pais, proprietario);
+        //Collection<Hotel> cHotel = new LinkedList<>();
+        //cHotel.add(hotel);
+        //proprietario.setHotel(cHotel);
         Collection<Acomodacao> acomodacao = new ArrayList<>();
         List<Categoria> categorias = factory.listar(new Categoria());
         for (int i = 0; i < descricao.size(); i++) {
             Categoria categoria = new Categoria();
             for (Categoria cat : categorias) {
-                if (cat.getIdCategoria() == idCategoria.get(i)) {
+                if (Objects.equals(cat.getIdCategoria(), idCategoria.get(i))) {
                     categoria = cat;
                     break;
                 }
             }
-            acomodacao.add(new Acomodacao(descricao.get(i), valor.get(i), categoria));
+            acomodacao.add(new Acomodacao(descricao.get(i), valor.get(i), categoria, hotel));
         }
-        UsuarioProprietario proprietario = (UsuarioProprietario) factory.buscar(new UsuarioProprietario(), idProprietario);
-        Hotel obj = new Hotel(nome, quantidadeEstrela, telefone, rua, numero, cidade, estado, pais, acomodacao, proprietario);
-        factory.salvar(obj);
+        hotel.setAcomodacao(acomodacao);
+        boolean salvar = factory.salvar(hotel);
+        if(!salvar)
+            throw new CreateException("Não foi possível salvar o objeto");
     }
 
     public void cadastrarAcomodacao(int idHotel, int idCategoria, String descricao, float valor) {

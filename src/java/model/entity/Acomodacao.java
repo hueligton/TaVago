@@ -34,8 +34,8 @@ public class Acomodacao implements Serializable {
     @JoinColumn(name = "idCategoria", referencedColumnName = "idCategoria")
     private Categoria categoria;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idHotel")
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "idHotel", referencedColumnName = "idHotel")
     private Hotel hotel;
 
     public Acomodacao() {
@@ -45,6 +45,13 @@ public class Acomodacao implements Serializable {
         this.descricao = descricao;
         this.valor = valor;
         this.categoria = categoria;
+    }
+
+    public Acomodacao(String descricao, Float valor, Categoria categoria, Hotel hotel) {
+        this.descricao = descricao;
+        this.valor = valor;
+        this.categoria = categoria;
+        this.hotel = hotel;
     }
 
     public Acomodacao(Integer idAcomodacao, String descricao, Float valor, Categoria categoria) {

@@ -50,11 +50,11 @@ public class Hotel implements Serializable {
     @Column(nullable = false, length = 255)
     private String pais;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "idProprietario", referencedColumnName = "idPessoa")
     private UsuarioProprietario proprietario;
-    
-    @OneToMany(mappedBy = "hotel")
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel")
     private Collection<Acomodacao> acomodacao;
 
     public Hotel() {
@@ -71,6 +71,29 @@ public class Hotel implements Serializable {
         this.pais = pais;
         this.acomodacao = acomodacao;
         this.proprietario = proprietario;
+    }
+
+    public Hotel(String nome, Integer quantidadeEstrela, String telefone, String rua, Integer numeroHotel, String cidade, String estado, String pais, UsuarioProprietario proprietario) {
+        this.nome = nome;
+        this.quantidadeEstrela = quantidadeEstrela;
+        this.telefone = telefone;
+        this.rua = rua;
+        this.numeroHotel = numeroHotel;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.pais = pais;
+        this.proprietario = proprietario;
+    }
+
+    public Hotel(String nome, Integer quantidadeEstrela, String telefone, String rua, Integer numeroHotel, String cidade, String estado, String pais) {
+        this.nome = nome;
+        this.quantidadeEstrela = quantidadeEstrela;
+        this.telefone = telefone;
+        this.rua = rua;
+        this.numeroHotel = numeroHotel;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.pais = pais;
     }
 
     public Hotel(Integer idHotel, String nome, Integer quantidadeEstrela, String telefone, String rua, Integer numeroHotel, String cidade, String estado, String pais, Collection<Acomodacao> acomodacao, UsuarioProprietario proprietario) {
@@ -166,7 +189,7 @@ public class Hotel implements Serializable {
     public void setAcomodacao(Collection<Acomodacao> acomodacao) {
         this.acomodacao = acomodacao;
     }
-    
+
     public UsuarioProprietario getProprietario() {
         return proprietario;
     }
@@ -253,6 +276,5 @@ public class Hotel implements Serializable {
         }
         return true;
     }
-    
-    
+
 }

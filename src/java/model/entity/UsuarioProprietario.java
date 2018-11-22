@@ -2,6 +2,7 @@ package model.entity;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -79,6 +80,9 @@ public class UsuarioProprietario extends Usuario implements Serializable {
     }
 
     public void setHotel(Collection<Hotel> hotel) {
+        if (this.hotel == null) {
+            this.hotel = new LinkedList<Hotel>();
+        }
         this.hotel = hotel;
     }
 
@@ -110,5 +114,5 @@ public class UsuarioProprietario extends Usuario implements Serializable {
         }
         return true;
     }
-    
+
 }

@@ -8,6 +8,7 @@ package model.manager;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import javax.ejb.CreateException;
 import model.entity.Hotel;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -44,7 +45,7 @@ public class HotelManagerTest {
     /**
      * Test of cadastrarCategoria method, of class HotelManager.
      */
-    @Test
+    /*    @Test
     public void testCadastrarCategoria() {
     try {
     System.out.println("cadastrarCategoria");
@@ -54,7 +55,7 @@ public class HotelManagerTest {
     } catch (Exception e) {
     fail(e.getMessage());
     }
-    }
+    }*/
 
     /**
      * Test of cadastrarHotel method, of class HotelManager.
@@ -63,7 +64,7 @@ public class HotelManagerTest {
     public void testCadastrarHotel() {
         try {
             System.out.println("cadastrarHotel");
-            String nome = "Teste";
+            String nome = "Novo Teste";
             int quantidadeEstrela = 0;
             String telefone = "123";
             String rua = "Rua Teste";
@@ -83,7 +84,7 @@ public class HotelManagerTest {
             valor.add(200f);
             HotelManager instance = new HotelManager();
             instance.cadastrarHotel(nome, quantidadeEstrela, telefone, rua, numero, cidade, estado, pais, idCategoria, descricao, valor, idProprietario);
-        } catch (Exception e) {
+        } catch (CreateException e) {
             fail(e.getMessage());
         }
     }
