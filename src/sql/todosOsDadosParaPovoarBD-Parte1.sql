@@ -44,9 +44,13 @@ INSERT INTO ACOMODACAO VALUES(3, 10, 1,'Apartamento Standard, acomoda duas pesso
 INSERT INTO ACOMODACAO VALUES(4, 11, 1, 'Suite Standard - ARRAIA, acomoda uma pessoa', 950.00);
 INSERT INTO ACOMODACAO VALUES(4, 12, 1, 'Suite Superior - Mero, acomoda duas pessoas', 1350.00);
 
-INSERT INTO RESERVA VALUES (1, 1);
-INSERT INTO RESERVA VALUES (2, 2);
-INSERT INTO RESERVA VALUES (3, 3);
+INSERT INTO HOSPEDE VALUES(1, 'Patricia Campos', 'Rua Filomena Segundo Nascimento', 123, 'Campo Grande', 'MS', 'Brasil');
+INSERT INTO HOSPEDE VALUES(2, 'João Almeida', 'Rua Do Dinar', 213, 'Campo Grande', 'MS', 'Brasil');
+INSERT INTO HOSPEDE VALUES(3, 'Ana Maria', 'Rua Golf', 313, 'Campo Grande', 'MS', 'Brasil');
+
+INSERT INTO RESERVA VALUES (1, 1); --Reserva em nome de Patricia Campos--
+INSERT INTO RESERVA VALUES (2, 2); --Reserva em nome de Joao Almeida--
+INSERT INTO RESERVA VALUES (3, 3); --Reserva em nome de Ana Maria-- 
 
 INSERT INTO ITEMRESERVA VALUES(1, 1, 1, 1, '2018-12-31', '2019-01-07', 5600);
 INSERT INTO ITEMRESERVA VALUES(2, 2, 2, 2, '2019-10-25', '2019-10-27', 1360);
