@@ -2,11 +2,16 @@ package model.entity;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -18,7 +23,7 @@ public class Hotel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hotel_sequence")
     @SequenceGenerator(name = "hotel_sequence", sequenceName = "hotel_seq", allocationSize = 1)
-    @Column(nullable = false)
+    @Column
     private Integer idHotel;
 
     @Column(nullable = false, length = 255)
@@ -45,13 +50,17 @@ public class Hotel implements Serializable {
     @Column(nullable = false, length = 255)
     private String pais;
 
-    @OneToMany
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "idProprietario", referencedColumnName = "idPessoa")
+    private UsuarioProprietario proprietario;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel")
     private Collection<Acomodacao> acomodacao;
 
     public Hotel() {
     }
 
-    public Hotel(String nome, Integer quantidadeEstrela, String telefone, String rua, Integer numeroHotel, String cidade, String estado, String pais, Collection<Acomodacao> acomodacao) {
+    public Hotel(String nome, Integer quantidadeEstrela, String telefone, String rua, Integer numeroHotel, String cidade, String estado, String pais, Collection<Acomodacao> acomodacao, UsuarioProprietario proprietario) {
         this.nome = nome;
         this.quantidadeEstrela = quantidadeEstrela;
         this.telefone = telefone;
@@ -61,9 +70,33 @@ public class Hotel implements Serializable {
         this.estado = estado;
         this.pais = pais;
         this.acomodacao = acomodacao;
+        this.proprietario = proprietario;
     }
 
-    public Hotel(Integer idHotel, String nome, Integer quantidadeEstrela, String telefone, String rua, Integer numeroHotel, String cidade, String estado, String pais, Collection<Acomodacao> acomodacao) {
+    public Hotel(String nome, Integer quantidadeEstrela, String telefone, String rua, Integer numeroHotel, String cidade, String estado, String pais, UsuarioProprietario proprietario) {
+        this.nome = nome;
+        this.quantidadeEstrela = quantidadeEstrela;
+        this.telefone = telefone;
+        this.rua = rua;
+        this.numeroHotel = numeroHotel;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.pais = pais;
+        this.proprietario = proprietario;
+    }
+
+    public Hotel(String nome, Integer quantidadeEstrela, String telefone, String rua, Integer numeroHotel, String cidade, String estado, String pais) {
+        this.nome = nome;
+        this.quantidadeEstrela = quantidadeEstrela;
+        this.telefone = telefone;
+        this.rua = rua;
+        this.numeroHotel = numeroHotel;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.pais = pais;
+    }
+
+    public Hotel(Integer idHotel, String nome, Integer quantidadeEstrela, String telefone, String rua, Integer numeroHotel, String cidade, String estado, String pais, Collection<Acomodacao> acomodacao, UsuarioProprietario proprietario) {
         this.idHotel = idHotel;
         this.nome = nome;
         this.quantidadeEstrela = quantidadeEstrela;
@@ -74,6 +107,7 @@ public class Hotel implements Serializable {
         this.estado = estado;
         this.pais = pais;
         this.acomodacao = acomodacao;
+        this.proprietario = proprietario;
     }
 
     public Integer getIdHotel() {
@@ -154,6 +188,93 @@ public class Hotel implements Serializable {
 
     public void setAcomodacao(Collection<Acomodacao> acomodacao) {
         this.acomodacao = acomodacao;
+    }
+
+    public UsuarioProprietario getProprietario() {
+        return proprietario;
+    }
+
+    public void setProprietario(UsuarioProprietario proprietario) {
+        this.proprietario = proprietario;
+    }
+
+    public Hotel(Integer idHotel, String nome, Integer quantidadeEstrela, String telefone, String rua, Integer numeroHotel, String cidade, String estado, String pais, UsuarioProprietario proprietario, Collection<Acomodacao> acomodacao) {
+        this.idHotel = idHotel;
+        this.nome = nome;
+        this.quantidadeEstrela = quantidadeEstrela;
+        this.telefone = telefone;
+        this.rua = rua;
+        this.numeroHotel = numeroHotel;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.pais = pais;
+        this.proprietario = proprietario;
+        this.acomodacao = acomodacao;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 89 * hash + Objects.hashCode(this.idHotel);
+        hash = 89 * hash + Objects.hashCode(this.nome);
+        hash = 89 * hash + Objects.hashCode(this.quantidadeEstrela);
+        hash = 89 * hash + Objects.hashCode(this.telefone);
+        hash = 89 * hash + Objects.hashCode(this.rua);
+        hash = 89 * hash + Objects.hashCode(this.numeroHotel);
+        hash = 89 * hash + Objects.hashCode(this.cidade);
+        hash = 89 * hash + Objects.hashCode(this.estado);
+        hash = 89 * hash + Objects.hashCode(this.pais);
+        hash = 89 * hash + Objects.hashCode(this.proprietario);
+        hash = 89 * hash + Objects.hashCode(this.acomodacao);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Hotel other = (Hotel) obj;
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.telefone, other.telefone)) {
+            return false;
+        }
+        if (!Objects.equals(this.rua, other.rua)) {
+            return false;
+        }
+        if (!Objects.equals(this.cidade, other.cidade)) {
+            return false;
+        }
+        if (!Objects.equals(this.estado, other.estado)) {
+            return false;
+        }
+        if (!Objects.equals(this.pais, other.pais)) {
+            return false;
+        }
+        if (!Objects.equals(this.idHotel, other.idHotel)) {
+            return false;
+        }
+        if (!Objects.equals(this.quantidadeEstrela, other.quantidadeEstrela)) {
+            return false;
+        }
+        if (!Objects.equals(this.numeroHotel, other.numeroHotel)) {
+            return false;
+        }
+        if (!Objects.equals(this.proprietario, other.proprietario)) {
+            return false;
+        }
+        if (!Objects.equals(this.acomodacao, other.acomodacao)) {
+            return false;
+        }
+        return true;
     }
 
 }

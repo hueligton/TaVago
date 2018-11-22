@@ -1,6 +1,7 @@
 package model.entity;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,8 +17,8 @@ public class Categoria implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "categoria_sequence")
     @SequenceGenerator(name = "categoria_sequence", sequenceName = "categoria_seq", allocationSize = 1)
-    @Column(name = "idcategoria")
-    private Integer id;
+    @Column
+    private Integer idCategoria;
 
     @Column(nullable = false, length = 255)
     private String descricao;
@@ -30,16 +31,16 @@ public class Categoria implements Serializable {
     }
 
     public Categoria(Integer id, String descricao) {
-        this.id = id;
+        this.idCategoria = id;
         this.descricao = descricao;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdCategoria() {
+        return idCategoria;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdCategoria(Integer idCategoria) {
+        this.idCategoria = idCategoria;
     }
 
     public String getDescricao() {
@@ -49,4 +50,35 @@ public class Categoria implements Serializable {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.idCategoria);
+        hash = 67 * hash + Objects.hashCode(this.descricao);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Categoria other = (Categoria) obj;
+        if (!Objects.equals(this.descricao, other.descricao)) {
+            return false;
+        }
+        if (!Objects.equals(this.idCategoria, other.idCategoria)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 }
