@@ -38,14 +38,14 @@ public class UsuarioHospede extends Usuario implements Serializable {
         this.reserva = reserva;
     }
 
-    public UsuarioHospede(model.entity.Pessoa pessoa, Cartao numeroCartao, Collection<Reserva> reserva, int id, String nome, long cpf, int telefone, String email, String senha) {
+    public UsuarioHospede(model.entity.Pessoa pessoa, Cartao numeroCartao, Collection<Reserva> reserva, Integer id, String nome, long cpf, String telefone, String email, String senha) {
         super(id, nome, cpf, telefone, email, senha);
         this.pessoa = pessoa;
         this.cartao = numeroCartao;
         this.reserva = reserva;
     }
 
-    public UsuarioHospede(model.entity.Pessoa pessoa, Cartao numeroCartao, Collection<Reserva> reserva, String nome, long cpf, int telefone, String email, String senha) {
+    public UsuarioHospede(model.entity.Pessoa pessoa, Cartao numeroCartao, Collection<Reserva> reserva, String nome, long cpf, String telefone, String email, String senha) {
         super(nome, cpf, telefone, email, senha);
         this.pessoa = pessoa;
         this.cartao = numeroCartao;
@@ -66,19 +66,19 @@ public class UsuarioHospede extends Usuario implements Serializable {
         this.reserva = reserva;
     }
 
-    public UsuarioHospede(int id, String nome, long cpf, int telefone, String email, String senha, Cartao cartao, Collection<Reserva> reserva) {
+    public UsuarioHospede(Integer id, String nome, long cpf, String telefone, String email, String senha, Cartao cartao, Collection<Reserva> reserva) {
         super(id, nome, cpf, telefone, email, senha);
         this.cartao = cartao;
         this.reserva = reserva;
     }
 
-    public UsuarioHospede(String nome, long cpf, int telefone, String email, String senha, Cartao cartao, Collection<Reserva> reserva) {
+    public UsuarioHospede(String nome, long cpf, String telefone, String email, String senha, Cartao cartao, Collection<Reserva> reserva) {
         super(nome, cpf, telefone, email, senha);
         this.cartao = cartao;
         this.reserva = reserva;
     }
 
-    public UsuarioHospede(String nome, long cpf, int telefone, String email, String senha) {
+    public UsuarioHospede(String nome, long cpf, String telefone, String email, String senha) {
         super(nome, cpf, telefone, email, senha);
     }
 

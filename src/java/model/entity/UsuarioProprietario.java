@@ -33,19 +33,19 @@ public class UsuarioProprietario extends Usuario implements Serializable {
         this.hotel = hotel;
     }
 
-    public UsuarioProprietario(Usuario pessoa, Collection<Hotel> hotel, int id, String nome, long cpf, int telefone, String email, String senha) {
+    public UsuarioProprietario(Usuario pessoa, Collection<Hotel> hotel, Integer id, String nome, long cpf, String telefone, String email, String senha) {
         super(id, nome, cpf, telefone, email, senha);
         this.pessoa = pessoa;
         this.hotel = hotel;
     }
 
-    public UsuarioProprietario(Usuario pessoa, Collection<Hotel> hotel, String nome, long cpf, int telefone, String email, String senha) {
+    public UsuarioProprietario(Usuario pessoa, Collection<Hotel> hotel, String nome, long cpf, String telefone, String email, String senha) {
         super(nome, cpf, telefone, email, senha);
         this.pessoa = pessoa;
         this.hotel = hotel;
     }
 
-    public UsuarioProprietario(String nome, long cpf, int telefone, String email, String senha) {
+    public UsuarioProprietario(String nome, long cpf, String telefone, String email, String senha) {
         super(nome, cpf, telefone, email, senha);
     }
 
@@ -69,12 +69,12 @@ public class UsuarioProprietario extends Usuario implements Serializable {
         this.hotel = hotel;
     }
 
-    public UsuarioProprietario(int id, String nome, long cpf, int telefone, String email, String senha, Collection<Hotel> hotel) {
+    public UsuarioProprietario(Integer id, String nome, long cpf, String telefone, String email, String senha, Collection<Hotel> hotel) {
         super(id, nome, cpf, telefone, email, senha);
         this.hotel = hotel;
     }
 
-    public UsuarioProprietario(String nome, long cpf, int telefone, String email, String senha, Collection<Hotel> hotel) {
+    public UsuarioProprietario(String nome, long cpf, String telefone, String email, String senha, Collection<Hotel> hotel) {
         super(nome, cpf, telefone, email, senha);
         this.hotel = hotel;
     }

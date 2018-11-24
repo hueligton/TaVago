@@ -44,7 +44,7 @@ public class Hospede extends Pessoa implements Serializable{
         this.pais = pais;
     }
 
-    public Hospede(Integer id, String nome, Long cpf, Integer telefone, String rua, Integer numeroCasa, String cidade, String estado, String pais) {
+    public Hospede(Integer id, String nome, Long cpf, String telefone, String rua, Integer numeroCasa, String cidade, String estado, String pais) {
         super(id, nome, cpf, telefone);
         this.rua = rua;
         this.numeroCasa = numeroCasa;
@@ -53,7 +53,7 @@ public class Hospede extends Pessoa implements Serializable{
         this.pais = pais;
     }
 
-    public Hospede(String nome, Long cpf, Integer telefone, String rua, Integer numeroCasa, String cidade, String estado, String pais) {
+    public Hospede(String nome, Long cpf, String telefone, String rua, Integer numeroCasa, String cidade, String estado, String pais) {
         super(nome, cpf, telefone);
         this.rua = rua;
         this.numeroCasa = numeroCasa;
@@ -71,7 +71,7 @@ public class Hospede extends Pessoa implements Serializable{
         this.pais = pais;
     }
 
-    public Hospede(Pessoa pessoa, String rua, Integer numeroCasa, String cidade, String estado, String pais, Integer id, String nome, Long cpf, Integer telefone) {
+    public Hospede(Pessoa pessoa, String rua, Integer numeroCasa, String cidade, String estado, String pais, Integer id, String nome, Long cpf, String telefone) {
         super(id, nome, cpf, telefone);
         this.pessoa = pessoa;
         this.rua = rua;
@@ -81,7 +81,7 @@ public class Hospede extends Pessoa implements Serializable{
         this.pais = pais;
     }
 
-    public Hospede(Pessoa pessoa, String rua, Integer numeroCasa, String cidade, String estado, String pais, String nome, Long cpf, Integer telefone) {
+    public Hospede(Pessoa pessoa, String rua, Integer numeroCasa, String cidade, String estado, String pais, String nome, Long cpf, String telefone) {
         super(nome, cpf, telefone);
         this.pessoa = pessoa;
         this.rua = rua;

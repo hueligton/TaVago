@@ -30,19 +30,19 @@ public class Pessoa implements Serializable {
     private Long cpf;
 
     @Column
-    private Integer telefone;
+    private String telefone;
 
     public Pessoa() {
     }
 
-    public Pessoa(Integer id, String nome, Long cpf, Integer telefone) {
+    public Pessoa(Integer id, String nome, Long cpf, String telefone) {
         this.idPessoa = id;
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
     }
 
-    public Pessoa(String nome, Long cpf, Integer telefone) {
+    public Pessoa(String nome, Long cpf, String telefone) {
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
@@ -72,11 +72,11 @@ public class Pessoa implements Serializable {
         this.cpf = cpf;
     }
 
-    public Integer getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(Integer telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
