@@ -20,35 +20,35 @@ public class UsuarioHospede extends Usuario implements Serializable {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name= "numeroCartao", referencedColumnName = "numeroCartao")
-    private Cartao numeroCartao;
+    private Cartao cartao;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idReserva")
     private Collection<Reserva> reserva;
 
     public UsuarioHospede(model.entity.Pessoa pessoa, Cartao numeroCartao, Collection<Reserva> reserva) {
         this.pessoa = pessoa;
-        this.numeroCartao = numeroCartao;
+        this.cartao = numeroCartao;
         this.reserva = reserva;
     }
 
     public UsuarioHospede(model.entity.Pessoa pessoa, Cartao numeroCartao, Collection<Reserva> reserva, String email, String senha) {
         super(email, senha);
         this.pessoa = pessoa;
-        this.numeroCartao = numeroCartao;
+        this.cartao = numeroCartao;
         this.reserva = reserva;
     }
 
     public UsuarioHospede(model.entity.Pessoa pessoa, Cartao numeroCartao, Collection<Reserva> reserva, int id, String nome, long cpf, int telefone, String email, String senha) {
         super(id, nome, cpf, telefone, email, senha);
         this.pessoa = pessoa;
-        this.numeroCartao = numeroCartao;
+        this.cartao = numeroCartao;
         this.reserva = reserva;
     }
 
     public UsuarioHospede(model.entity.Pessoa pessoa, Cartao numeroCartao, Collection<Reserva> reserva, String nome, long cpf, int telefone, String email, String senha) {
         super(nome, cpf, telefone, email, senha);
         this.pessoa = pessoa;
-        this.numeroCartao = numeroCartao;
+        this.cartao = numeroCartao;
         this.reserva = reserva;
     }
 
@@ -56,26 +56,30 @@ public class UsuarioHospede extends Usuario implements Serializable {
     }
 
     public UsuarioHospede(Cartao cartao, Collection<Reserva> reserva) {
-        this.numeroCartao = cartao;
+        this.cartao = cartao;
         this.reserva = reserva;
     }
 
     public UsuarioHospede(String email, String senha, Cartao cartao, Collection<Reserva> reserva) {
         super(email, senha);
-        this.numeroCartao = cartao;
+        this.cartao = cartao;
         this.reserva = reserva;
     }
 
     public UsuarioHospede(int id, String nome, long cpf, int telefone, String email, String senha, Cartao cartao, Collection<Reserva> reserva) {
         super(id, nome, cpf, telefone, email, senha);
-        this.numeroCartao = cartao;
+        this.cartao = cartao;
         this.reserva = reserva;
     }
 
     public UsuarioHospede(String nome, long cpf, int telefone, String email, String senha, Cartao cartao, Collection<Reserva> reserva) {
         super(nome, cpf, telefone, email, senha);
-        this.numeroCartao = cartao;
+        this.cartao = cartao;
         this.reserva = reserva;
+    }
+
+    public UsuarioHospede(String nome, long cpf, int telefone, String email, String senha) {
+        super(nome, cpf, telefone, email, senha);
     }
 
     public model.entity.Pessoa getPessoa() {
@@ -86,12 +90,12 @@ public class UsuarioHospede extends Usuario implements Serializable {
         this.pessoa = pessoa;
     }
 
-    public Cartao getNumeroCartao() {
-        return numeroCartao;
+    public Cartao getCartao() {
+        return cartao;
     }
 
-    public void setNumeroCartao(Cartao numeroCartao) {
-        this.numeroCartao = numeroCartao;
+    public void setCartao(Cartao cartao) {
+        this.cartao = cartao;
     }
 
     public Collection<Reserva> getReserva() {
@@ -106,7 +110,7 @@ public class UsuarioHospede extends Usuario implements Serializable {
     public int hashCode() {
         int hash = 3;
         hash = 31 * hash + Objects.hashCode(this.pessoa);
-        hash = 31 * hash + Objects.hashCode(this.numeroCartao);
+        hash = 31 * hash + Objects.hashCode(this.cartao);
         hash = 31 * hash + Objects.hashCode(this.reserva);
         return hash;
     }
@@ -126,7 +130,7 @@ public class UsuarioHospede extends Usuario implements Serializable {
         if (!Objects.equals(this.pessoa, other.pessoa)) {
             return false;
         }
-        if (!Objects.equals(this.numeroCartao, other.numeroCartao)) {
+        if (!Objects.equals(this.cartao, other.cartao)) {
             return false;
         }
         if (!Objects.equals(this.reserva, other.reserva)) {

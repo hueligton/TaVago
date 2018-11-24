@@ -45,6 +45,10 @@ public class UsuarioProprietario extends Usuario implements Serializable {
         this.hotel = hotel;
     }
 
+    public UsuarioProprietario(String nome, long cpf, int telefone, String email, String senha) {
+        super(nome, cpf, telefone, email, senha);
+    }
+
     public Usuario getPessoa() {
         return pessoa;
     }
