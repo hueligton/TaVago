@@ -18,12 +18,12 @@ import org.hibernate.cfg.Configuration;
 
 public class HotelManager {
 
-    private final SessionFactory conexao;
-    DAO factory;
+    private final DAO factory;
 
     public HotelManager() {
+        
         factory = DAO.getFactory();
-        conexao = new Configuration().configure().buildSessionFactory();
+        
     }
 
     public void cadastrarHotel(String nome, int quantidadeEstrela, String telefone, String rua, int numero, String cidade, String estado, String pais, List<Integer> idCategoria, List<String> descricao, List<Float> valor, Integer idProprietario) throws CreateException {
