@@ -41,15 +41,18 @@ public class DAO {
             factory = new DAO();
         
         return factory;
+        
     }
 
     public boolean salvar(Object objeto) {
         
+        boolean sucess = true;
+        Session session = null;
         Transaction tx = null;
         
         try {
             
-            Session session = conexao.openSession();            //Realiza abertura da seção criada pela conexao
+            session = conexao.openSession();                    //Realiza abertura da seção criada pela conexao
 
             tx = session.beginTransaction();                    //Inicializa uma transação
             
@@ -57,57 +60,73 @@ public class DAO {
             
             tx.commit();                                        //Descarrega a sessão associada e termine a unidade de trabalho
             
-            session.close();                                    //Destrói a sessão e libera recursos
-            
-            return true;
-            
         } catch (HibernateException e) {                       //Indica que ocorreu uma exceção durante uma chamada JDBC
             
             if (tx != null)
                 tx.rollback();                                  //Força a transação a reverter
             
-            return false;
+            sucess = false;
+            
+        } finally {
+            
+            try {        
+                session.close();                                //Destrói a sessão e libera recursos
+            } catch (HibernateException e) {
+                throw e;
+            }
             
         }
+        
+        return sucess;
         
     }
 
     public boolean editar(Object objeto) {
         
+        boolean sucess = true;
+        Session session = null;
         Transaction tx = null;
         
         try {
             
-            Session session = conexao.openSession();
+            session = conexao.openSession();
             
             tx = session.beginTransaction();
             
             session.update(objeto.getClass().cast(objeto));     //Atualize a instância objeto persistente
             
             tx.commit();
-            
-            session.close();
-            
-            return true;
-            
+
         } catch (HibernateException e) {
             
             if (tx != null)
                 tx.rollback();
-
-            return false;
+            
+            sucess = false;
+            
+        } finally {
+            
+            try {        
+                session.close();
+            } catch (HibernateException e) {
+                throw e;
+            }
             
         }
+        
+        return sucess;
         
     }
 
     public boolean deletar(Object objeto) {
         
+        boolean sucess = true;
+        Session session = null;
         Transaction tx = null;
         
         try {
             
-            Session session = conexao.openSession();
+            session = conexao.openSession();
             
             tx = session.beginTransaction();
             
@@ -115,58 +134,82 @@ public class DAO {
             
             tx.commit();
             
-            session.close();
-            
-            return true;
-            
         } catch (HibernateException e) {
             
             if (tx != null)
                 tx.rollback();
             
-            return false;
+            sucess = false;
+            
+        } finally {
+            
+            try {        
+                session.close();
+            } catch (HibernateException e) {
+                throw e;
+            }
             
         }
+        
+        return sucess;
         
     }
 
     public Object buscar(Object objeto, Integer id) {
         
+        Object retorno = null;
+        Session session = null;
+        
         try {
             
-            Session session = conexao.openSession();
+            session = conexao.openSession();
             
-            Object retorno = session.get(objeto.getClass(), id);    //Atualiza a instância objeto persistente no armazenamento de dados
-            
-            session.close();
-            
-            return retorno;
+            retorno = session.get(objeto.getClass(), id);    //Atualiza a instância objeto persistente no armazenamento de dados
             
         } catch (HibernateException e) {
                 
             throw e;
             
+        } finally {
+            
+            try {        
+                session.close();
+            } catch (HibernateException e) {
+                throw e;
+            }
+            
         }
+        
+        return retorno;
         
     }
 
     public List listar(Object objeto) {
           
+        List retorno = null;   
+        Session session = null;
+        
         try {
             
-            Session session = conexao.openSession();
+            session = conexao.openSession();
             
-            List retorno = session.createQuery("from " + objeto.getClass().getName()).list();   //Cria uma instância de Query de consulta do objeto persistente no armazenamento de dados
-            
-            session.close();
-            
-            return retorno;
+            retorno = session.createQuery("from " + objeto.getClass().getName()).list();   //Cria uma instância de Query de consulta do objeto persistente no armazenamento de dados
             
         } catch (HibernateException e) {
                 
             throw e;
             
+        } finally {
+            
+            try {        
+                session.close();
+            } catch (HibernateException e) {
+                throw e;
+            }
+            
         }
+        
+        return retorno;
         
     }
 

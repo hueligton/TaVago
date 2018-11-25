@@ -16,7 +16,7 @@ public class PessoaManager {
         
     }
     
-    public boolean cadastrarHospede(String nome, long cpf, String telefone, String rua, int numeroCasa, String cidade, String estado, String pais) {
+    public boolean cadastrarHospede(String nome, String cpf, String telefone, String rua, int numeroCasa, String cidade, String estado, String pais) {
         
         Hospede hospede = new Hospede(nome, cpf, telefone, rua, numeroCasa, cidade, estado, pais);
         
@@ -24,7 +24,7 @@ public class PessoaManager {
         
     }
 
-    public boolean cadastrarUsuarioHospede(String nome, String email, String senha, long cpf, String telefone) {
+    public boolean cadastrarUsuarioHospede(String nome, String email, String senha, String cpf, String telefone) {
 
         UsuarioHospede usuarioHospede = new UsuarioHospede(nome, cpf, telefone, email, senha);
         
@@ -32,7 +32,7 @@ public class PessoaManager {
         
     }
 
-    public boolean cadastrarUsuarioProprietario(String nome, String email, String senha, long cpf, String telefone) {
+    public boolean cadastrarUsuarioProprietario(String nome, String email, String senha, String cpf, String telefone) {
 
         UsuarioProprietario usuarioProprietario = new UsuarioProprietario(nome, cpf, telefone, email, senha);
         
@@ -79,11 +79,13 @@ public class PessoaManager {
         
         if (usuarioHospede != null){
             
-            Cartao cartao = new Cartao(titular, numeroCartao, vencimento, codigoSeguranca);
-            factory.salvar(cartao);
+            Cartao cartao = new Cartao(usuarioHospede.getIdPessoa(), usuarioHospede, titular, numeroCartao, vencimento, codigoSeguranca);
             
             usuarioHospede.setCartao(cartao);
-            sucesso = factory.editar(usuarioHospede);
+            
+            factory.editar(usuarioHospede);
+            
+            sucesso = factory.salvar(cartao);
             
         }
         
@@ -91,7 +93,7 @@ public class PessoaManager {
         
     }
 
-    public boolean atualizarHospede(int id, String nome, long cpf, String telefone, String rua, int numeroCasa, String cidade, String estado, String pais) {
+    public boolean atualizarHospede(int id, String nome, String cpf, String telefone, String rua, int numeroCasa, String cidade, String estado, String pais) {
 
         Hospede hospede = (Hospede) factory.buscar(new Hospede(), id);
         
@@ -114,7 +116,7 @@ public class PessoaManager {
       
     }
 
-    public boolean atualizarUsuarioHospede(int id, String nome, String email, String senha, long cpf, String telefone) {
+    public boolean atualizarUsuarioHospede(int id, String nome, String email, String senha, String cpf, String telefone) {
 
         UsuarioHospede usuarioHospede = (UsuarioHospede) factory.buscar(new UsuarioHospede(), id);
         
@@ -134,7 +136,7 @@ public class PessoaManager {
         
     }
 
-    public boolean atualizarUsuarioProprietario(int id, String nome, String email, String senha, long cpf, String telefone) {
+    public boolean atualizarUsuarioProprietario(int id, String nome, String email, String senha, String cpf, String telefone) {
         
         UsuarioProprietario usuarioProprietario = (UsuarioProprietario) factory.buscar(new UsuarioProprietario(), id);
         

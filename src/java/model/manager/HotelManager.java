@@ -2,7 +2,6 @@ package model.manager;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 import javax.ejb.CreateException;
@@ -10,11 +9,6 @@ import model.entity.Acomodacao;
 import model.entity.Categoria;
 import model.entity.Hotel;
 import model.entity.UsuarioProprietario;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 
 public class HotelManager {
 
