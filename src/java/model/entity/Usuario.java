@@ -22,6 +22,9 @@ public class Usuario extends Pessoa implements Serializable {
 
     @Column(nullable = false, length = 255)
     private String senha;
+    
+    public Usuario() {
+    }
 
     public Usuario(Pessoa Pessoa, String email, String senha) {
         this.Pessoa = Pessoa;
@@ -29,21 +32,18 @@ public class Usuario extends Pessoa implements Serializable {
         this.senha = senha;
     }
 
-    public Usuario(Pessoa Pessoa, String email, String senha, Integer id, String nome, Long cpf, String telefone) {
+    public Usuario(Pessoa Pessoa, String email, String senha, Integer id, String nome, String cpf, String telefone) {
         super(id, nome, cpf, telefone);
         this.Pessoa = Pessoa;
         this.email = email;
         this.senha = senha;
     }
 
-    public Usuario(Pessoa Pessoa, String email, String senha, String nome, Long cpf, String telefone) {
+    public Usuario(Pessoa Pessoa, String email, String senha, String nome, String cpf, String telefone) {
         super(nome, cpf, telefone);
         this.Pessoa = Pessoa;
         this.email = email;
         this.senha = senha;
-    }
-
-    public Usuario() {
     }
   
     public Usuario(String email, String senha) {
@@ -51,13 +51,13 @@ public class Usuario extends Pessoa implements Serializable {
         this.senha = senha;
     }
 
-    public Usuario(Integer id, String nome, long cpf, String telefone, String email, String senha) {
+    public Usuario(Integer id, String nome, String cpf, String telefone, String email, String senha) {
         super(id, nome, cpf, telefone);
         this.email = email;
         this.senha = senha;
     }
 
-    public Usuario(String nome, long cpf, String telefone, String email, String senha) {
+    public Usuario(String nome, String cpf, String telefone, String email, String senha) {
         super(nome, cpf, telefone);
         this.email = email;
         this.senha = senha;
