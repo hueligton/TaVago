@@ -15,7 +15,7 @@
 - Framework: Hibernate
 
 ## Repositórios
-- diagramas - contém diagramas atualizados do projeto (.astah)
+- Documentação - contém diagramas atualizados do projeto (.astah e .png) e documento de Visão Geral e Especificação de Requisitos
 - src/sql - contém sql para criação e popular o banco de dados (.sql)
 - src/java/controller - contém a controller da aplicação (servlet)
 - src/java/model/entity - contém as entidades (.java)
