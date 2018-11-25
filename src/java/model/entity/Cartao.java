@@ -2,24 +2,30 @@ package model.entity;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "CARTAO")
 public class Cartao implements Serializable{
+    
+    @Id
+    @Column
+    private Integer idPessoa;
 
     @Column(nullable = false, length = 255)
     private String titular;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cartao_sequence")
-    @SequenceGenerator(name = "cartao_sequence", sequenceName = "cartao_seq", allocationSize = 1)
     @Column(nullable = false, length = 16)
     private String numeroCartao;
 
@@ -28,6 +34,10 @@ public class Cartao implements Serializable{
 
     @Column(nullable = false)
     private Integer codigoSeguranca;
+    
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "idPessoa", referencedColumnName = "idPessoa")
+    private UsuarioHospede usuarioHospede;
     
     public Cartao() {
     }
@@ -38,6 +48,23 @@ public class Cartao implements Serializable{
         this.vencimento = vencimento;
         this.codigoSeguranca = codigoSeguranca;
     }
+    
+    public Cartao(UsuarioHospede usuarioHospede, String titular, String numeroCartao, String vencimento, Integer codigoSeguranca) {
+        this.usuarioHospede = usuarioHospede;
+        this.titular = titular;
+        this.numeroCartao = numeroCartao;
+        this.vencimento = vencimento;
+        this.codigoSeguranca = codigoSeguranca;
+    }
+
+    public Cartao(Integer idPessoa, UsuarioHospede usuarioHospede, String titular, String numeroCartao, String vencimento, int codigoSeguranca) {
+        this.idPessoa = idPessoa;
+        this.usuarioHospede = usuarioHospede;
+        this.titular = titular;
+        this.numeroCartao = numeroCartao;
+        this.vencimento = vencimento;
+        this.codigoSeguranca = codigoSeguranca;    }
+
 
     public String getTitular() {
         return titular;

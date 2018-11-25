@@ -3,8 +3,8 @@ set search_path = "tavagoschema";
 CREATE TABLE PESSOA (
     idPessoa INTEGER PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
-    cpf BIGINT UNIQUE NOT NULL,
-    telefone INTEGER
+    cpf VARCHAR(255) UNIQUE NOT NULL,
+    telefone VARCHAR(20)
 );
 
 CREATE TABLE USUARIO (

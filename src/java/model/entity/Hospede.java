@@ -36,32 +36,13 @@ public class Hospede extends Pessoa implements Serializable{
     }
 
     public Hospede(String rua, Integer numeroCasa, String cidade, String estado, String pais) {
-
         this.rua = rua;
         this.numeroCasa = numeroCasa;
         this.cidade = cidade;
         this.estado = estado;
         this.pais = pais;
     }
-
-    public Hospede(Integer id, String nome, Long cpf, Integer telefone, String rua, Integer numeroCasa, String cidade, String estado, String pais) {
-        super(id, nome, cpf, telefone);
-        this.rua = rua;
-        this.numeroCasa = numeroCasa;
-        this.cidade = cidade;
-        this.estado = estado;
-        this.pais = pais;
-    }
-
-    public Hospede(String nome, Long cpf, Integer telefone, String rua, Integer numeroCasa, String cidade, String estado, String pais) {
-        super(nome, cpf, telefone);
-        this.rua = rua;
-        this.numeroCasa = numeroCasa;
-        this.cidade = cidade;
-        this.estado = estado;
-        this.pais = pais;
-    }
-
+    
     public Hospede(Pessoa pessoa, String rua, Integer numeroCasa, String cidade, String estado, String pais) {
         this.pessoa = pessoa;
         this.rua = rua;
@@ -71,8 +52,26 @@ public class Hospede extends Pessoa implements Serializable{
         this.pais = pais;
     }
 
-    public Hospede(Pessoa pessoa, String rua, Integer numeroCasa, String cidade, String estado, String pais, Integer id, String nome, Long cpf, Integer telefone) {
+    public Hospede(String nome, String cpf, String telefone, String rua, Integer numeroCasa, String cidade, String estado, String pais) {
+        super(nome, cpf, telefone);
+        this.rua = rua;
+        this.numeroCasa = numeroCasa;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.pais = pais;
+    }
+    
+    public Hospede(Integer id, String nome, String cpf, String telefone, String rua, Integer numeroCasa, String cidade, String estado, String pais) {
         super(id, nome, cpf, telefone);
+        this.rua = rua;
+        this.numeroCasa = numeroCasa;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.pais = pais;
+    }
+    
+    public Hospede(Pessoa pessoa, String rua, Integer numeroCasa, String cidade, String estado, String pais, String nome, String cpf, String telefone) {
+        super(nome, cpf, telefone);
         this.pessoa = pessoa;
         this.rua = rua;
         this.numeroCasa = numeroCasa;
@@ -81,8 +80,8 @@ public class Hospede extends Pessoa implements Serializable{
         this.pais = pais;
     }
 
-    public Hospede(Pessoa pessoa, String rua, Integer numeroCasa, String cidade, String estado, String pais, String nome, Long cpf, Integer telefone) {
-        super(nome, cpf, telefone);
+    public Hospede(Pessoa pessoa, String rua, Integer numeroCasa, String cidade, String estado, String pais, Integer id, String nome, String cpf, String telefone) {
+        super(id, nome, cpf, telefone);
         this.pessoa = pessoa;
         this.rua = rua;
         this.numeroCasa = numeroCasa;
@@ -182,7 +181,6 @@ public class Hospede extends Pessoa implements Serializable{
             return false;
         }
         return true;
-    }
-    
+    }    
     
 }

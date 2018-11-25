@@ -27,22 +27,22 @@ public class Pessoa implements Serializable {
     private String nome;
 
     @Column(unique = true, nullable = false, length = 11)
-    private Long cpf;
+    private String cpf;
 
     @Column
-    private Integer telefone;
+    private String telefone;
 
     public Pessoa() {
     }
 
-    public Pessoa(Integer id, String nome, Long cpf, Integer telefone) {
+    public Pessoa(Integer id, String nome, String cpf, String telefone) {
         this.idPessoa = id;
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
     }
 
-    public Pessoa(String nome, Long cpf, Integer telefone) {
+    public Pessoa(String nome, String cpf, String telefone) {
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
@@ -64,19 +64,19 @@ public class Pessoa implements Serializable {
         this.nome = nome;
     }
 
-    public Long getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(Long cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
-    public Integer getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(Integer telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 

@@ -2,7 +2,6 @@ package model.manager;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 import javax.ejb.CreateException;
@@ -10,20 +9,15 @@ import model.entity.Acomodacao;
 import model.entity.Categoria;
 import model.entity.Hotel;
 import model.entity.UsuarioProprietario;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 
 public class HotelManager {
 
-    private final SessionFactory conexao;
-    DAO factory;
+    private final DAO factory;
 
     public HotelManager() {
+        
         factory = DAO.getFactory();
-        conexao = new Configuration().configure().buildSessionFactory();
+        
     }
 
     public void cadastrarHotel(String nome, int quantidadeEstrela, String telefone, String rua, int numero, String cidade, String estado, String pais, List<Integer> idCategoria, List<String> descricao, List<Float> valor, Integer idProprietario) throws CreateException {

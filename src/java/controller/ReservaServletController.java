@@ -31,6 +31,7 @@ import java.util.logging.Logger;
 import model.entity.Acomodacao;
 import model.entity.Carrinho;
 import model.entity.Categoria;
+import model.entity.Hotel;
 import model.entity.ItemCarrinho;
 import model.manager.HotelManager;
 
@@ -128,8 +129,8 @@ HotelManager hotelManager = new HotelManager();
             
             String quantidadePessoas = request.getParameter("quantidadePessoas");
             
-            List <Object[]> consulta = hotelManager.listaHotel();
-         
+            Collection<Hotel> consulta = hotelManager.listarHotel();
+
             
             request.setAttribute("consulta", consulta);
             
