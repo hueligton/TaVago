@@ -1,43 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletException;
-
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
-import javax.servlet.http.HttpSession;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import model.entity.Acomodacao;
-import model.entity.Carrinho;
-import model.entity.Categoria;
-import model.entity.Hotel;
-import model.entity.ItemCarrinho;
 import model.manager.HotelManager;
-
+import model.manager.PessoaManager;
+import model.manager.ReservaManager;
 
 public class ReservaServletController extends HttpServlet {
-HotelManager hotelManager = new HotelManager();
+
+    HotelManager hotelManager = new HotelManager();
+    PessoaManager pessoaManager = new PessoaManager();
+    ReservaManager reservaManager = new ReservaManager();
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -54,21 +32,33 @@ HotelManager hotelManager = new HotelManager();
         if (request.getRequestURI().endsWith("/home")) {
             jsp = "/home.jsp";
         } else if (request.getRequestURI().endsWith("/carrinho")) {
-                jsp = "/carrinho.jsp";
+           carrinho(request);
+            jsp = "/carrinho.jsp";
         } else if (request.getRequestURI().endsWith("/confirmacao")) {
+           confirmacao(request);
             jsp = "/confirmacao.jsp";
         } else if (request.getRequestURI().endsWith("/consulta")) {
             consulta(request);
             jsp = "/consulta.jsp";
         } else if (request.getRequestURI().endsWith("/dadoshospede")) {
+            dadosHospede(request);
             jsp = "/dadoshospede.jsp";
         } else if (request.getRequestURI().endsWith("/detalhes")) {
+            detalhe(request);
             jsp = "/detalhes.jsp";
         } else if (request.getRequestURI().endsWith("/pagamento")) {
+            dadosPagamento(request);
             jsp = "/pagamento.jsp";
         } else if (request.getRequestURI().endsWith("/resultado")) {
+            resultado(request);
             jsp = "/resultado.jsp";
-        }
+        } else if (request.getRequestURI().endsWith("/removerItem")) {
+            removerItem(request);
+            jsp = "/carrinho.jsp";
+        }/*else if (request.getRequestURI().endsWith("/atualizarPreco")) {
+            atualizarPreco(request);
+            jsp = "/carrinho.jsp";
+        }*/
 
         request.getRequestDispatcher(jsp).forward(request, response);
     }
@@ -117,90 +107,64 @@ HotelManager hotelManager = new HotelManager();
     }
 
     public void consulta(HttpServletRequest request) {
-          try {
-            String destino = request.getParameter("destino");
-            String dataInicial = request.getParameter("dataInicial");
-            String dataFinal = request.getParameter("dataFinal");
-            
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            
-            Date initialDate = sdf.parse(dataInicial);
-            Date finalDate = sdf.parse(dataFinal);
-            
-            String quantidadePessoas = request.getParameter("quantidadePessoas");
-            
-            Collection<Hotel> consulta = hotelManager.listarHotel();
-
-            
-            request.setAttribute("consulta", consulta);
-            
-        } catch (ParseException ex) {
-            Logger.getLogger(ReservaServletController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       String destino = request.getParameter("destino");
+       String dataEntrada = request.getParameter("dataEntrada");
+       String dataSaida = request.getParameter("dataSaida");
+       int qtdPessoas = Integer.parseInt(request.getParameter("quantidadePessoas"));
+       hotelManager.buscarHotel(destino,dataEntrada, dataSaida,qtdPessoas);
+       
     }
 
     public void detalhe(HttpServletRequest request) {
-
+       int idHotel = Integer.parseInt(request.getParameter("idHotel"));
+       int idAcomodacao = Integer.parseInt(request.getParameter("idAcomodacao"));
+       hotelManager.buscarHotel(idHotel,idAcomodacao);
     }
-    
-    ///////////////////////////////////////////////////////////////
-    //                                                           //
-    //            CÓDIGO TESTE DA PÁGINA CARRINHO                //
-    //        APENAS TESTE, PODEM ATUALIZAR À VONTADE            //
-    //                                                           //
-    ///////////////////////////////////////////////////////////////
 
     public void carrinho(HttpServletRequest request) {
-        try {
-            
-            String dataInicial = request.getParameter("dataInicial");
-            String dataFinal = request.getParameter("dataFinal");
-            
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            
-            Date initialDate = sdf.parse(dataInicial);
-            Date finalDate = sdf.parse(dataFinal);
-                     
-            Categoria category = new Categoria(1, "De luxo");
-            Acomodacao accommodation = new Acomodacao(1, "Quarto Deluxe com Cama Queen size, acomoda duas pessoas", 880.00F, category);
-            ItemCarrinho itemCart = new ItemCarrinho(initialDate, finalDate, accommodation);
-            
-            LinkedList listItem = new LinkedList();
-            listItem.add(itemCart);
-            
-            Carrinho cart = new Carrinho(listItem);
-            
-            String roomQuantity = "3";
-            Float totalValuePerAccommodation = 880.00F;
-            Float totalValueCart = 880.00F;
-            
-            List item = new ArrayList();
-            item = cart.getItemCarrinho();
-            
-            request.setAttribute("carrinho", item);
-            request.setAttribute("quantidadeQuartos", roomQuantity);
-            request.setAttribute("valorTotalPorAcomodacao", totalValuePerAccommodation);
-            request.setAttribute("valorTotalCarrinho", totalValueCart);
-            
-        } catch (ParseException ex) {            
-            Logger.getLogger(ReservaServletController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       int idUsuario = Integer.valueOf(request.getParameter("idUsuario"));
+        reservaManager.listarReservas(idUsuario);
     }
 
     public void dadosHospede(HttpServletRequest request) {
 
+        String nome = request.getParameter("nome");
+        String cpf = request.getParameter("cpf");
+        String telefone = request.getParameter("telefone");
+        String rua = request.getParameter("rua");
+        int numCasa = Integer.parseInt(request.getParameter("numeroCasa"));
+        String cidade = request.getParameter("cidade");
+        String estado = request.getParameter("estado");
+        String pais = request.getParameter("pais");
+
+        pessoaManager.cadastrarHospede(nome, cpf, telefone, rua, numCasa, cidade, estado, pais);
+
     }
 
     public void dadosPagamento(HttpServletRequest request) {
-
+        String titular = request.getParameter("titular");
+        String numCartao = request.getParameter("numeroCartao");
+        String vencimento = request.getParameter("vencimento");
+        int codSeguranca = Integer.parseInt(request.getParameter("codigoSeguranca"));
+        pessoaManager.cadastrarCartao(titular, numCartao, vencimento, codSeguranca);
     }
 
     public void confirmacao(HttpServletRequest request) {
+        int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
+        //ver método que retorna hospedes daquela reserva x
+        // ou ver ser listarReservas() já retorna as reservas daquele usuario com os respectivos hospedes
+        List listaReservas = reservaManager.listarReservas(idUsuario);
+        
+        request.setAttribute("listaReservasUsuario", listaReservas);
 
     }
 
     public void resultado(HttpServletRequest request) {
-
+        request.setAttribute("confirmacao", "Reserva realizada com sucesso");
     }
 
+    private void removerItem(HttpServletRequest request) {
+        int idAcomodacao = Integer.parseInt(request.getParameter("id"));
+        reservaManager.removerItemReserva(idAcomodacao);
+    }
 }
