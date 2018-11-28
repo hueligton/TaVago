@@ -1,11 +1,10 @@
 # TaVago
 
 ## Grupo 6
-- Ana Mendes - Manager
+- Ana Mendes - Controller
 - Felipe Caggi - View e Manager
 - Guilherme Gabriel - View e popular banco
-- Hueligton Melo - Criação do banco, mapeamento entidades, controller, revisão e aprovação de pull request
-- Johnny Dinniz - Controller
+- Hueligton Melo - Criação do banco, mapeamento entidades, manager, revisão e aprovação de pull request
 - Vitória Holanda - View e popular banco
 
 ## Tecnologias
