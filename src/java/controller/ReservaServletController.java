@@ -1,14 +1,15 @@
 package controller;
 
 import java.io.IOException;
+import java.util.Collection;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletException;
 import java.util.List;
-import model.manager.HotelManager;
-import model.manager.PessoaManager;
-import model.manager.ReservaManager;
+import javax.servlet.http.HttpSession;
+import model.manager.*;
+import model.entity.*;
 
 public class ReservaServletController extends HttpServlet {
 
@@ -32,13 +33,13 @@ public class ReservaServletController extends HttpServlet {
         if (request.getRequestURI().endsWith("/home")) {
             jsp = "/home.jsp";
         } else if (request.getRequestURI().endsWith("/carrinho")) {
-           carrinho(request);
+            carrinho(request);
             jsp = "/carrinho.jsp";
         } else if (request.getRequestURI().endsWith("/confirmacao")) {
-           confirmacao(request);
+            confirmacao(request);
             jsp = "/confirmacao.jsp";
         } else if (request.getRequestURI().endsWith("/consulta")) {
-            consulta(request);
+            hoteisConsulta(request);
             jsp = "/consulta.jsp";
         } else if (request.getRequestURI().endsWith("/dadoshospede")) {
             dadosHospede(request);
@@ -106,24 +107,23 @@ public class ReservaServletController extends HttpServlet {
 
     }
 
-    public void consulta(HttpServletRequest request) {
-       String destino = request.getParameter("destino");
-       String dataEntrada = request.getParameter("dataEntrada");
-       String dataSaida = request.getParameter("dataSaida");
-       int qtdPessoas = Integer.parseInt(request.getParameter("quantidadePessoas"));
-       hotelManager.buscarHotel(destino,dataEntrada, dataSaida,qtdPessoas);
-       
+    public void hoteisConsulta(HttpServletRequest request) {
+        String destino = request.getParameter("destino");
+        String dataEntrada = request.getParameter("dataEntrada");
+        String dataSaida = request.getParameter("dataSaida");
+        int qtdPessoas = Integer.parseInt(request.getParameter("quantidadePessoas"));
+        Collection<Hotel> resultadoConsulta = hotelManager.buscarHotel(destino, dataEntrada, dataSaida, qtdPessoas);
+        request.setAttribute("consulta", resultadoConsulta);
     }
 
     public void detalhe(HttpServletRequest request) {
-       int idHotel = Integer.parseInt(request.getParameter("idHotel"));
-       int idAcomodacao = Integer.parseInt(request.getParameter("idAcomodacao"));
-       hotelManager.buscarHotel(idHotel,idAcomodacao);
+        int idHotel = Integer.parseInt(request.getParameter("idHotel"));
+        Hotel hotel = hotelManager.buscarHotel(idHotel);
+        request.setAttribute("hotel", hotel);
     }
 
     public void carrinho(HttpServletRequest request) {
-       int idUsuario = Integer.valueOf(request.getParameter("idUsuario"));
-        reservaManager.listarReservas(idUsuario);
+      
     }
 
     public void dadosHospede(HttpServletRequest request) {
@@ -137,8 +137,8 @@ public class ReservaServletController extends HttpServlet {
         String estado = request.getParameter("estado");
         String pais = request.getParameter("pais");
 
-        pessoaManager.cadastrarHospede(nome, cpf, telefone, rua, numCasa, cidade, estado, pais);
-
+       boolean resultado = pessoaManager.cadastrarHospede(nome, cpf, telefone, rua, numCasa, cidade, estado, pais);
+       request.setAttribute("resultado", resultado);
     }
 
     public void dadosPagamento(HttpServletRequest request) {
@@ -146,7 +146,10 @@ public class ReservaServletController extends HttpServlet {
         String numCartao = request.getParameter("numeroCartao");
         String vencimento = request.getParameter("vencimento");
         int codSeguranca = Integer.parseInt(request.getParameter("codigoSeguranca"));
-        pessoaManager.cadastrarCartao(titular, numCartao, vencimento, codSeguranca);
+        int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
+
+        boolean resultado = pessoaManager.cadastrarCartao(titular, numCartao, vencimento, codSeguranca, idUsuario);
+        request.setAttribute("resultado", resultado);
     }
 
     public void confirmacao(HttpServletRequest request) {
@@ -154,17 +157,21 @@ public class ReservaServletController extends HttpServlet {
         //ver método que retorna hospedes daquela reserva x
         // ou ver ser listarReservas() já retorna as reservas daquele usuario com os respectivos hospedes
         List listaReservas = reservaManager.listarReservas(idUsuario);
-        
+
         request.setAttribute("listaReservasUsuario", listaReservas);
 
     }
 
     public void resultado(HttpServletRequest request) {
-        request.setAttribute("confirmacao", "Reserva realizada com sucesso");
+        int id = Integer.parseInt(request.getParameter("id"));
+        boolean resultado = reservaManager.cadastrarReserva(id);
+        request.setAttribute("resultado", resultado);
+                
     }
 
     private void removerItem(HttpServletRequest request) {
         int idAcomodacao = Integer.parseInt(request.getParameter("id"));
-        reservaManager.removerItemReserva(idAcomodacao);
+        boolean resultado = reservaManager.removerItemReserva(idAcomodacao);
+        request.setAttribute("resultado", resultado);        
     }
 }
