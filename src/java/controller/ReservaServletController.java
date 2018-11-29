@@ -56,10 +56,13 @@ public class ReservaServletController extends HttpServlet {
         } else if (request.getRequestURI().endsWith("/removerItem")) {
             removerItem(request);
             jsp = "/carrinho.jsp";
-        }/*else if (request.getRequestURI().endsWith("/atualizarPreco")) {
+        } else if (request.getRequestURI().endsWith("/atualizarPreco")) {
             atualizarPreco(request);
             jsp = "/carrinho.jsp";
-        }*/
+        } else if (request.getRequestURI().endsWith("/login")) {
+            realizarLogin(request);
+            jsp = "/login.jsp";
+        }
 
         request.getRequestDispatcher(jsp).forward(request, response);
     }
@@ -103,10 +106,6 @@ public class ReservaServletController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    public void home() {
-
-    }
-
     public void hoteisConsulta(HttpServletRequest request) {
         String destino = request.getParameter("destino");
         String dataEntrada = request.getParameter("dataEntrada");
@@ -123,7 +122,9 @@ public class ReservaServletController extends HttpServlet {
     }
 
     public void carrinho(HttpServletRequest request) {
-      
+        /*HttpSession sessao = request.getSession();
+        sessao.setAttribute("idusuario", pessoaManager.getIdUsuario());
+        int idUsuario =  pessoaManager.getIdUsuario(); */
     }
 
     public void dadosHospede(HttpServletRequest request) {
@@ -137,8 +138,14 @@ public class ReservaServletController extends HttpServlet {
         String estado = request.getParameter("estado");
         String pais = request.getParameter("pais");
 
-       boolean resultado = pessoaManager.cadastrarHospede(nome, cpf, telefone, rua, numCasa, cidade, estado, pais);
-       request.setAttribute("resultado", resultado);
+        /* HttpSession sessao = request.getSession();
+        sessao.setAttribute("idusuario", pessoaManager.getIdUsuario());
+        long idUsuario =  pessoaManager.getIdUsuario();
+         */
+        // como está criando, ainda não temos o ID do Usuario, 
+        //depois que executarmos o método que será criado o id pelo banco 
+        boolean resultado = pessoaManager.cadastrarHospede(nome, cpf, telefone, rua, numCasa, cidade, estado, pais);
+        request.setAttribute("resultado", resultado);
     }
 
     public void dadosPagamento(HttpServletRequest request) {
@@ -146,14 +153,19 @@ public class ReservaServletController extends HttpServlet {
         String numCartao = request.getParameter("numeroCartao");
         String vencimento = request.getParameter("vencimento");
         int codSeguranca = Integer.parseInt(request.getParameter("codigoSeguranca"));
-        int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
+
+        HttpSession sessao = request.getSession();
+        sessao.setAttribute("idusuario", pessoaManager.getIdUsuario());
+        int idUsuario = pessoaManager.getIdUsuario();
 
         boolean resultado = pessoaManager.cadastrarCartao(titular, numCartao, vencimento, codSeguranca, idUsuario);
         request.setAttribute("resultado", resultado);
     }
 
     public void confirmacao(HttpServletRequest request) {
-        int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
+        HttpSession sessao = request.getSession();
+        sessao.setAttribute("idusuario", pessoaManager.getIdUsuario());
+        int idUsuario = pessoaManager.getIdUsuario();
         //ver método que retorna hospedes daquela reserva x
         // ou ver ser listarReservas() já retorna as reservas daquele usuario com os respectivos hospedes
         List listaReservas = reservaManager.listarReservas(idUsuario);
@@ -163,15 +175,39 @@ public class ReservaServletController extends HttpServlet {
     }
 
     public void resultado(HttpServletRequest request) {
-        int id = Integer.parseInt(request.getParameter("id"));
-        boolean resultado = reservaManager.cadastrarReserva(id);
+        HttpSession sessao = request.getSession();
+        sessao.setAttribute("idusuario", pessoaManager.getIdUsuario());
+        int idUsuario = pessoaManager.getIdUsuario();
+
+        boolean resultado = reservaManager.cadastrarReserva(idUsuario);
         request.setAttribute("resultado", resultado);
-                
+
     }
 
     private void removerItem(HttpServletRequest request) {
         int idAcomodacao = Integer.parseInt(request.getParameter("id"));
         boolean resultado = reservaManager.removerItemReserva(idAcomodacao);
-        request.setAttribute("resultado", resultado);        
+        request.setAttribute("resultado", resultado);
+    }
+
+    private void atualizarPreco(HttpServletRequest request) {
+        int idCarrinho = Integer.parseInt(request.getParameter("id"));
+        int modificacao = Integer.parseInt(request.getParameter("idModificacao"));
+        int valorModificacao = Integer.parseInt(request.getParameter("valorModificacao"));
+        boolean resultado = reservaManager.atualizarCarrinho(idCarrinho, modificacao);
+
+        request.setAttribute("resultado", resultado);
+    }
+
+    private void realizarLogin(HttpServletRequest request) {
+        String login = request.getParameter("login");
+        String senha = request.getParameter("senha");
+
+        int idUsuario = pessoaManager.realizarLogin(login, senha);
+        if (idUsuario != -1) {
+            HttpSession sessao = request.getSession();
+            sessao.setAttribute("idusuario", idUsuario);
+        }
+        request.setAttribute("idUsuario", idUsuario);
     }
 }
