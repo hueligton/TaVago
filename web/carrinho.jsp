@@ -63,6 +63,7 @@
                             <div class="cart-room">
                                 <table class="room-items">
                                     <tr class="cart-collumns">
+                                        <th class="delete-collumn">Excluir?</th>
                                         <th class="description-collumn">Quarto</th>
                                         <th class="quantity-collumn">Quantidade</th>
                                         <th class="value-collumn">Preço</th>
@@ -71,18 +72,21 @@
                                      <c:forEach var="cart" items="${carrinho}">
                                         <%-- Cada linha da tabela representa um item no carrinho --%>
                                         <tr class="item">
+                                            
+                                            <%-- Coluna de deleção de acomodações --%>
+                                            <td class="delete-collumn">
+                                                <div class="delete-checkbox">
+                                                    <form name="delete-form" method="post">
+                                                        <input type="checkbox" name="acomodacaoDeletada${cart.acomodacao.idAcomodacao}" value="${cart.acomodacao.idAcomodacao}">
+                                                    </form>
+                                                </div>
+                                            </td>
 
                                             <%-- Coluna de descrição das acomodações --%>
                                             <td class="description-collumn">
                                                 <div class="room">
                                                     <p><c:out value="${cart.acomodacao.descricao}"/></p>
                                                 </div>
-
-                                                <%--Botão para deletar item do carrinho --%>
-                                                <a class="delete-item" href="${pageContext.request.contextPath}/removerItem&id=${cart.acomodacao.idAcomodacao}">
-                                                    <p>remover acomoda&ccedil;&atilde;o</p>
-                                                </a>
-
                                             </td>
 
                                             <%-- Coluna de quantidade de acomodações selecionadas --%>
@@ -112,16 +116,26 @@
                                             <td class="value-collumn">
                                                 <div class="total-price-room">
                                                     <p>R$ ${valorTotalPorAcomodacao}</p>
-                                                </div>
-
-                                                <%--Botão para atualizar preço caso haja mudança na quantidade de quartos da acomodação --%>
-                                                <a class="update-item" href="${pageContext.request.contextPath}/atualizarPreco&id=${cart.acomodacao.idAcomodacao}">
-                                                    <p>atualizar pre&ccedil;o</p>
-                                                </a>
+                                                </div>                                           
                                             </td>
                                         </tr>
                                    </c:forEach>
                                 </table>
+
+                                <%--Botões de atualização caso algum item do carrinho sofra alteração --%>                                
+                                <div class="update-buttons">
+                                    
+                                    <%--Botão para remover item caso selecionado algum checkbox relacionado a exclusão --%>
+                                    <div class="delete">
+                                        <a class="delete-accommodation" href="${pageContext.request.contextPath}/removerItem">remover acomoda&ccedil;&otilde;es selecionadas</a>
+                                    </div>
+
+                                    <%--Botão para atualizar preço caso haja mudança na quantidade de quartos da acomodação --%>
+                                    <div class="update">
+                                        <a class="update-price" href="${pageContext.request.contextPath}/atualizarPreco">atualizar pre&ccedil;o</a>
+                                    </div>      
+                                </div>
+                                
                             </div>
 
                             <%-- Envoltório destinado ao resumo do carrinho que conterá o valor total dos itens adicionados --%>
@@ -133,7 +147,7 @@
 
                                 <%-- Botão para confirmar compra --%>
                                 <div class="confirm">
-                                    <a class="complete-purchase" href="${pageContext.request.contextPath}/dadoshospede">Continuar</a>
+                                    <a class="complete-purchase" href="${pageContext.request.contextPath}/login">Continuar</a>
                                 </div>
                             </div>
 

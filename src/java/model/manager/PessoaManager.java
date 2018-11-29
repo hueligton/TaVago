@@ -1,8 +1,10 @@
 package model.manager;
 
+import java.util.List;
 import model.entity.Cartao;
 import model.entity.Hospede;
 import model.entity.Pessoa;
+import model.entity.Usuario;
 import model.entity.UsuarioHospede;
 import model.entity.UsuarioProprietario;
 
@@ -13,6 +15,20 @@ public class PessoaManager {
     public PessoaManager() {
         
         factory = DAO.getFactory();
+        
+    }
+    
+    public int realizarLogin(String email, String senha) {
+        
+        List<Usuario> usuarios = factory.listar(new Usuario());
+
+        for (Usuario u: usuarios)
+
+            if (u.getEmail().equals(email) && u.getSenha().equals(senha))
+                
+                return u.getIdPessoa();
+        
+        return -1;
         
     }
     
