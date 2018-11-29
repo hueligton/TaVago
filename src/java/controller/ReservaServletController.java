@@ -111,20 +111,21 @@ public class ReservaServletController extends HttpServlet {
         String dataEntrada = request.getParameter("dataEntrada");
         String dataSaida = request.getParameter("dataSaida");
         int qtdPessoas = Integer.parseInt(request.getParameter("quantidadePessoas"));
-        Collection<Hotel> resultadoConsulta = hotelManager.buscarHotel(destino, dataEntrada, dataSaida, qtdPessoas);
+        Collection<Hotel> resultadoConsulta = hotelManager.buscarHotel(destino);
         request.setAttribute("consulta", resultadoConsulta);
     }
 
     public void detalhe(HttpServletRequest request) {
         int idHotel = Integer.parseInt(request.getParameter("idHotel"));
         Hotel hotel = hotelManager.buscarHotel(idHotel);
+        List listaAcomodacoes = hotelManager.buscarAcomodacoes(hotel);
         request.setAttribute("hotel", hotel);
+        request.setAttribute("acomodacoesHotel", listaAcomodacoes);
     }
 
     public void carrinho(HttpServletRequest request) {
-        /*HttpSession sessao = request.getSession();
-        sessao.setAttribute("idusuario", pessoaManager.getIdUsuario());
-        int idUsuario =  pessoaManager.getIdUsuario(); */
+    
+        
     }
 
     public void dadosHospede(HttpServletRequest request) {
@@ -153,49 +154,37 @@ public class ReservaServletController extends HttpServlet {
         String numCartao = request.getParameter("numeroCartao");
         String vencimento = request.getParameter("vencimento");
         int codSeguranca = Integer.parseInt(request.getParameter("codigoSeguranca"));
-
-        HttpSession sessao = request.getSession();
-        sessao.setAttribute("idusuario", pessoaManager.getIdUsuario());
-        int idUsuario = pessoaManager.getIdUsuario();
-
+        int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
         boolean resultado = pessoaManager.cadastrarCartao(titular, numCartao, vencimento, codSeguranca, idUsuario);
         request.setAttribute("resultado", resultado);
     }
 
     public void confirmacao(HttpServletRequest request) {
-        HttpSession sessao = request.getSession();
-        sessao.setAttribute("idusuario", pessoaManager.getIdUsuario());
-        int idUsuario = pessoaManager.getIdUsuario();
-        //ver método que retorna hospedes daquela reserva x
-        // ou ver ser listarReservas() já retorna as reservas daquele usuario com os respectivos hospedes
+        int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
+        int idReserva = Integer.parseInt(request.getParameter("idReserva"));
         List listaReservas = reservaManager.listarReservas(idUsuario);
-
+        List hospedes = reservaManager.listarHospedes(idReserva);
         request.setAttribute("listaReservasUsuario", listaReservas);
-
+        request.setAttribute("listaReservaHospedes", hospedes);
     }
 
     public void resultado(HttpServletRequest request) {
-        HttpSession sessao = request.getSession();
-        sessao.setAttribute("idusuario", pessoaManager.getIdUsuario());
-        int idUsuario = pessoaManager.getIdUsuario();
-
+        int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
         boolean resultado = reservaManager.cadastrarReserva(idUsuario);
         request.setAttribute("resultado", resultado);
-
     }
 
     private void removerItem(HttpServletRequest request) {
-        int idAcomodacao = Integer.parseInt(request.getParameter("id"));
+        int idAcomodacao = Integer.parseInt(request.getParameter("idAcomodacao"));
         boolean resultado = reservaManager.removerItemReserva(idAcomodacao);
         request.setAttribute("resultado", resultado);
     }
 
     private void atualizarPreco(HttpServletRequest request) {
-        int idCarrinho = Integer.parseInt(request.getParameter("id"));
+        int idCarrinho = Integer.parseInt(request.getParameter("idCarrinho"));
         int modificacao = Integer.parseInt(request.getParameter("idModificacao"));
         int valorModificacao = Integer.parseInt(request.getParameter("valorModificacao"));
-        boolean resultado = reservaManager.atualizarCarrinho(idCarrinho, modificacao);
-
+        boolean resultado = reservaManager.atualizarCarrinho(idCarrinho, modificacao, valorModificacao);
         request.setAttribute("resultado", resultado);
     }
 
@@ -208,6 +197,5 @@ public class ReservaServletController extends HttpServlet {
             HttpSession sessao = request.getSession();
             sessao.setAttribute("idusuario", idUsuario);
         }
-        request.setAttribute("idUsuario", idUsuario);
     }
 }
