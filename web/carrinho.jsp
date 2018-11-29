@@ -147,7 +147,7 @@
 
                                 <%-- Botão para confirmar compra --%>
                                 <div class="confirm">
-                                    <a class="complete-purchase" href="${pageContext.request.contextPath}/dadoshospede">Continuar</a>
+                                    <a class="complete-purchase" href="${pageContext.request.contextPath}/login">Continuar</a>
                                 </div>
                             </div>
 
