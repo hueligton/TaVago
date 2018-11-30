@@ -1,7 +1,9 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Enumeration;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -128,11 +130,39 @@ public class ReservaServletController extends HttpServlet {
         request.setAttribute("acomodacoesHotel", listaAcomodacoes);
     }
 
-    public void carrinho(HttpServletRequest request) {
-
-    }
-
-    public void dadosHospede(HttpServletRequest request) {
+//==============================================================================
+//    #TODO - MÉTODO EM ANÁLISE, SERÁ IMPLEMENTADO POSTERIORMENTE
+//==============================================================================
+    
+//    public void carrinho(HttpServletRequest request) {
+  
+//código base
+//    public void consulta(HttpServletRequest request) {
+//          try {
+//            String destino = request.getParameter("destino");
+//            String dataInicial = request.getParameter("dataInicial");
+//            String dataFinal = request.getParameter("dataFinal");
+//            
+//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//            
+//            Date initialDate = sdf.parse(dataInicial);
+//            Date finalDate = sdf.parse(dataFinal);
+//            
+//            String quantidadePessoas = request.getParameter("quantidadePessoas");
+//            
+//            Collection<Hotel> consulta = hotelManager.listarHotel();
+//
+//            
+//            request.setAttribute("consulta", consulta);
+//            
+//        } catch (ParseException ex) {
+//            Logger.getLogger(ReservaServletController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
+    
+//==============================================================================
+    
+      public void dadosHospede(HttpServletRequest request) {
 
         String nome = request.getParameter("nome");
         String cpf = request.getParameter("cpf");
@@ -142,13 +172,6 @@ public class ReservaServletController extends HttpServlet {
         String cidade = request.getParameter("cidade");
         String estado = request.getParameter("estado");
         String pais = request.getParameter("pais");
-
-        /* HttpSession sessao = request.getSession();
-        sessao.setAttribute("idusuario", pessoaManager.getIdUsuario());
-        long idUsuario =  pessoaManager.getIdUsuario();
-         */
-        // como está criando, ainda não temos o ID do Usuario, 
-        //depois que executarmos o método que será criado o id pelo banco 
         boolean resultado = pessoaManager.cadastrarHospede(nome, cpf, telefone, rua, numCasa, cidade, estado, pais);
         request.setAttribute("resultado", resultado);
     }
@@ -177,21 +200,78 @@ public class ReservaServletController extends HttpServlet {
         boolean resultado = reservaManager.cadastrarReserva(idUsuario);
         request.setAttribute("resultado", resultado);
     }
+//==============================================================================
+//    #TODO - MÉTODO EM ANÁLISE, SERÁ IMPLEMENTADO POSTERIORMENTE
+//==============================================================================
+    
+ //   private void removerItem(HttpServletRequest request) {
 
-    private void removerItem(HttpServletRequest request) {
-        int idAcomodacao = Integer.parseInt(request.getParameter("idAcomodacao"));
-        boolean resultado = reservaManager.removerItemReserva(idAcomodacao);
-        request.setAttribute("resultado", resultado);
-    }
 
-    private void atualizarPreco(HttpServletRequest request) {
-        int idCarrinho = Integer.parseInt(request.getParameter("idCarrinho"));
-        int modificacao = Integer.parseInt(request.getParameter("idModificacao"));
-        int valorModificacao = Integer.parseInt(request.getParameter("valorModificacao"));
-        boolean resultado = reservaManager.atualizarCarrinho(idCarrinho, modificacao, valorModificacao);
-        request.setAttribute("resultado", resultado);
-    }
+//código base
+//    public void consulta(HttpServletRequest request) {
+//          try {
+//            String destino = request.getParameter("destino");
+//            String dataInicial = request.getParameter("dataInicial");
+//            String dataFinal = request.getParameter("dataFinal");
+//            
+//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//            
+//            Date initialDate = sdf.parse(dataInicial);
+//            Date finalDate = sdf.parse(dataFinal);
+//            
+//            String quantidadePessoas = request.getParameter("quantidadePessoas");
+//            
+//            Collection<Hotel> consulta = hotelManager.listarHotel();
+//
+//            
+//            request.setAttribute("consulta", consulta);
+//            
+//        } catch (ParseException ex) {
+//            Logger.getLogger(ReservaServletController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
+    
+//==============================================================================
+     
+    
+    
+    
+    
+//==============================================================================
+//    #TODO - MÉTODO EM ANÁLISE, SERÁ IMPLEMENTADO POSTERIORMENTE
+//==============================================================================
+    
 
+//private void atualizarPreco(HttpServletRequest request) {
+      //código base
+
+
+
+//    public void consulta(HttpServletRequest request) {
+//          try {
+//            String destino = request.getParameter("destino");
+//            String dataInicial = request.getParameter("dataInicial");
+//            String dataFinal = request.getParameter("dataFinal");
+//            
+//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//            
+//            Date initialDate = sdf.parse(dataInicial);
+//            Date finalDate = sdf.parse(dataFinal);
+//            
+//            String quantidadePessoas = request.getParameter("quantidadePessoas");
+//            
+//            Collection<Hotel> consulta = hotelManager.listarHotel();
+//
+//            
+//            request.setAttribute("consulta", consulta);
+//            
+//        } catch (ParseException ex) {
+//            Logger.getLogger(ReservaServletController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
+    
+//==============================================================================
+    
     private boolean realizarLogin(HttpServletRequest request) {
         boolean resul;
         String login = request.getParameter("login");
