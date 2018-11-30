@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -29,180 +30,126 @@
             </div>     
         </div>
 
-        <div class="informacaohotel">
+        <div class="informacaohotel">     
             <!--Informa o nome da Pousada-->
-           <!-- <c: var="hotel" items="${hotel}">
-            <h2>${hotel.nome}</h2>-->
-            <h2>Tesouro de Noronha</h2>
+            <h2>${hotel.nome}</h2>
 
             <!--Informa o endereco-->
-            <!--<p>${hotel.rua}, ${hotel.cidade}, CEP ${hotel.cep}, ${hotel.pais}</p>-->
-            <p>Rua Nice Cordeiro, Fernando de Noronha, CEP 53990-000, Brasil</p>
+            <p>${hotel.rua}, ${hotel.cidade} - ${hotel.estado}, ${hotel.pais}</p>
 
             <h3>Confira as fotos do Hotel</h3>
         </div>
 
-        <c:if foto="${not empty hotel}">
-            <!-- Swiper -->
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <!--Apresenta as imagens do hotel-->
+        <!-- Swiper -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <!--Apresenta as imagens do hotel-->
+                <c:forEach var="nmr" begin="1" end="7">
                     <div class="swiper-slide">
                         <div class="img">
-                            <img src="hotel/4/1.jpg">                            
+                            <img src="hotel/${hotel.idHotel}/${nmr}.jpg">                            
                         </div>
                         <div class="detalhes">
-                            <h3>Vista<br><span>Hotel Tesouro de Noronha</span></h3>
+                            <h3>Hotel<br><span>${hotel.nome}</span></h3>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="img">
-                            <img src="hotel/4/2.jpg">
-                        </div>
-                        <div class="detalhes">
-                            <h3>Funcionarios<br><span>Hotel Tesouro de Noronha</span></h3>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="img">
-                            <img src="hotel/4/3.jpg">
-                        </div>
-                        <div class="detalhes">
-                            <h3>Entrada<br><span>Hotel Tesouro de Noronha</span></h3>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="img">
-                            <img src="hotel/4/4.jpg">
-                        </div>
-                        <div class="detalhes">
-                            <h3>Fachada<br><span>Hotel Tesouro de Noronha</span></h3>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="img">
-                            <img src="hotel/4/5.jpg">
-                        </div>
-                        <div class="detalhes">
-                            <h3>Chave<br><span>Hotel Tesouro de Noronha</span></h3>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="img">
-                            <img src="hotel/4/6.jpg">
-                        </div>
-                        <div class="detalhes">
-                            <h3>Varanda<br><span>Hotel Tesouro de Noronha</span></h3>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="img">
-                            <img src="hotel/4/7.jpg">
-                        </div>
-                        <div class="detalhes">
-                            <h3>Quarto<br><span>Hotel Tesouro de Noronha</span></h3>
-                        </div>
-                    </div>
-                </div>
-                <!-- Add Pagination -->
-                <div class="swiper-pagination"></div>
+                </c:forEach>
+
             </div>
-          
+        </div>
 
-    <!-- Swiper JS -->
-    <script type="text/javascript" src="javascript/swiper.min.js"></script> 
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
 
-    <!-- Initialize Swiper -->
-    <script>
-        var swiper = new Swiper('.swiper-container', {
-            effect: 'coverflow',
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: 'auto',
-            coverflowEffect: {
-                rotate: 50,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: true,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-            },
-        });
-    </script>
-    <!--Apresenta a descricao do hotel-->
-    <div class="descricao">
-        <p>
-            A Tesouro de Noronha dispõe de piscina ao ar livre e está situada em Fernando de Noronha, a 900 metros da Vila dos Remédios. Esta pousada oferece transfer de cortesia e Wi-Fi gratuito. O Porto de Santo Antônio fica a 2,2 km.
-        </p>
 
-        <p>
-            Alguns quartos possuem varanda com vista do mar. Certas unidades da Tesouro de Noronha oferecem vista da piscina, e todas apresentam banheiro privativo. Outras comodidades incluem ar-condicionado, mesa de trabalho, guarda-roupa e TV de tela plana.
-        </p>
 
-        <p>
-            O buffet de café da manhã é servido diariamente na Tesouro de Noronha.
-        </p>
+        <!-- Swiper JS -->
+        <script type="text/javascript" src="javascript/swiper.min.js"></script> 
 
-        <p>
-            A pousada fica a 2,2 km da Praia do Sueste. O Aeroporto de Fernando de Noronha é o mais próximo, localizado a 1 km. 
-        </p>
+        <!-- Initialize Swiper -->
+        <script>
+            var swiper = new Swiper('.swiper-container', {
+                effect: 'coverflow',
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: 'auto',
+                coverflowEffect: {
+                    rotate: 50,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 1,
+                    slideShadows: true,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+            });
+        </script>
+        <!--Apresenta a descricao do hotel-->
+        <div class="descricao">
+            <p>
+                A ${hotel.nome} dispõe de piscina ao ar livre e está situada em Fernando de Noronha, a 900 metros da Vila dos Remédios. Esta pousada oferece transfer de cortesia e Wi-Fi gratuito. O Porto de Santo Antônio fica a 2,2 km.
+            </p>
 
-        <p>    
-            Tesouro de Noronha tem recebido hóspedes do TAVAgo.com desde 03 de dez. de 2018.</p>
-    </div>
-    <!--Apresenta as acomodacoes do hotel-->
-    <div class="acomodacoes">
-        <!--Tabbelas com as acomodacoes-->
-        <table class="lista-acomodacao">
-            <tr>
-                <th>Tipo de  Quarto</th>
-                <th>Acomoda</th>
-                <th>Selecionar nº de quartos</th>
-                <th>Preço</th>
-                <th></th>
-            </tr>
-            <tr>
-                <td>Suite Standard - ARRAIA</td>
-                <td>2</td>
-                <td>
-                    <select name="quantidade">
-                        <option value="zero">0</option>
-                        <option value="um">1</option>
-                        <option value="dois">2</option>
-                        <option value="tres">3</option>
-                        <option value="quatro">4</option>
-                        <option value="cinco">5</option>
-                    </select>
-                </td>
-                <td></td>
-                <td><input type="submit" value="Vou Reservar"></td>
-            </tr>
-            <tr>
-                <td>Suite Superior - Mero</td>
-                <td>3</td>
-                <td>
-                    <select name="quantidade">
-                        <option value="zero">0</option>
-                        <option value="um">1</option>
-                        <option value="dois">2</option>
-                        <option value="tres">3</option>
-                        <option value="quatro">4</option>
-                        <option value="cinco">5</option>
-                    </select>
-                <td></td>
-                <td><input type="submit" value="Vou Reservar"></td>
-                </td>
-            </tr>
-        </table>
+            <p>
+                Alguns quartos possuem varanda com vista do mar. Certas unidades da Tesouro de Noronha oferecem vista da piscina, e todas apresentam banheiro privativo. Outras comodidades incluem ar-condicionado, mesa de trabalho, guarda-roupa e TV de tela plana.
+            </p>
 
-    </div>
-</div>
-<footer>
+            <p>
+                O buffet de café da manhã é servido diariamente na Tesouro de Noronha.
+            </p>
 
-</footer>
-</body>
+            <p>
+                A pousada fica a 2,2 km da Praia do Sueste. O Aeroporto de Fernando de Noronha é o mais próximo, localizado a 1 km. 
+            </p>
+
+            <p>    
+                ${hotel.nome} tem recebido hóspedes do TAVAgo.com desde 03 de dez. de 2018.</p>
+        </div>
+        <!--Verifica se existe acomodacoes relacionada ao hotel-->
+        <c:choose>
+            <c:when test="${empty hotel.acomodacao}">
+                <p>- N&atilde;o h&aacute; acomodações para esse hotel </p>
+            </c:when>
+            <c:otherwise>
+                <!--Apresenta as acomodacoes do hotel-->
+                <div class="acomodacoes">
+                    <!--Tabbelas com as acomodacoes-->
+                    <table class="lista-acomodacao">
+                        <tr>
+                            <th>Tipo de  Quarto</th>
+                            <th>Selecionar nº de quartos</th>
+                            <th>Preço</th>
+                            <th></th>
+                        </tr>
+                        <c:forEach var="acomodacoes" items="${hotel.acomodacao}">
+
+                            <tr>
+                                <td>${acomodacoes.descricao} </td>
+                            <form method="POST" action="${pageContext.request.contextPath}/reserva">
+                                <td> 
+                                    <select name="quantidade">
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select> 
+                                </td>
+                            </form>
+                                <td> R$ ${acomodacoes.valor} </td>
+                                <td><input type="hidden" value="${acomodacoes.idAcomodacao}"><input type="submit" value="Vou Reservar" id="enviado"></td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </div>
+            </c:otherwise>
+        </c:choose>
+        <footer>
+
+        </footer>
+    </body>
 </html>
 
 

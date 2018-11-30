@@ -78,13 +78,13 @@ body {
 .informacaohotel h2{
     position: relative; 
     top: 10px; 
-    left: 80px;
+    margin-left: 80px;
     color: #383838;
 }
 
 .informacaohotel p{
     position: relative;
-    left: 80px;
+    margin-left: 80px;
     color: #383838;
 }
 

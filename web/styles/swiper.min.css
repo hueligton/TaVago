@@ -207,7 +207,7 @@
 }
 
 .swiper-pagination{
-    position:absolute;
+    position:relative;
     text-align:center;
     -webkit-transition:.3s opacity;
     -o-transition:.3s opacity;
