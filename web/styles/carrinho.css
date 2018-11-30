@@ -127,20 +127,16 @@ ul.options {
             flex: 1;
         }
 
-        .description-collumn, .quantity-collumn, .value-collumn {
+        .description-collumn, .quantity-collumn, .value-collumn, .delete-collumn {
             text-align: center;
         }
 
-        .room {
+        .delete-checkbox, .room, .total-price-room {
             padding: 20px 0;
         }
 
         .room-quantity {
             margin: 15px 0;   
-        }
-
-        .total-price-room {
-            padding: 20px 0;
         }
 
     /* ------------------ BASQUET-SUMMARY ------------------ */
@@ -165,7 +161,7 @@ ul.options {
         margin-bottom: 15px;
     }
 
-    a.complete-purchase:hover {
+    a.complete-purchase:hover, a.delete-accommodation:hover, a.update-price:hover {
         text-decoration: none;
         color: white;
     }
@@ -181,4 +177,34 @@ ul.options {
 
     .complete-purchase:hover {
         background-color: #45a049;
+    }
+    
+    .update-buttons {
+        position: relative;
+    }
+    
+    .delete, .update {
+        margin-top: 30px;
+        display: inline-block;
+    }
+    
+    .update {
+        position: absolute;
+        right: 0px;
+    }
+
+    .delete-accommodation, .update-price {
+        color: black;
+        padding: 14px 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .delete-accommodation:hover {
+        background-color: #820A00;
+    }
+    
+    .update-price:hover {
+        background-color: #4CAF50;
     }

@@ -17,7 +17,7 @@ public class Usuario extends Pessoa implements Serializable {
     @JoinColumn(name = "idPessoa", referencedColumnName = "idPessoa", table = "USUARIO")
     private Pessoa Pessoa;
     
-    @Column(nullable = false, length = 255)
+    @Column(unique = true, nullable = false, length = 255)
     private String email;
 
     @Column(nullable = false, length = 255)
