@@ -42,6 +42,11 @@ public class ReservaServletController extends HttpServlet {
             hoteisConsulta(request);
             jsp = "/consulta.jsp";
         } else if (request.getRequestURI().endsWith("/dadoshospede")) {
+            if (!realizarLogin(request)) {
+                jsp = "/login.jsp";
+            } else {
+                jsp = "/dadoshospede.jsp";
+            }
             dadosHospede(request);
             jsp = "/dadoshospede.jsp";
         } else if (request.getRequestURI().endsWith("/detalhes")) {
@@ -124,8 +129,7 @@ public class ReservaServletController extends HttpServlet {
     }
 
     public void carrinho(HttpServletRequest request) {
-    
-        
+
     }
 
     public void dadosHospede(HttpServletRequest request) {
@@ -188,7 +192,8 @@ public class ReservaServletController extends HttpServlet {
         request.setAttribute("resultado", resultado);
     }
 
-    private void realizarLogin(HttpServletRequest request) {
+    private boolean realizarLogin(HttpServletRequest request) {
+        boolean resul;
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
 
@@ -196,6 +201,10 @@ public class ReservaServletController extends HttpServlet {
         if (idUsuario != -1) {
             HttpSession sessao = request.getSession();
             sessao.setAttribute("idusuario", idUsuario);
+            resul = true;
+        } else {
+            resul = false;
         }
+        return resul;
     }
 }
