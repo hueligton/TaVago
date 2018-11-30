@@ -18,10 +18,14 @@
         <!--Navegation Bar-->
         <div class="row">
             <div class="logo">
-                <img src="images/logo-tavago.png">
+                <a href="${pageContext.request.contextPath}/home">
+                    <img src="images/logo-tavago.png">
+                </a>
             </div>
             <div class="carrinho">
-                <img src="images/carrinho.png">
+                <a href="${pageContext.request.contextPath}/carrinho">
+                    <img src="images/carrinho.png">
+                    <a/>
             </div>     
         </div>
 
@@ -37,10 +41,18 @@
         <!-- Swiper -->
         <div class="swiper-container">
             <div class="swiper-wrapper">
+                <!--Apresenta as imagens do hotel-->
                 <div class="swiper-slide">
-                    <!--Apresenta as imagens do hotel-->
                     <div class="img">
-                        <img src="hotel/3.jpg">
+                        <img src="hotel/4/1.jpg">
+                    </div>
+                    <div class="detalhes">
+                        <h3>Vista<br><span>Hotel Tesouro de Noronha</span></h3>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="img">
+                        <img src="hotel/4/2.jpg">
                     </div>
                     <div class="detalhes">
                         <h3>Funcionarios<br><span>Hotel Tesouro de Noronha</span></h3>
@@ -48,15 +60,7 @@
                 </div>
                 <div class="swiper-slide">
                     <div class="img">
-                        <img src="hotel/6.jpg">
-                    </div>
-                    <div class="detalhes">
-                        <h3>Funcionarios<br><span>Hotel Tesouro de Noronha</span></h3>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="img">
-                        <img src="hotel/2.jpg">
+                        <img src="hotel/4/3.jpg">
                     </div>
                     <div class="detalhes">
                         <h3>Entrada<br><span>Hotel Tesouro de Noronha</span></h3>
@@ -64,7 +68,7 @@
                 </div>
                 <div class="swiper-slide">
                     <div class="img">
-                        <img src="hotel/1.jpg">
+                        <img src="hotel/4/4.jpg">
                     </div>
                     <div class="detalhes">
                         <h3>Fachada<br><span>Hotel Tesouro de Noronha</span></h3>
@@ -72,7 +76,7 @@
                 </div>
                 <div class="swiper-slide">
                     <div class="img">
-                        <img src="hotel/4.jpg">
+                        <img src="hotel/4/5.jpg">
                     </div>
                     <div class="detalhes">
                         <h3>Chave<br><span>Hotel Tesouro de Noronha</span></h3>
@@ -80,18 +84,18 @@
                 </div>
                 <div class="swiper-slide">
                     <div class="img">
-                        <img src="hotel/5.jpg">
+                        <img src="hotel/4/6.jpg">
                     </div>
                     <div class="detalhes">
-                        <h3>Quarto<br><span>Hotel Tesouro de Noronha</span></h3>
+                        <h3>Varanda<br><span>Hotel Tesouro de Noronha</span></h3>
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="img">
-                        <img src="hotel/7.jpg">
+                        <img src="hotel/4/7.jpg">
                     </div>
                     <div class="detalhes">
-                        <h3>Funcionarios<br><span>Hotel Tesouro de Noronha</span></h3>
+                        <h3>Quarto<br><span>Hotel Tesouro de Noronha</span></h3>
                     </div>
                 </div>
             </div>
@@ -145,7 +149,7 @@
         <!--Apresenta as acomodacoes do hotel-->
         <div class="acomodacoes">
             <!--Tabbelas com as acomodacoes-->
-            <table>
+            <table class="lista-acomodacao">
                 <tr>
                     <th>Tipo de  Quarto</th>
                     <th>Acomoda</th>
@@ -192,7 +196,6 @@
     <footer>
 
     </footer>
-
 </body>
 </html>
 
