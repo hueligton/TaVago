@@ -128,7 +128,7 @@
                             <tr>
                                 <td>${acomodacoes.descricao} </td>
                             <form method="POST" action="${pageContext.request.contextPath}/adicionarCarrinho">
-                                <td> 
+                                <td>
                                     <select name="quantidade" id="quantidade">
                                         <option value="0">0</option>
                                         <option value="1">1</option>

@@ -76,4 +76,14 @@ public class ItemCarrinho {
         this.hospede = hospede;
     }
 
+    public Hospede getHospede() {
+        return hospede;
+    }
+
+    public void setHospede(Hospede hospede) {
+        this.hospede = hospede;
+    }
+    
+    
+
 }
