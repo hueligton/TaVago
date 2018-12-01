@@ -44,7 +44,7 @@ public class ItemReserva implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idHospede", referencedColumnName = "idPessoa")
     private Hospede hospede;
-    
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idReserva", referencedColumnName = "idReserva")
     private Reserva reserva;
@@ -184,6 +184,4 @@ public class ItemReserva implements Serializable {
         return true;
     }
 
-    
-    
 }

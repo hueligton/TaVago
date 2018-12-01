@@ -16,9 +16,9 @@ public class HotelManager {
     private final DAO factory;
 
     public HotelManager() {
-        
+
         factory = DAO.getFactory();
-        
+
     }
 
     public void cadastrarHotel(String nome, int quantidadeEstrela, String telefone, String rua, int numero, String cidade, String estado, String pais, List<Integer> idCategoria, List<String> descricao, List<Double> valor, Integer idProprietario) throws CreateException {
@@ -72,7 +72,7 @@ public class HotelManager {
     public Collection<Hotel> listarHotel() {
         return factory.listar(new Hotel());
     }
-    
+
     public Collection<Hotel> listarHotel(String destino) {
         List<Hotel> lista = factory.listar(new Hotel());
         return lista.stream().filter(x -> x.getCidade().equals(destino)).collect(Collectors.toList());

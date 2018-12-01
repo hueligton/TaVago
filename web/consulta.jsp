@@ -32,33 +32,43 @@
 
                 <div class="destino">
                     <label for="destino">Destino</label><br>
-                    <input type="text" name="destino" id="destino" required><br>
+                    <input type="text" name="destino" id="destino" <c:choose>
+                               <c:when test="${not empty destino}"> 
+                                   value="${destino}"
+                               </c:when>
+                           </c:choose> required><br>
                 </div>
 
                 <div class="datas">
                     <div class="entrada">
-                        <label for="dataInicial">Data de check-in</label><br>
-                        <input type="date" name="dataInicial" id="dataInicial" required><br>
+                        <label for="dataEntrada">Data de check-in</label><br>
+                        <input type="date" name="dataEntrada" id="dataEntrada" <c:choose>
+                                   <c:when test="${not empty destino}"> 
+                                       value="${dataEntrada}"
+                                   </c:when>
+                               </c:choose> required><br>
                     </div>
 
                     <div class="saida">
-                        <label for="dataFinal">Data de check-out</label><br>
-                        <input type="date" name="dataFinal" id="dataFinal" required><br>
+                        <label for="dataSaida">Data de check-out</label><br>
+                        <input type="date" name="dataSaida" id="dataSaida" <c:choose>
+                                   <c:when test="${not empty destino}"> 
+                                       value="${dataEntrada}"
+                                   </c:when>
+                               </c:choose> required><br>
                     </div>
                 </div>
 
                 <div class="quantidade">
                     <label for="quantidadePessoas">Quantidade hóspedes</label><br>
                     <select name="quantidadePessoas" id="quantidadePessoas">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="4">5</option>
-                        <option value="4">6</option>
-                        <option value="4">7</option>
-                        <option value="4">8</option>
-                        <option value="4">9</option>
+                        <c:forEach begin="1" end="9" var="qtd">
+                            <option value="${qtd}" <c:choose>
+                                        <c:when test="${qtdPessoas==qtd}"> 
+                                            selected
+                                        </c:when>
+                                    </c:choose>>${qtd}</option>
+                        </c:forEach>
                     </select>
                 </div>
 
@@ -66,33 +76,33 @@
 
             </form>
         </div>
-            <div class="card-view">
-                <c:choose>
-            <c:when test="${empty consulta}"> 
-                <p>- N&atilde;o h&aacute; hoteis </p>
-            </c:when>
-            <c:otherwise>
-                <c:forEach var="consulta" items="${consulta}">
-                    <div class="card">
-                        <img src="hotel/${consulta.idHotel}/1.jpg" style="width:100%">
-                        <div class="container">
-                            <h4><b>${consulta.nome}</b></h4> 
-                            <p>Avaliação:
-                                <!-- Loop para a apresentação das estrelas de cada hotel -->
-                                <c:forEach var="star" begin="1" end="${consulta.quantidadeEstrela}" >
-                                    <span class="fa fa-star checked"></span>
-                                </c:forEach>
-                            </p>
-                            <p>Endereço: ${consulta.rua}, ${consulta.cidade}, ${conulta.estado}</p>
-                            <form method="POST" action="${pageContext.request.contextPath}/detalhes">
-                                <input id="idHotel" name="idHotel" value="${consulta.idHotel}" type="hidden">
-                                <input class="detail" type="submit" name="detalhes" value="DETALHES">
-                            </form>
+        <div class="card-view">
+            <c:choose>
+                <c:when test="${empty consulta}"> 
+                    <p>- N&atilde;o h&aacute; hoteis </p>
+                </c:when>
+                <c:otherwise>
+                    <c:forEach var="consulta" items="${consulta}">
+                        <div class="card">
+                            <img src="hotel/${consulta.idHotel}/1.jpg" style="width:100%">
+                            <div class="container">
+                                <h4><b>${consulta.nome}</b></h4> 
+                                <p>Avaliação:
+                                    <!-- Loop para a apresentação das estrelas de cada hotel -->
+                                    <c:forEach var="star" begin="1" end="${consulta.quantidadeEstrela}" >
+                                        <span class="fa fa-star checked"></span>
+                                    </c:forEach>
+                                </p>
+                                <p>Endereço: ${consulta.rua}, ${consulta.cidade}, ${conulta.estado}</p>
+                                <form method="POST" action="${pageContext.request.contextPath}/detalhes">
+                                    <input id="idHotel" name="idHotel" value="${consulta.idHotel}" type="hidden">
+                                    <input class="detail" type="submit" name="detalhes" value="DETALHES">
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                </c:forEach>
-            </c:otherwise>
-        </c:choose>
-            </div>
+                    </c:forEach>
+                </c:otherwise>
+            </c:choose>
+        </div>
     </body>
 </html>

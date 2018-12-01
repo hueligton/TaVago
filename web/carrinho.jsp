@@ -6,6 +6,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -62,70 +63,54 @@
                         <c:otherwise>
                             <%-- Envoltório destinado ao carrinho que conterá informações dos itens adicionados --%>
                             <div class="cart-room">
-                                
+
                                 <table class="room-items">
                                     <tr class="cart-collumns">
                                         <th class="description-collumn">Quarto</th>
-                                        <th class="quantity-collumn">Quantidade</th>
-                                        <th class="value-collumn">Preço</th>
+                                        <th class="description-collumn">Período</th>
+                                        <th class="value-collumn">Preço Diária</th>
+                                        <th class="value-collumn">Preço Período</th>
+                                        <th class="quantity-collumn"></th>
                                     </tr>
 
                                     <c:forEach var="cart" items="${carrinho.itensCarrinho}">
-                                    <%-- Cada linha da tabela representa um item no carrinho --%>
-                                    <tr class="item">
+                                        <%-- Cada linha da tabela representa um item no carrinho --%>
+                                        <tr class="item">
 
-                                        <%-- Coluna de descrição das acomodações --%>
-                                        <td class="description-collumn">
-                                            <div class="room">
-                                                <p><c:out value="${cart.acomodacao.hotel.nome}"/></p>
-                                                <p><c:out value="${cart.acomodacao.descricao}"/></p>
-                                            </div>
+                                            <%-- Coluna de descrição das acomodações --%>
+                                            <td class="description-collumn">
+                                                <div class="room">
+                                                    <p><c:out value="${cart.acomodacao.hotel.nome}"/></p>
+                                                    <p><c:out value="${cart.acomodacao.descricao}"/></p>
+                                                </div>
+                                            </td>
+                                            <td class="description-collumn">
+                                                <div class="room">
+                                                    <p><fmt:formatDate value="${cart.dataInicial}" pattern="dd/MM/yyyy" /> à <fmt:formatDate value="${cart.dataFinal}" pattern="dd/MM/yyyy" /></p>
+                                                </div>
+                                            </td>
 
-                                            <%--Botão para deletar item do carrinho --%>
-                                            <form name="room-quantity" method="post" action="${pageContext.request.contextPath}/removerCarrinho">
-                                                <input type="hidden" name="idAcomodacao" value="${cart.acomodacao.idAcomodacao}">
-                                                <input type="submit" value="remover">    
-                                            </form>
-                                        </td>
+                                            <%-- Coluna do valor total (quantidade de acomodações * valor da acomodação) --%>
+                                            <td class="value-collumn">
+                                                <div class="total-price-room">
+                                                    <p>R$ ${cart.acomodacao.valor}</p>
+                                                </div>
+                                            </td>
+                                            <td class="value-collumn">
+                                                <div class="total-price-room">
+                                                    <p>R$ ${cart.periodo * cart.acomodacao.valor}</p>
+                                                </div>
+                                            </td>
 
-                                        <%-- Coluna de quantidade de acomodações selecionadas --%>
-                                        <td class="quantity-collumn">
-                                            <div class="room-quantity">
-
-                                                <form name="room-quantity" method="post" action="${pageContext.request.contextPath}/atualizarCarrinho">
-                                                    <select name="quantidadeQuartos" id="quantidadeQuartos">
-
-                                                        <%-- Estrutura de repetição que verifica qual a quantidade de quartos que foi selecionado, gerando o html correspondente --%>
-                                                        <c:forEach  var="counter" begin="1" end="9">
-                                                            <c:choose>
-                                                                <c:when test="${counter == cart.quantidade}">
-                                                                    <option selected value="${counter}">${counter}</option>
-                                                                </c:when> 
-                                                                <c:otherwise>
-                                                                    <option value="${counter}">${counter}</option>
-                                                                </c:otherwise>
-                                                            </c:choose>
-                                                        </c:forEach>
-
-                                                    </select>
-
-                                                     <%--Botão para atualizar preço caso haja mudança na quantidade de quartos da acomodação --%>
+                                            <%-- Coluna de quantidade de acomodações selecionadas --%>
+                                            <td>
+                                                <%--Botão para deletar item do carrinho --%>
+                                                <form name="delete" method="post" action="${pageContext.request.contextPath}/removerCarrinho">
                                                     <input type="hidden" name="idAcomodacao" value="${cart.acomodacao.idAcomodacao}">
-                                                    <input type="submit" value="atualizar">
-
+                                                    <input type="submit" value="remover">    
                                                 </form>
-
-                                            </div>
-                                        </td>
-
-                                        <%-- Coluna do valor total (quantidade de acomodações * valor da acomodação) --%>
-                                        <td class="value-collumn">
-                                            <div class="total-price-room">
-                                                <p>R$ ${cart.valor}</p>
-                                            </div>
-                                        </td>
-
-                                    </tr>
+                                            </td>
+                                        </tr>
                                     </c:forEach>
                                 </table>
                             </div>

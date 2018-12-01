@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -38,10 +39,10 @@
 
         <!-- Conteúdo da página principal -->
         <section class="main-content">
-            
+
             <header id="home-top">
                 <div class="form-description">
-                    <h2>Formulário de hóspede</h2>
+                    <h2>Formulário de hóspede - ${qtdHospede+1}/${fn:length(carrinho.itensCarrinho)}</h2>
                     <p>Preencha as informações abaixo para podermos cadastrar sua reserva</p>
                 </div>
             </header>
@@ -51,7 +52,7 @@
 
                     <form role="form" class="formulario-hospede" method="POST" action="${pageContext.request.contextPath}/pagamento">
                         <input type="hidden" id="itemCarrinho" name="itemCarrinho" value="${qtdHospede}"
-                        <fieldset class="personal">
+                               <fieldset class="personal">
                             <legend>Pessoal</legend>
 
                             <div id="input-name" class="input-wrap">
