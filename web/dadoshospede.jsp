@@ -14,7 +14,7 @@
         <link rel="stylesheet" type="text/css" href="styles/dadoshospede.css"/>
         <link rel="shortcut icon" href="images/favicon.ico"/>
         <meta http-equiv="refresh" content="" >
-        <title>Dados hospede</title>
+        <title>TaVago - Dados hospede</title>
     </head>
     <body id="dadoshospede-page">
 

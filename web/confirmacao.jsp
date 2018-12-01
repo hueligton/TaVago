@@ -6,13 +6,14 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="styles/confirmacao.css">
         <link rel="shortcut icon" href="images/favicon.ico"/>
-        <title>JSP Page</title>
+        <title>TaVago - Confirmação</title>
     </head>
     <body>
         <div class="row">
@@ -33,12 +34,12 @@
             <h3>Confirmação:</h3>
             <p>Confirme se seus dados estão correto</p>
             <c:choose>
-                <c:when test="${empty itemCarrinho}"> 
+                <c:when test="${empty carrinho.itensCarrinho}"> 
                     <p>- N&atilde;o h&aacute; reservas em seu nome </p>
                 </c:when>
                 <c:otherwise>
                     <!--Loop para retornar a lista de acomodações-->
-                    <c:forEach var="informacao" items="${itemCarrinho}">
+                    <c:forEach var="itemCarrinho" items="${carrinho.itensCarrinho}">
                         <!--Informa o nome do usuario-->
                         <h5>NOME DO HOSPEDE:</h5>
                         <p>${itemCarrinho.hospede.nome}</p>
@@ -49,20 +50,20 @@
 
                         <!--Informa a data de entrada-->
                         <h5>DATA DE ENTRADA:</h5>
-                        <p>${itemCarrinho.dataInicial}</p>
+                        <p><fmt:formatDate value="${itemCarrinho.dataInicial}" pattern="dd/MM/yyyy" /></p>
 
                         <!--Informa a data de saida-->
                         <h5>DATA DE SAÍDA:</h5>
-                        <p>${itemCarrinho.dataInicial}</p>
+                        <p><fmt:formatDate value="${itemCarrinho.dataFinal}" pattern="dd/MM/yyyy" /></p>
 
                         <!--Informa a acomodacao-->
                         <h5>ACOMODAÇÃO:</h5>
-                        <p>${itemCarrinho.acomodacao.detalhe}, R$: ${itemCarrinho.acomodacao.valor}</p>
+                        <p>${itemCarrinho.acomodacao.descricao}, R$: ${itemCarrinho.acomodacao.valor}</p>
                     </c:forEach>
                 </c:otherwise>
             </c:choose>
-            <form class="confirma-dados" method="POST" action="${pageContext.request.contextPath}/">
-                <input type="hidden" value="${itemCarrinho.hospede.id}">
+            <form class="confirma-dados" method="POST" action="${pageContext.request.contextPath}/resultado">
+
                 <input type="submit" name="confirmardados" value="CONFIRMAR">
             </form>
 

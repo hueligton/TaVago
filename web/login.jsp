@@ -12,7 +12,7 @@
         <link rel="stylesheet" type="text/css" href="styles/dadoshospede.css"/>
         <link rel="shortcut icon" href="images/favicon.ico"/>
         <meta http-equiv="refresh" content="" >
-        <title>Login</title>
+        <title>TaVago - Login</title>
     </head>
     <body id="login-page">
 

@@ -13,7 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="styles/carrinho.css"/>
         <link rel="shortcut icon" href="images/favicon.ico"/>
-        <title>Carrinho</title>
+        <title>TaVago - Carrinho</title>
     </head>
     <body id="carrinho-page">
 
