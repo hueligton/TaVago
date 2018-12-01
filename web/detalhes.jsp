@@ -127,7 +127,7 @@
 
                             <tr>
                                 <td>${acomodacoes.descricao} </td>
-                            <form method="POST" action="${pageContext.request.contextPath}/adicionarCarrinho">
+                            <form method="POST" action="${pageContext.request.contextPath}/carrinho">
                                 <td>
                                     <select name="quantidade" id="quantidade">
                                         <option value="0">0</option>
@@ -139,7 +139,11 @@
                                     </select> 
                                 </td>
                                 <td> R$ ${acomodacoes.valor} </td>
-                                <td><input type="hidden" id="idAcomodacao" name="idAcomodacao" value="${acomodacoes.idAcomodacao}"><input type="submit" value="Vou Reservar" id="enviado"></td>
+                                <td>
+                                    <input type="hidden" id="idAcomodacao" name="idAcomodacao" value="${acomodacoes.idAcomodacao}">
+                                    <input type="hidden" id="dataEntrada" name="dataEntrada" value="${dataEntrada}">
+                                    <input type="hidden" id="dataSaida" name="dataSaida" value="${dataSaida}">
+                                    <input type="submit" value="Vou Reservar" id="adicionar" name="adicionar"></td>
                             </form>
                             </tr>
                         </c:forEach>

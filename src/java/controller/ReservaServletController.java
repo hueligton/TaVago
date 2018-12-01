@@ -37,12 +37,11 @@ public class ReservaServletController extends HttpServlet {
         if (request.getRequestURI().endsWith("/home")) {
             jsp = "/home.jsp";
         } else if (request.getRequestURI().endsWith("/carrinho")) {
-            jsp = "/carrinho.jsp";
-        } else if (request.getRequestURI().endsWith("/adicionarCarrinho")) {
-            adicionarCarrinho(request);
-            jsp = "/carrinho.jsp";
-        } else if (request.getRequestURI().endsWith("/removerCarrinho")) {
-            removerCarrinho(request);
+            if (request.getParameter("adicionar") != null) {
+                adicionarCarrinho(request);
+            } else if (request.getParameter("remover") != null) {
+                removerCarrinho(request);
+            }
             jsp = "/carrinho.jsp";
         } else if (request.getRequestURI().endsWith("/confirmacao")) {
             dadosPagamento(request);
@@ -52,6 +51,7 @@ public class ReservaServletController extends HttpServlet {
             consulta(request);
             jsp = "/consulta.jsp";
         } else if (request.getRequestURI().endsWith("/login")) {
+            request.getSession().setAttribute("qtdHospede", 0);
             if (request.getSession().getAttribute("usuario") == null) {
                 jsp = "/login.jsp";
             } else {
@@ -132,8 +132,8 @@ public class ReservaServletController extends HttpServlet {
         Collection<Hotel> resultadoConsulta = hotelManager.listarHotel(destino);
         request.setAttribute("consulta", resultadoConsulta);
         request.setAttribute("destino", destino);
-        request.getSession().setAttribute("dataEntrada", dataEntrada);
-        request.getSession().setAttribute("dataSaida", dataSaida);
+        request.setAttribute("dataEntrada", dataEntrada);
+        request.setAttribute("dataSaida", dataSaida);
         request.setAttribute("qtdPessoas", qtdPessoas);
     }
 
@@ -141,6 +141,10 @@ public class ReservaServletController extends HttpServlet {
         int idHotel = Integer.parseInt(request.getParameter("idHotel"));
         Hotel hotel = hotelManager.buscarHotel(idHotel);
         request.setAttribute("hotel", hotel);
+        String dataEntrada = request.getParameter("dataEntrada");
+        String dataSaida = request.getParameter("dataSaida");
+        request.setAttribute("dataEntrada", dataEntrada);
+        request.setAttribute("dataSaida", dataSaida);
     }
 
     public void adicionarCarrinho(HttpServletRequest request) {
@@ -151,8 +155,8 @@ public class ReservaServletController extends HttpServlet {
         int quantidade = Integer.parseInt(request.getParameter("quantidade"));
         try {
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            Date dataEntrada = format.parse((String) request.getSession().getAttribute("dataEntrada"));
-            Date dataSaida = format.parse((String) request.getSession().getAttribute("dataSaida"));
+            Date dataEntrada = format.parse((String) request.getParameter("dataEntrada"));
+            Date dataSaida = format.parse((String) request.getParameter("dataSaida"));
             carrinho = reservaManager.adicionarCarrinho(idAcomodacao, quantidade, dataEntrada, dataSaida, carrinho);
         } catch (ParseException ex) {
             Logger.getLogger(ReservaServletController.class.getName()).log(Level.SEVERE, null, ex);
@@ -190,7 +194,7 @@ public class ReservaServletController extends HttpServlet {
         String cidade = request.getParameter("cidade");
         String estado = request.getParameter("estado");
         String pais = request.getParameter("pais");
-        //TODO buscar hospede cadastrado e salvar no item carrinho
+
         Hospede hospede = pessoaManager.cadastrarHospede(nome, cpf, telefone, rua, numCasa, cidade, estado, pais);
         int qtdHospede = Integer.parseInt(request.getParameter("itemCarrinho"));
         Carrinho carrinho = (Carrinho) request.getSession().getAttribute("carrinho");

@@ -34,7 +34,7 @@
                 <p>Confirme se seus dados estão correto</p>
                 <!--Informa o nome do usuario-->
                 <h5>NOME DO HOSPEDE:</h5>
-                <p> vitoria${itemCarrinho.hospede.nome}</p>
+                <p> ${itemCarrinho.hospede.nome}</p>
 
                 <!--Informa o nome do usuario-->
                 <h5>TELEFONE:</h5>
