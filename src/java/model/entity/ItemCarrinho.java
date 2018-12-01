@@ -9,14 +9,17 @@ public class ItemCarrinho {
     private Date dataFinal;
 
     private Acomodacao acomodacao;
+    
+    private Hospede hospede;
 
     public ItemCarrinho() {
     }
 
-    public ItemCarrinho(Date dataInicial, Date dataFinal, Acomodacao acomodacao) {
+    public ItemCarrinho(Date dataInicial, Date dataFinal, Acomodacao acomodacao, Hospede hospede) {
         this.dataInicial = dataInicial;
         this.dataFinal = dataFinal;
         this.acomodacao = acomodacao;
+        this.hospede = hospede;
     }
 
     public Date getDataInicial() {
@@ -42,5 +45,15 @@ public class ItemCarrinho {
     public void setAcomodacao(Acomodacao acomodacao) {
         this.acomodacao = acomodacao;
     }
+
+    public Hospede getHospede() {
+        return hospede;
+    }
+
+    public void setHospede(Hospede hospede) {
+        this.hospede = hospede;
+    }
+    
+    
 
 }
