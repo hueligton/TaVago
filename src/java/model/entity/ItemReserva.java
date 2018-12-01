@@ -35,7 +35,7 @@ public class ItemReserva implements Serializable {
     private Date dataFinal;
 
     @Column(nullable = false)
-    private Float valor;
+    private Double valor;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idAcomodacao", referencedColumnName = "idAcomodacao")
@@ -52,7 +52,7 @@ public class ItemReserva implements Serializable {
     public ItemReserva() {
     }
 
-    public ItemReserva(Integer idItemReserva, Date dataInicial, Date dataFinal, Float valor, Acomodacao acomodacao, Hospede hospede, Reserva reserva) {
+    public ItemReserva(Integer idItemReserva, Date dataInicial, Date dataFinal, Double valor, Acomodacao acomodacao, Hospede hospede, Reserva reserva) {
         this.idItemReserva = idItemReserva;
         this.dataInicial = dataInicial;
         this.dataFinal = dataFinal;
@@ -62,7 +62,7 @@ public class ItemReserva implements Serializable {
         this.reserva = reserva;
     }
 
-    public ItemReserva(Integer idItemReserva, Date dataInicial, Date dataFinal, float valor, Acomodacao acomodacao, Hospede hospede) {
+    public ItemReserva(Integer idItemReserva, Date dataInicial, Date dataFinal, Double valor, Acomodacao acomodacao, Hospede hospede) {
         this.idItemReserva = idItemReserva;
         this.dataInicial = dataInicial;
         this.dataFinal = dataFinal;
@@ -71,7 +71,7 @@ public class ItemReserva implements Serializable {
         this.hospede = hospede;
     }
 
-    public ItemReserva(Date dataInicial, Date dataFinal, Float valor, Acomodacao acomodacao, Hospede hospede) {
+    public ItemReserva(Date dataInicial, Date dataFinal, Double valor, Acomodacao acomodacao, Hospede hospede) {
         this.dataInicial = dataInicial;
         this.dataFinal = dataFinal;
         this.valor = valor;
@@ -103,11 +103,11 @@ public class ItemReserva implements Serializable {
         this.dataFinal = dataFinal;
     }
 
-    public Float getValor() {
+    public Double getValor() {
         return valor;
     }
 
-    public void setValor(Float valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
 

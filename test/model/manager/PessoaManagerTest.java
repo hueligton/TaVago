@@ -119,7 +119,7 @@ public class PessoaManagerTest {
         String estado = "Tamires State";
         String pais = "United States of Tamires";
         
-        if (pessoaManager.cadastrarHospede(nome, cpf, telefone, rua, numeroCasa, cidade, estado, pais)) 
+        if (pessoaManager.cadastrarHospede(nome, cpf, telefone, rua, numeroCasa, cidade, estado, pais)!=null) 
             
             System.out.println("++++++++ HOSPEDE CADASTRADO COM SUCESSO");
         
@@ -168,7 +168,7 @@ public class PessoaManagerTest {
         String senha = "s&nh@D@Gerald0";
         String telefone = "987654321";
         
-        if (pessoaManager.cadastrarUsuarioHospede(nome, email, senha, cpf, telefone)) 
+        if (pessoaManager.cadastrarUsuarioHospede(nome, email, senha, cpf, telefone)!=null) 
             
             System.out.println("++++++++ USUARIO HOSPEDE CADASTRADO COM SUCESSO");
         
@@ -204,7 +204,7 @@ public class PessoaManagerTest {
         int codigoSeguranca = 012;
         int idUsuarioHospede = idPessoa;
         
-        if (pessoaManager.cadastrarCartao(titular, numeroCartao, vencimento, codigoSeguranca, idUsuarioHospede)) 
+        if (pessoaManager.cadastrarCartao(titular, numeroCartao, vencimento, codigoSeguranca, idUsuarioHospede)!=null) 
             
             System.out.println("++++++++ CARTAO CADASTRADO COM SUCESSO");
         
@@ -232,7 +232,7 @@ public class PessoaManagerTest {
         String senha = "s&nh@D@Sant@na";
         String telefone = "987654321";
         
-        if (pessoaManager.cadastrarUsuarioProprietario(nome, email, senha, cpf, telefone)) 
+        if (pessoaManager.cadastrarUsuarioProprietario(nome, email, senha, cpf, telefone)!=null) 
             
             System.out.println("++++++++ USUARIO PROPRIETARIO CADASTRADO COM SUCESSO");
         

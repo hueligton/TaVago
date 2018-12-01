@@ -74,14 +74,14 @@ public class HotelManagerTest {
             String pais = "Teste";
             List<Integer> idCategoria = new ArrayList();
             List<String> descricao = new ArrayList();
-            List<Float> valor = new ArrayList();
+            List<Double> valor = new ArrayList();
             int idProprietario = 4;
             idCategoria.add(1);
             idCategoria.add(1);
             descricao.add("Teste 1");
             descricao.add("Teste 2");
-            valor.add(100f);
-            valor.add(200f);
+            valor.add(100.00);
+            valor.add(200.00);
             HotelManager instance = new HotelManager();
             instance.cadastrarHotel(nome, quantidadeEstrela, telefone, rua, numero, cidade, estado, pais, idCategoria, descricao, valor, idProprietario);
         } catch (CreateException e) {

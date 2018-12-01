@@ -59,7 +59,7 @@
             <div class="home-content">
 
                 <!-- Formulário de consulta definido no diagrama de navegação -->
-                <form class="formulario-consulta" method="POST" action="${pageContext.request.contextPath}/adicionarCarrinho">
+                <form class="formulario-consulta" method="POST" action="${pageContext.request.contextPath}/consulta">
                     
                     <div class="destino">
                         <label for="destino">Destino</label><br>

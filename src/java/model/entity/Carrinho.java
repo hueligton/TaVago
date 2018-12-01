@@ -1,15 +1,13 @@
 package model.entity;
 
-import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Optional;
-import java.util.stream.Stream;
+import java.util.List;
 
 public class Carrinho {
     
     private float valorTotal;
 
-    private LinkedList<ItemCarrinho> itensCarrinho;
+    private List<ItemCarrinho> itensCarrinho;
 
     public Carrinho() {
         itensCarrinho = new LinkedList<ItemCarrinho>();
@@ -27,11 +25,12 @@ public class Carrinho {
     private void setValorTotal() {
         valorTotal = 0;
         
-        for(ItemCarrinho ic: itensCarrinho)
+        itensCarrinho.forEach((ic) -> {
             valorTotal += ic.getValor();
+        });
     }
 
-    public LinkedList<ItemCarrinho> getItensCarrinho() {
+    public List<ItemCarrinho> getItensCarrinho() {
         return itensCarrinho;
     }
 
@@ -45,29 +44,23 @@ public class Carrinho {
         setValorTotal();
     }
 
-    public void removeItemCarrinho(Optional<ItemCarrinho> itemCarrinho) {
-        itensCarrinho.remove(itemCarrinho);
-        setValorTotal();
-    }
-
     public void atualizaItemCarrinho(ItemCarrinho itemCarrinho, int quantidade) {
         
         itemCarrinho.setQuantidade(quantidade);
         
         itensCarrinho.stream().filter(ic -> {
-            
             return ic.getAcomodacao().getIdAcomodacao().equals(itemCarrinho.getAcomodacao().getIdAcomodacao());
-            
         })  .map((ic) -> itensCarrinho.indexOf(ic))
             .map((index) -> {
-                  
                 itensCarrinho.add(index, itemCarrinho);
                 return index;
-                    
         });
         
         setValorTotal();
         
     }
 
+    public void addHospedeItemCarrinho(int qtdHospede, Hospede hospede) {
+        itensCarrinho.get(qtdHospede).setHospede(hospede);
+    }
 }

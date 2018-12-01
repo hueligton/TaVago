@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -49,24 +50,24 @@
                 <div class="form-wrap">
 
                     <form role="form" class="formulario-hospede" method="POST" action="${pageContext.request.contextPath}/pagamento">
-
+                        <input type="hidden" id="itemCarrinho" name="itemCarrinho" value="${qtdHospede}"
                         <fieldset class="personal">
                             <legend>Pessoal</legend>
 
                             <div id="input-name" class="input-wrap">
                                 <label class="input-wrap-label" for="nome">Nome</label>
-                                <input type="text" class="form-control name-mask input-wrap-input" id="nome" placeholder="Ex.: Robin Hood" autocomplete="off" required>
+                                <input type="text" class="form-control name-mask input-wrap-input" id="nome" name="nome" placeholder="Ex.: João da Silva" required>
                             </div>
 
                             <div id="input-cpf" class="input-wrap">
                                 <label class="input-wrap-label" for="cpf">Cpf</label>
-                                <input type="text" class="form-control cpf-mask input-wrap-input" id="cpf" placeholder="Ex.: 000.000.000-00" maxlength="14" autocomplete="off" pattern="[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}" required>
+                                <input type="text" class="form-control cpf-mask input-wrap-input" id="cpf" name="cpf" placeholder="Ex.: 000.000.000-00" maxlength="14" pattern="[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}" required>
                             </div>
 
                             <div id="input-phone" class="input-wrap">
                                 <label class="input-wrap-label-optional" for="telefone">Telefone - </label>
                                 <label class="input-wrap-label-optional italic">Optional</label>
-                                <input type="text" class="form-control phone-mask input-wrap-input" id="telefone" placeholder="Ex.: (00) 0000-0000" autocomplete="off">
+                                <input type="text" class="form-control phone-mask input-wrap-input" id="telefone" name="telefone" placeholder="Ex.: (00) 0000-0000" >
                             </div>
 
                         </fieldset>
@@ -76,27 +77,27 @@
 
                             <div id="input-street" class="input-wrap">
                                 <label class="input-wrap-label" for="rua">Rua</label>
-                                <input type="text" class="form-control street-mask input-wrap-input" id="rua" placeholder="Ex.: 14 de julho" autocomplete="off" required>
+                                <input type="text" class="form-control street-mask input-wrap-input" id="rua" name="rua" placeholder="Ex.: 14 de julho" required>
                             </div>
 
                             <div id="input-house-number" class="input-wrap">
                                 <label class="input-wrap-label" for="numeroCasa">Número casa</label>
-                                <input type="text" class="form-control house-number-mask input-wrap-input" id="numeroCasa" placeholder="Ex.: 343" autocomplete="off" required>
+                                <input type="text" class="form-control house-number-mask input-wrap-input" id="numeroCasa" name="numeroCasa" placeholder="Ex.: 343" required>
                             </div>
 
                             <div id="input-city" class="input-wrap">
                                 <label class="input-wrap-label" for="cidade">Cidade</label>
-                                <input type="text" class="form-control city-mask input-wrap-input" id="cidade" placeholder="Ex.: Campo Grande" autocomplete="off" required>
+                                <input type="text" class="form-control city-mask input-wrap-input" id="cidade" name="cidade" placeholder="Ex.: Campo Grande" required>
                             </div>
 
                             <div id="input-state" class="input-wrap">
                                 <label class="input-wrap-label" for="estado">Estado</label>
-                                <input type="text" class="form-control state-mask input-wrap-input" id="estado" placeholder="Ex.: Mato Grosso do Sul" autocomplete="off" required>
+                                <input type="text" class="form-control state-mask input-wrap-input" id="estado" name="estado" placeholder="Ex.: Mato Grosso do Sul" required>
                             </div>
 
                             <div id="input-country" class="input-wrap">
                                 <label class="input-wrap-label" for="pais">País</label>
-                                <input type="text" class="form-control country-mask input-wrap-input" id="pais" placeholder="Ex.: Brasil" autocomplete="off" required>
+                                <input type="text" class="form-control country-mask input-wrap-input" id="pais" name="pais" placeholder="Ex.: Brasil" required>
                             </div>
 
                         </fieldset>
