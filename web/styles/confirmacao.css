@@ -44,16 +44,18 @@ body {
 }
 
 .informacaohospede{
-    text-align: center;
+   
     color: orange;
+}
+
+.informacaohospede, .submit h3, p{
+     text-align: center;
 }
 
 .informacaohospede p, h6{
     color: black;
 
 }
-
-
 
 .informacaohospede h2{
     color: orange;
@@ -72,6 +74,7 @@ body {
         border: none;
         border-radius: 4px;
         cursor: pointer;
+        
     }
 
     input[type=submit]:hover {
