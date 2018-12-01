@@ -30,32 +30,47 @@
 
         <!--Apresenta os dados do hospede-->
         <div class="informacaohospede">
-                <h3>Confirmação:</h3>
-                <p>Confirme se seus dados estão correto</p>
-                <!--Informa o nome do usuario-->
-                <h5>NOME DO HOSPEDE:</h5>
-                <p> ${itemCarrinho.hospede.nome}</p>
+            <h3>Confirmação:</h3>
+            <p>Confirme se seus dados estão correto</p>
+            <c:choose>
+                <c:when test="${empty itemCarrinho}"> 
+                    <p>- N&atilde;o h&aacute; reservas em seu nome </p>
+                </c:when>
+                <c:otherwise>
+                    <!--Loop para retornar a lista de acomodações-->
+                    <c:forEach var="informacao" items="${itemCarrinho}">
+                        <!--Informa o nome do usuario-->
+                        <h5>NOME DO HOSPEDE:</h5>
+                        <p>${itemCarrinho.hospede.nome}</p>
 
-                <!--Informa o nome do usuario-->
-                <h5>TELEFONE:</h5>
-                <p>${itemCarrinho.hospede.telefone}</p>
+                        <!--Informa o nome do usuario-->
+                        <h5>TELEFONE:</h5>
+                        <p>${itemCarrinho.hospede.telefone}</p>
 
-                <!--Informa a data de entrada-->
-                <h5>DATA DE ENTRADA:</h5>
-                <p>${itemCarrinho.dataInicial}</p>
+                        <!--Informa a data de entrada-->
+                        <h5>DATA DE ENTRADA:</h5>
+                        <p>${itemCarrinho.dataInicial}</p>
 
-                <!--Informa a data de saida-->
-                <h5>DATA DE SAÍDA:</h5>
-                <p>${itemCarrinho.dataInicial}</p>
+                        <!--Informa a data de saida-->
+                        <h5>DATA DE SAÍDA:</h5>
+                        <p>${itemCarrinho.dataInicial}</p>
 
-                <!--Informa a acomodacao-->
-                <h5>ACOMODAÇÃO:</h5>
-                <p>${itemCarrinho.acomodacao.detalhe}, R$: ${itemCarrinho.acomodacao.valor}</p>
-                
+                        <!--Informa a acomodacao-->
+                        <h5>ACOMODAÇÃO:</h5>
+                        <p>${itemCarrinho.acomodacao.detalhe}, R$: ${itemCarrinho.acomodacao.valor}</p>
+                    </c:forEach>
+                </c:otherwise>
+            </c:choose>
+            <form class="confirma-dados" method="POST" action="${pageContext.request.contextPath}/">
                 <input type="hidden" value="${itemCarrinho.hospede.id}">
                 <input type="submit" name="confirmardados" value="CONFIRMAR">
+            </form>
+
+
 
         </div>
 
-    </body>
+    </div>
+
+</body>
 </html>
