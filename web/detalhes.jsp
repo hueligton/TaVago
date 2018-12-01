@@ -14,6 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
         <link rel="stylesheet" type="text/css" href="styles/swiper.min.css">
         <link rel="stylesheet" type="text/css" href="styles/detalhe.css">
+        <link rel="shortcut icon" href="images/favicon.ico"/>
     </head>
     <body>
         <!--Navegation Bar-->

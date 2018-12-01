@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 import javax.ejb.CreateException;
 import model.entity.Acomodacao;
 import model.entity.Categoria;
@@ -72,6 +73,11 @@ public class HotelManager {
 
     public Collection<Hotel> listarHotel() {
         return factory.listar(new Hotel());
+    }
+    
+    public Collection<Hotel> listarHotel(String destino) {
+        List<Hotel> lista = factory.listar(new Hotel());
+        return lista.stream().filter(x -> x.getCidade().equals(destino)).collect(Collectors.toList());
     }
 
     public void atualizarHotel(int id, String nome, int quantidadeEstrela, String telefone, String rua, int numero, String cidade, String estado, String pais) {

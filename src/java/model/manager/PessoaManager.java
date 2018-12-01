@@ -18,17 +18,17 @@ public class PessoaManager {
         
     }
     
-    public int realizarLogin(String email, String senha) {
+    public Usuario realizarLogin(String email, String senha) {
         
         List<Usuario> usuarios = factory.listar(new Usuario());
 
         for (Usuario u: usuarios)
-
+            
             if (u.getEmail().equals(email) && u.getSenha().equals(senha))
                 
-                return u.getIdPessoa();
+                return u;
         
-        return -1;
+        return null;
         
     }
     
@@ -95,7 +95,7 @@ public class PessoaManager {
         
         if (usuarioHospede != null){
             
-            Cartao cartao = new Cartao(usuarioHospede.getIdPessoa(), usuarioHospede, titular, numeroCartao, vencimento, codigoSeguranca);
+            Cartao cartao = new Cartao(usuarioHospede, titular, numeroCartao, vencimento, codigoSeguranca);
             
             usuarioHospede.setCartao(cartao);
             
