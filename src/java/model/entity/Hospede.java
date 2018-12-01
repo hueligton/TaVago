@@ -11,12 +11,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "HOSPEDE")
-public class Hospede extends Pessoa implements Serializable{
+public class Hospede extends Pessoa implements Serializable {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idPessoa", referencedColumnName = "idPessoa", table = "USUARIO")
     private Pessoa pessoa;
-    
+
     @Column(nullable = false, length = 255)
     private String rua;
 
@@ -42,7 +42,7 @@ public class Hospede extends Pessoa implements Serializable{
         this.estado = estado;
         this.pais = pais;
     }
-    
+
     public Hospede(Pessoa pessoa, String rua, Integer numeroCasa, String cidade, String estado, String pais) {
         this.pessoa = pessoa;
         this.rua = rua;
@@ -60,7 +60,7 @@ public class Hospede extends Pessoa implements Serializable{
         this.estado = estado;
         this.pais = pais;
     }
-    
+
     public Hospede(Integer id, String nome, String cpf, String telefone, String rua, Integer numeroCasa, String cidade, String estado, String pais) {
         super(id, nome, cpf, telefone);
         this.rua = rua;
@@ -69,7 +69,7 @@ public class Hospede extends Pessoa implements Serializable{
         this.estado = estado;
         this.pais = pais;
     }
-    
+
     public Hospede(Pessoa pessoa, String rua, Integer numeroCasa, String cidade, String estado, String pais, String nome, String cpf, String telefone) {
         super(nome, cpf, telefone);
         this.pessoa = pessoa;
@@ -181,6 +181,6 @@ public class Hospede extends Pessoa implements Serializable{
             return false;
         }
         return true;
-    }    
-    
+    }
+
 }

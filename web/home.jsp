@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -20,17 +21,17 @@
 
             <!-- Container da grade de navegação superior -->
             <div class="container-to-grid">
-                
+
                 <!-- Top bar (logo e opções de navegação) -->
                 <nav class="top-bar">
-                
+
                     <!-- Logotipo TaVago -->
                     <div class="logo-tavago">
                         <a href="${pageContext.request.contextPath}/home">
                             <img class="logo-tavago" src="images/logo-tavago.png" alt="tavago"/>
                         </a>
                     </div>
-                    
+
                     <!-- Seção de opções de navegação -->
                     <div class="top-bar-section">
                         <ul class="options">
@@ -50,22 +51,22 @@
                 <h3>O melhor hotel você encontra aqui</h3>
             </header>
         </div>
-        
+
         <!-- Conteúdo da página principal -->
         <div class="main-content"> 
-            
+
             <!-- <header id="home-top"></header> Espaço para cabeçalho secundário -->
-            
+
             <div class="home-content">
 
                 <!-- Formulário de consulta definido no diagrama de navegação -->
                 <form class="formulario-consulta" method="POST" action="${pageContext.request.contextPath}/consulta">
-                    
+
                     <div class="destino">
                         <label for="destino">Destino</label><br>
                         <input type="text" name="destino" id="destino" required><br>
                     </div>
-                    
+
                     <div class="datas">
                         <div class="entrada">
                             <label for="dataInicial">Data de check-in</label><br>
@@ -81,22 +82,16 @@
                     <div class="quantidade">
                         <label for="quantidadePessoas">Quantidade hóspedes</label><br>
                         <select name="quantidadePessoas" id="quantidadePessoas">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
+                            <c:forEach begin="1" end="9" var="qtd">
+                                <option value="${qtd}">${qtd}</option>
+                            </c:forEach>
                         </select>
                     </div>
 
                     <input type="submit" value="BUSCAR HOTEL">
-                    
+
                 </form>
-            
+
             </div>
 
         </div>

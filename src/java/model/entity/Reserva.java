@@ -28,7 +28,7 @@ public class Reserva implements Serializable {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idUsuarioHospede", referencedColumnName = "idPessoa")
     private UsuarioHospede usuarioHospede;
-    
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "reserva")
     private Collection<ItemReserva> itemReserva;
 

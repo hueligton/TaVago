@@ -40,7 +40,7 @@ public class DAO {
     }
 
     public Serializable salvar(Object objeto) {
-        Serializable save=null;
+        Serializable save = null;
         Session session = null;
         Transaction tx = null;
 

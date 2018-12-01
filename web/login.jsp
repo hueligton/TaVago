@@ -37,7 +37,7 @@
 
         <!-- Conteúdo da página principal -->
         <section class="main-content">
-            
+
             <header id="home-top">
                 <div class="form-description">
                     <h2>Acessar conta</h2>
@@ -62,7 +62,7 @@
                         <div id="input-submit" class="input-wrap">
                             <input type="submit" value="acessar">    
                         </div>
-                      
+
                     </form>
 
                 </div>

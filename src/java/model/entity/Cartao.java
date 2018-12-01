@@ -9,8 +9,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "CARTAO")
-public class Cartao implements Serializable{
-    
+public class Cartao implements Serializable {
+
     @Column(nullable = false, length = 255)
     private String titular;
 
@@ -102,6 +102,5 @@ public class Cartao implements Serializable{
         }
         return true;
     }
-    
-    
+
 }

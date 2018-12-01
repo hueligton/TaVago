@@ -16,13 +16,13 @@ public class Usuario extends Pessoa implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idPessoa", referencedColumnName = "idPessoa", table = "USUARIO")
     private Pessoa Pessoa;
-    
+
     @Column(unique = true, nullable = false, length = 255)
     private String email;
 
     @Column(nullable = false, length = 255)
     private String senha;
-    
+
     public Usuario() {
     }
 
@@ -45,7 +45,7 @@ public class Usuario extends Pessoa implements Serializable {
         this.email = email;
         this.senha = senha;
     }
-  
+
     public Usuario(String email, String senha) {
         this.email = email;
         this.senha = senha;
@@ -119,6 +119,5 @@ public class Usuario extends Pessoa implements Serializable {
         }
         return true;
     }
-    
-    
+
 }

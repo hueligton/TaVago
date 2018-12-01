@@ -21,14 +21,14 @@ public class UsuarioProprietario extends Usuario implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "proprietario")
     private Collection<Hotel> hotel;
-    
+
     public UsuarioProprietario() {
     }
 
     public UsuarioProprietario(Collection<Hotel> hotel) {
         this.hotel = hotel;
     }
-    
+
     public UsuarioProprietario(Usuario pessoa, Collection<Hotel> hotel) {
         this.pessoa = pessoa;
         this.hotel = hotel;
@@ -38,18 +38,17 @@ public class UsuarioProprietario extends Usuario implements Serializable {
         super(email, senha);
         this.hotel = hotel;
     }
-    
-    
+
     public UsuarioProprietario(Usuario pessoa, Collection<Hotel> hotel, String email, String senha) {
         super(email, senha);
         this.pessoa = pessoa;
         this.hotel = hotel;
     }
-    
+
     public UsuarioProprietario(String nome, String cpf, String telefone, String email, String senha) {
         super(nome, cpf, telefone, email, senha);
     }
-    
+
     public UsuarioProprietario(String nome, String cpf, String telefone, String email, String senha, Collection<Hotel> hotel) {
         super(nome, cpf, telefone, email, senha);
         this.hotel = hotel;
@@ -65,13 +64,13 @@ public class UsuarioProprietario extends Usuario implements Serializable {
         this.pessoa = pessoa;
         this.hotel = hotel;
     }
-    
+
     public UsuarioProprietario(Usuario pessoa, Collection<Hotel> hotel, Integer id, String nome, String cpf, String telefone, String email, String senha) {
         super(id, nome, cpf, telefone, email, senha);
         this.pessoa = pessoa;
         this.hotel = hotel;
     }
-    
+
     public Usuario getPessoa() {
         return pessoa;
     }

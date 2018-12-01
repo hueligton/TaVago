@@ -2,9 +2,9 @@
 
 ## Grupo 6
 - Ana Mendes - Controller
-- Felipe Caggi - View e Manager
+- Felipe Caggi - Controller, View e Manager
 - Guilherme Gabriel - View e popular banco
-- Hueligton Melo - Criação do banco, mapeamento entidades, manager, revisão e aprovação de pull request
+- Hueligton Melo - Criação do banco, mapeamento entidades, controller, manager, revisão e aprovação de pull request
 - Vitória Holanda - View e popular banco
 
 ## Tecnologias
