@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="styles/home.css"/>
+        <link rel="shortcut icon" href="images/favicon.ico"/>
         <title>TaVago</title>
     </head>
     <body id="home-page">
@@ -46,7 +47,7 @@
             <!-- Cabeçalho -->
             <header class="header-welcome">
                 <h1>Bem-vindo ao TaVago!</h1>
-                <h3>O melhor hotal você encontra aqui</h3>
+                <h3>O melhor hotel você encontra aqui</h3>
             </header>
         </div>
         
@@ -68,12 +69,12 @@
                     <div class="datas">
                         <div class="entrada">
                             <label for="dataInicial">Data de check-in</label><br>
-                            <input type="date" name="dataInicial" id="dataInicial" required><br>
+                            <input type="date" name="dataEntrada" id="dataEntrada" required><br>
                         </div>
 
                         <div class="saida">
                             <label for="dataFinal">Data de check-out</label><br>
-                            <input type="date" name="dataFinal" id="dataFinal" required><br>
+                            <input type="date" name="dataSaida" id="dataSaida" required><br>
                         </div>
                     </div>
 
@@ -84,11 +85,11 @@
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
-                            <option value="4">5</option>
-                            <option value="4">6</option>
-                            <option value="4">7</option>
-                            <option value="4">8</option>
-                            <option value="4">9</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
                         </select>
                     </div>
 

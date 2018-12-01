@@ -9,12 +9,16 @@
         <servlet-name>ReservaServletController</servlet-name>
         <url-pattern>/detalhes</url-pattern>
         <url-pattern>/pagamento</url-pattern>
+        <url-pattern>/login</url-pattern>
         <url-pattern>/resultado</url-pattern>
-        <url-pattern>/carrinho</url-pattern>
         <url-pattern>/home</url-pattern>
         <url-pattern>/confirmacao</url-pattern>
         <url-pattern>/consulta</url-pattern>
         <url-pattern>/dadoshospede</url-pattern>
+        <url-pattern>/carrinho</url-pattern>
+        <url-pattern>/adicionarCarrinho</url-pattern>
+        <url-pattern>/removerCarrinho</url-pattern>
+        <url-pattern>/atualizarCarrinho</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

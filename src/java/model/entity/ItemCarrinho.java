@@ -7,6 +7,10 @@ public class ItemCarrinho {
     private Date dataInicial;
 
     private Date dataFinal;
+    
+    private int quantidade;
+    
+    private Double valor;
 
     private Acomodacao acomodacao;
     
@@ -15,11 +19,16 @@ public class ItemCarrinho {
     public ItemCarrinho() {
     }
 
-    public ItemCarrinho(Date dataInicial, Date dataFinal, Acomodacao acomodacao, Hospede hospede) {
+    public ItemCarrinho(Date dataInicial, Date dataFinal, int quantidade, Acomodacao acomodacao) {
         this.dataInicial = dataInicial;
         this.dataFinal = dataFinal;
+        this.quantidade = quantidade;
         this.acomodacao = acomodacao;
-        this.hospede = hospede;
+        setValor();
+    }
+    
+    public void atualizarValor() {
+        valor = acomodacao.getValor() * quantidade;
     }
 
     public Date getDataInicial() {
@@ -38,12 +47,33 @@ public class ItemCarrinho {
         this.dataFinal = dataFinal;
     }
 
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+        setValor();
+    }
+
+    public Double getValor() {
+        return valor;
+    }
+
+    private void setValor() {
+        valor = acomodacao.getValor() * quantidade;
+    }
+
     public Acomodacao getAcomodacao() {
         return acomodacao;
     }
 
-    public void setAcomodacao(Acomodacao acomodacao) {
-        this.acomodacao = acomodacao;
+    public Hospede getHospede() {
+        return hospede;
+    }
+
+    public void setHospede(Hospede hospede) {
+        this.hospede = hospede;
     }
 
     public Hospede getHospede() {

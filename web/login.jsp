@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="styles/dadoshospede.css"/>
+        <link rel="shortcut icon" href="images/favicon.ico"/>
         <meta http-equiv="refresh" content="" >
         <title>Login</title>
     </head>
@@ -50,12 +51,12 @@
 
                         <div id="input-email" class="input-wrap">
                             <label class="input-wrap-label" for="email">E-mail</label>
-                            <input type="text" class="form-control email-mask input-wrap-input" id="email" placeholder="Ex.: james@email.com" required>
+                            <input type="text" class="form-control email-mask input-wrap-input" name="email" id="email" placeholder="Ex.: james@email.com" required>
                         </div>
 
                         <div id="input-password" class="input-wrap">
                             <label class="input-wrap-label" for="senha">Senha</label>
-                            <input type="password" class="form-control password-mask input-wrap-input" id="senha" autocomplete="off" required>
+                            <input type="password" class="form-control password-mask input-wrap-input" name="senha" id="senha" autocomplete="off" required>
                         </div>
 
                         <div id="input-submit" class="input-wrap">

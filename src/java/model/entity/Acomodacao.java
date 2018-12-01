@@ -28,7 +28,7 @@ public class Acomodacao implements Serializable {
     private String descricao;
 
     @Column(nullable = false)
-    private Float valor;
+    private Double valor;
 
     @ManyToOne
     @JoinColumn(name = "idCategoria", referencedColumnName = "idCategoria")
@@ -41,27 +41,27 @@ public class Acomodacao implements Serializable {
     public Acomodacao() {
     }
 
-    public Acomodacao(String descricao, Float valor, Categoria categoria) {
+    public Acomodacao(String descricao, Double valor, Categoria categoria) {
         this.descricao = descricao;
         this.valor = valor;
         this.categoria = categoria;
     }
 
-    public Acomodacao(String descricao, Float valor, Categoria categoria, Hotel hotel) {
+    public Acomodacao(String descricao, Double valor, Categoria categoria, Hotel hotel) {
         this.descricao = descricao;
         this.valor = valor;
         this.categoria = categoria;
         this.hotel = hotel;
     }
 
-    public Acomodacao(Integer idAcomodacao, String descricao, Float valor, Categoria categoria) {
+    public Acomodacao(Integer idAcomodacao, String descricao, Double valor, Categoria categoria) {
         this.idAcomodacao = idAcomodacao;
         this.descricao = descricao;
         this.valor = valor;
         this.categoria = categoria;
     }
 
-    public Acomodacao(Integer idAcomodacao, String descricao, Float valor, Categoria categoria, Hotel hotel) {
+    public Acomodacao(Integer idAcomodacao, String descricao, Double valor, Categoria categoria, Hotel hotel) {
         this.idAcomodacao = idAcomodacao;
         this.descricao = descricao;
         this.valor = valor;
@@ -85,11 +85,11 @@ public class Acomodacao implements Serializable {
         this.descricao = descricao;
     }
 
-    public Float getValor() {
+    public Double getValor() {
         return valor;
     }
 
-    public void setValor(Float valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
 

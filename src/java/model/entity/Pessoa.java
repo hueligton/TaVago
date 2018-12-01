@@ -26,7 +26,7 @@ public class Pessoa implements Serializable {
     @Column(nullable = false, length = 255)
     private String nome;
 
-    @Column(unique = true, nullable = false, length = 11)
+    @Column(unique = true, nullable = false, length = 14)
     private String cpf;
 
     @Column

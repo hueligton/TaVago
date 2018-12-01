@@ -1,3 +1,6 @@
+DROP SCHEMA IF EXISTS tavagoschema CASCADE;
+CREATE SCHEMA tavagoschema;
+
 set search_path = "tavagoschema";
 
 CREATE TABLE PESSOA (

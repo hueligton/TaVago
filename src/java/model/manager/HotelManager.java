@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 import javax.ejb.CreateException;
 import model.entity.Acomodacao;
 import model.entity.Categoria;
@@ -20,7 +21,7 @@ public class HotelManager {
         
     }
 
-    public void cadastrarHotel(String nome, int quantidadeEstrela, String telefone, String rua, int numero, String cidade, String estado, String pais, List<Integer> idCategoria, List<String> descricao, List<Float> valor, Integer idProprietario) throws CreateException {
+    public void cadastrarHotel(String nome, int quantidadeEstrela, String telefone, String rua, int numero, String cidade, String estado, String pais, List<Integer> idCategoria, List<String> descricao, List<Double> valor, Integer idProprietario) throws CreateException {
         UsuarioProprietario proprietario = (UsuarioProprietario) factory.buscar(new UsuarioProprietario(), idProprietario);
         Hotel hotel = new Hotel(nome, quantidadeEstrela, telefone, rua, numero, cidade, estado, pais, proprietario);
         //Collection<Hotel> cHotel = new LinkedList<>();
@@ -39,12 +40,10 @@ public class HotelManager {
             acomodacao.add(new Acomodacao(descricao.get(i), valor.get(i), categoria, hotel));
         }
         hotel.setAcomodacao(acomodacao);
-        boolean salvar = factory.salvar(hotel);
-        if(!salvar)
-            throw new CreateException("Não foi possível salvar o objeto");
+        factory.salvar(hotel);
     }
 
-    public void cadastrarAcomodacao(int idHotel, int idCategoria, String descricao, float valor) {
+    public void cadastrarAcomodacao(int idHotel, int idCategoria, String descricao, Double valor) {
         Acomodacao obj = new Acomodacao(descricao, valor, (Categoria) factory.buscar(new Categoria(), idCategoria));
         factory.salvar(obj);
     }
@@ -72,6 +71,11 @@ public class HotelManager {
 
     public Collection<Hotel> listarHotel() {
         return factory.listar(new Hotel());
+    }
+    
+    public Collection<Hotel> listarHotel(String destino) {
+        List<Hotel> lista = factory.listar(new Hotel());
+        return lista.stream().filter(x -> x.getCidade().equals(destino)).collect(Collectors.toList());
     }
 
     public void atualizarHotel(int id, String nome, int quantidadeEstrela, String telefone, String rua, int numero, String cidade, String estado, String pais) {

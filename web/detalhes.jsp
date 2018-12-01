@@ -14,6 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
         <link rel="stylesheet" type="text/css" href="styles/swiper.min.css">
         <link rel="stylesheet" type="text/css" href="styles/detalhe.css">
+        <link rel="shortcut icon" href="images/favicon.ico"/>
     </head>
     <body>
         <!--Navegation Bar-->
@@ -78,11 +79,11 @@
                     stretch: 0,
                     depth: 100,
                     modifier: 1,
-                    slideShadows: true,
+                    slideShadows: true
                 },
                 pagination: {
-                    el: '.swiper-pagination',
-                },
+                    el: '.swiper-pagination'
+                }
             });
         </script>
         <!--Apresenta a descricao do hotel-->
@@ -126,9 +127,9 @@
 
                             <tr>
                                 <td>${acomodacoes.descricao} </td>
-                            <form method="POST" action="${pageContext.request.contextPath}/reserva">
-                                <td> 
-                                    <select name="quantidade" required>
+                            <form method="POST" action="${pageContext.request.contextPath}/adicionarCarrinho">
+                                <td>
+                                    <select name="quantidade" id="quantidade">
                                         <option value="0">0</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -138,9 +139,9 @@
                                     </select> 
                                 </td>
                                 <td> R$ ${acomodacoes.valor} </td>
-                                <td><input type="hidden" value="${acomodacoes.idAcomodacao}"><input type="submit" value="Vou Reservar" id="enviado"></td>
+                                <td><input type="hidden" id="idAcomodacao" name="idAcomodacao" value="${acomodacoes.idAcomodacao}"><input type="submit" value="Vou Reservar" id="enviado"></td>
                             </form>
-                         </tr>
+                            </tr>
                         </c:forEach>
                     </table>
                 </div>

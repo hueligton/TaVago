@@ -19,7 +19,7 @@ public class UsuarioHospede extends Usuario implements Serializable {
     private Pessoa pessoa;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name= "idPessoa", referencedColumnName = "idPessoa")
+    @JoinColumn(name= "numeroCartao", referencedColumnName = "numeroCartao")
     private Cartao cartao;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idReserva")

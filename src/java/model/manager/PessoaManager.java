@@ -1,6 +1,8 @@
 package model.manager;
 
+import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 import model.entity.Cartao;
 import model.entity.Hospede;
 import model.entity.Pessoa;
@@ -18,29 +20,39 @@ public class PessoaManager {
         
     }
     
-    public int realizarLogin(String email, String senha) {
+    public Usuario realizarLogin(String email, String senha) {
         
         List<Usuario> usuarios = factory.listar(new Usuario());
 
         for (Usuario u: usuarios)
-
+            
             if (u.getEmail().equals(email) && u.getSenha().equals(senha))
                 
-                return u.getIdPessoa();
+                return u;
         
-        return -1;
+        return null;
         
     }
     
-    public boolean cadastrarHospede(String nome, String cpf, String telefone, String rua, int numeroCasa, String cidade, String estado, String pais) {
-        
-        Hospede hospede = new Hospede(nome, cpf, telefone, rua, numeroCasa, cidade, estado, pais);
-        
-        return factory.salvar(hospede);
+    public Hospede cadastrarHospede(String nome, String cpf, String telefone, String rua, int numeroCasa, String cidade, String estado, String pais) {
+        List<Hospede> buscar = factory.listar(new Hospede());
+        Optional<Hospede> findFirst = buscar.stream().filter(x -> x.getCpf().equals(cpf)).findFirst();
+        Hospede hospede = null;
+        if(findFirst.isPresent()){
+            hospede = findFirst.get();
+        }
+        int id;
+        if(hospede==null){
+            hospede = new Hospede(nome, cpf, telefone, rua, numeroCasa, cidade, estado, pais);
+            id = (int) factory.salvar(hospede);
+            hospede = (Hospede) factory.buscar(new Hospede(), id);
+        }
+        System.out.println(hospede.getNome() + hospede.getIdPessoa());
+        return hospede;
         
     }
 
-    public boolean cadastrarUsuarioHospede(String nome, String email, String senha, String cpf, String telefone) {
+    public Serializable cadastrarUsuarioHospede(String nome, String email, String senha, String cpf, String telefone) {
 
         UsuarioHospede usuarioHospede = new UsuarioHospede(nome, cpf, telefone, email, senha);
         
@@ -48,7 +60,7 @@ public class PessoaManager {
         
     }
 
-    public boolean cadastrarUsuarioProprietario(String nome, String email, String senha, String cpf, String telefone) {
+    public Serializable cadastrarUsuarioProprietario(String nome, String email, String senha, String cpf, String telefone) {
 
         UsuarioProprietario usuarioProprietario = new UsuarioProprietario(nome, cpf, telefone, email, senha);
         
@@ -69,43 +81,41 @@ public class PessoaManager {
 
     }
 
-    public Object consultarHospede(int id) {
+    public Hospede consultarHospede(int id) {
         
-        return factory.buscar(new Hospede(), id);
+        return (Hospede) factory.buscar(new Hospede(), id);
 
     }
     
-    public Object consultarUsuarioHospede(int id) {
+    public UsuarioHospede consultarUsuarioHospede(int id) {
         
-        return factory.buscar(new UsuarioHospede(), id);
+        return (UsuarioHospede) factory.buscar(new UsuarioHospede(), id);
 
     }
     
-    public Object consultarUsuarioProprietario(int id) {
+    public UsuarioProprietario consultarUsuarioProprietario(int id) {
         
-        return factory.buscar(new UsuarioProprietario(), id);
+        return (UsuarioProprietario) factory.buscar(new UsuarioProprietario(), id);
 
     }
 
-    public boolean cadastrarCartao(String titular, String numeroCartao, String vencimento, int codigoSeguranca, int idUsuarioHospede) {
+    public Serializable cadastrarCartao(String titular, String numeroCartao, String vencimento, int codigoSeguranca, int idUsuarioHospede) {
         
         UsuarioHospede usuarioHospede = (UsuarioHospede) factory.buscar(new UsuarioHospede(), idUsuarioHospede);
         
-        boolean sucesso = false;
-        
         if (usuarioHospede != null){
             
-            Cartao cartao = new Cartao(usuarioHospede.getIdPessoa(), usuarioHospede, titular, numeroCartao, vencimento, codigoSeguranca);
+            Cartao cartao = new Cartao(titular, numeroCartao, vencimento, codigoSeguranca);
             
             usuarioHospede.setCartao(cartao);
             
             factory.editar(usuarioHospede);
             
-            sucesso = factory.salvar(cartao);
+            return factory.salvar(cartao);
             
         }
         
-        return sucesso;
+        return null;
         
     }
 
