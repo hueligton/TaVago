@@ -79,11 +79,11 @@
                     stretch: 0,
                     depth: 100,
                     modifier: 1,
-                    slideShadows: true,
+                    slideShadows: true
                 },
                 pagination: {
-                    el: '.swiper-pagination',
-                },
+                    el: '.swiper-pagination'
+                }
             });
         </script>
         <!--Apresenta a descricao do hotel-->
@@ -127,9 +127,9 @@
 
                             <tr>
                                 <td>${acomodacoes.descricao} </td>
-                            <form method="POST" action="${pageContext.request.contextPath}/reserva">
+                            <form method="POST" action="${pageContext.request.contextPath}/adicionarCarrinho">
                                 <td> 
-                                    <select name="quantidade">
+                                    <select name="quantidade" id="quantidade">
                                         <option value="0">0</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -138,9 +138,9 @@
                                         <option value="5">5</option>
                                     </select> 
                                 </td>
-                            </form>
                                 <td> R$ ${acomodacoes.valor} </td>
-                                <td><input type="hidden" value="${acomodacoes.idAcomodacao}"><input type="submit" value="Vou Reservar" id="enviado"></td>
+                                <td><input type="hidden" id="idAcomodacao" name="idAcomodacao" value="${acomodacoes.idAcomodacao}"><input type="submit" value="Vou Reservar" id="enviado"></td>
+                            </form>
                             </tr>
                         </c:forEach>
                     </table>

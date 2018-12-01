@@ -77,6 +77,7 @@
                                         <%-- Coluna de descrição das acomodações --%>
                                         <td class="description-collumn">
                                             <div class="room">
+                                                <p><c:out value="${cart.acomodacao.hotel.nome}"/></p>
                                                 <p><c:out value="${cart.acomodacao.descricao}"/></p>
                                             </div>
 

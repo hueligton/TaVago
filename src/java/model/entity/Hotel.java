@@ -50,11 +50,11 @@ public class Hotel implements Serializable {
     @Column(nullable = false, length = 255)
     private String pais;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idProprietario", referencedColumnName = "idPessoa")
     private UsuarioProprietario proprietario;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel", fetch = FetchType.LAZY)
     private Collection<Acomodacao> acomodacao;
 
     public Hotel() {

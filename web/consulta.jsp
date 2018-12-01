@@ -85,7 +85,7 @@
                             </p>
                             <p>Endereço: ${consulta.rua}, ${consulta.cidade}, ${conulta.estado}</p>
                             <form method="POST" action="${pageContext.request.contextPath}/detalhes">
-                                <input id="idHotel" value="${consulta.idHotel}" type="hidden">
+                                <input id="idHotel" name="idHotel" value="${consulta.idHotel}" type="hidden">
                                 <input class="detail" type="submit" name="detalhes" value="DETALHES">
                             </form>
                         </div>

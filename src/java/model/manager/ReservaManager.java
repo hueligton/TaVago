@@ -3,7 +3,7 @@ package model.manager;
 import model.entity.Reserva;
 import model.entity.Carrinho;
 import java.util.Date;
-import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 import model.entity.Acomodacao;
 import model.entity.ItemCarrinho;
@@ -33,7 +33,7 @@ public class ReservaManager {
     }
     
     public Carrinho removerCarrinho(Carrinho carrinho, int idAcomodacao) {
-        LinkedList<ItemCarrinho> car = carrinho.getItensCarrinho();
+        List<ItemCarrinho> car = carrinho.getItensCarrinho();
         Optional<ItemCarrinho> itemCarrinho = car.stream().filter(x -> x.getAcomodacao().getIdAcomodacao()==idAcomodacao).findFirst();
         
         carrinho.removeItemCarrinho(itemCarrinho.get());
@@ -41,7 +41,7 @@ public class ReservaManager {
     }
     
     public Carrinho atualizarCarrinho(Carrinho carrinho, int idAcomodacao, int quantidade) {
-        LinkedList<ItemCarrinho> car = carrinho.getItensCarrinho();
+        List<ItemCarrinho> car = carrinho.getItensCarrinho();
         Optional<ItemCarrinho> itemCarrinho = car.stream().filter(x -> x.getAcomodacao().getIdAcomodacao()==idAcomodacao).findFirst();
         
         carrinho.atualizaItemCarrinho(itemCarrinho.get(), quantidade);

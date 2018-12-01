@@ -10,9 +10,11 @@ public class ItemCarrinho {
     
     private int quantidade;
     
-    private float valor;
+    private Double valor;
 
     private Acomodacao acomodacao;
+    
+    private Hospede hospede;
 
     public ItemCarrinho() {
     }
@@ -54,7 +56,7 @@ public class ItemCarrinho {
         setValor();
     }
 
-    public float getValor() {
+    public Double getValor() {
         return valor;
     }
 
@@ -64,6 +66,14 @@ public class ItemCarrinho {
 
     public Acomodacao getAcomodacao() {
         return acomodacao;
+    }
+
+    public Hospede getHospede() {
+        return hospede;
+    }
+
+    public void setHospede(Hospede hospede) {
+        this.hospede = hospede;
     }
 
 }
