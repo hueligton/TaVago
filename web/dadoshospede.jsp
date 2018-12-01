@@ -14,7 +14,7 @@
         <link rel="stylesheet" type="text/css" href="styles/dadoshospede.css"/>
         <link rel="shortcut icon" href="images/favicon.ico"/>
         <meta http-equiv="refresh" content="" >
-        <title>Dados hospede</title>
+        <title>TaVago - Dados hospede</title>
     </head>
     <body id="dadoshospede-page">
 
@@ -51,8 +51,8 @@
                 <div class="form-wrap">
 
                     <form role="form" class="formulario-hospede" method="POST" action="${pageContext.request.contextPath}/pagamento">
-                        <input type="hidden" id="itemCarrinho" name="itemCarrinho" value="${qtdHospede}"
-                               <fieldset class="personal">
+                        <input type="hidden" id="itemCarrinho" name="itemCarrinho" value="${qtdHospede}">
+                        <fieldset class="personal">
                             <legend>Pessoal</legend>
 
                             <div id="input-name" class="input-wrap">

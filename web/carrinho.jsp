@@ -13,7 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="styles/carrinho.css"/>
         <link rel="shortcut icon" href="images/favicon.ico"/>
-        <title>Carrinho</title>
+        <title>TaVago - Carrinho</title>
     </head>
     <body id="carrinho-page">
 
@@ -105,9 +105,9 @@
                                             <%-- Coluna de quantidade de acomodações selecionadas --%>
                                             <td>
                                                 <%--Botão para deletar item do carrinho --%>
-                                                <form name="delete" method="post" action="${pageContext.request.contextPath}/removerCarrinho">
+                                                <form name="delete" method="post" action="${pageContext.request.contextPath}/carrinho">
                                                     <input type="hidden" name="idAcomodacao" value="${cart.acomodacao.idAcomodacao}">
-                                                    <input type="submit" value="remover">    
+                                                    <input type="submit" value="remover" id="remover" name="remover">    
                                                 </form>
                                             </td>
                                         </tr>

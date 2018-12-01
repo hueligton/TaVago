@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="consulta">
-            <form class="formulario-consulta" method="POST" action="${pageContext.request.contextPath}/consulta">
+            <form class="formulario-consulta" method="GET" action="${pageContext.request.contextPath}/consulta">
 
                 <div class="destino">
                     <label for="destino">Destino</label><br>
@@ -94,9 +94,11 @@
                                     </c:forEach>
                                 </p>
                                 <p>Endereço: ${consulta.rua}, ${consulta.cidade}, ${conulta.estado}</p>
-                                <form method="POST" action="${pageContext.request.contextPath}/detalhes">
+                                <form method="GET" action="${pageContext.request.contextPath}/detalhes">
                                     <input id="idHotel" name="idHotel" value="${consulta.idHotel}" type="hidden">
-                                    <input class="detail" type="submit" name="detalhes" value="DETALHES">
+                                    <input id="dataEntrada" name="dataEntrada" value="${dataEntrada}" type="hidden">
+                                    <input id="dataSaida" name="dataSaida" value="${dataSaida}" type="hidden">
+                                    <input class="detail" type="submit" value="DETALHES">
                                 </form>
                             </div>
                         </div>
