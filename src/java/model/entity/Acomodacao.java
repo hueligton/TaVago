@@ -34,7 +34,7 @@ public class Acomodacao implements Serializable {
     @JoinColumn(name = "idCategoria", referencedColumnName = "idCategoria")
     private Categoria categoria;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "idHotel", referencedColumnName = "idHotel")
     private Hotel hotel;
 
@@ -108,7 +108,6 @@ public class Acomodacao implements Serializable {
         hash = 89 * hash + Objects.hashCode(this.descricao);
         hash = 89 * hash + Objects.hashCode(this.valor);
         hash = 89 * hash + Objects.hashCode(this.categoria);
-        hash = 89 * hash + Objects.hashCode(this.hotel);
         return hash;
     }
 
@@ -148,5 +147,5 @@ public class Acomodacao implements Serializable {
 
     public void setHotel(Hotel hotel) {
         this.hotel = hotel;
-    }
+    } 
 }

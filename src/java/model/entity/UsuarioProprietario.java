@@ -15,10 +15,6 @@ import javax.persistence.Table;
 @Table(name = "USUARIOPROPRIETARIO")
 public class UsuarioProprietario extends Usuario implements Serializable {
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idPessoa", referencedColumnName = "idPessoa", table = "USUARIO")
-    private Usuario pessoa;
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "proprietario")
     private Collection<Hotel> hotel;
 
@@ -29,19 +25,13 @@ public class UsuarioProprietario extends Usuario implements Serializable {
         this.hotel = hotel;
     }
 
-    public UsuarioProprietario(Usuario pessoa, Collection<Hotel> hotel) {
-        this.pessoa = pessoa;
-        this.hotel = hotel;
-    }
-
     public UsuarioProprietario(String email, String senha, Collection<Hotel> hotel) {
         super(email, senha);
         this.hotel = hotel;
     }
 
-    public UsuarioProprietario(Usuario pessoa, Collection<Hotel> hotel, String email, String senha) {
+    public UsuarioProprietario(Collection<Hotel> hotel, String email, String senha) {
         super(email, senha);
-        this.pessoa = pessoa;
         this.hotel = hotel;
     }
 
@@ -59,24 +49,14 @@ public class UsuarioProprietario extends Usuario implements Serializable {
         this.hotel = hotel;
     }
 
-    public UsuarioProprietario(Usuario pessoa, Collection<Hotel> hotel, String nome, String cpf, String telefone, String email, String senha) {
+    public UsuarioProprietario(Collection<Hotel> hotel, String nome, String cpf, String telefone, String email, String senha) {
         super(nome, cpf, telefone, email, senha);
-        this.pessoa = pessoa;
         this.hotel = hotel;
     }
 
-    public UsuarioProprietario(Usuario pessoa, Collection<Hotel> hotel, Integer id, String nome, String cpf, String telefone, String email, String senha) {
+    public UsuarioProprietario(Collection<Hotel> hotel, Integer id, String nome, String cpf, String telefone, String email, String senha) {
         super(id, nome, cpf, telefone, email, senha);
-        this.pessoa = pessoa;
         this.hotel = hotel;
-    }
-
-    public Usuario getPessoa() {
-        return pessoa;
-    }
-
-    public void setPessoa(Usuario pessoa) {
-        this.pessoa = pessoa;
     }
 
     public Collection<Hotel> getHotel() {
@@ -93,7 +73,6 @@ public class UsuarioProprietario extends Usuario implements Serializable {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 29 * hash + Objects.hashCode(this.pessoa);
         hash = 29 * hash + Objects.hashCode(this.hotel);
         return hash;
     }
@@ -110,9 +89,6 @@ public class UsuarioProprietario extends Usuario implements Serializable {
             return false;
         }
         final UsuarioProprietario other = (UsuarioProprietario) obj;
-        if (!Objects.equals(this.pessoa, other.pessoa)) {
-            return false;
-        }
         if (!Objects.equals(this.hotel, other.hotel)) {
             return false;
         }

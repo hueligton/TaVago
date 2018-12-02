@@ -1,12 +1,17 @@
 package model.manager;
 
+import java.io.Serializable;
+import java.util.Collection;
 import model.entity.Reserva;
 import model.entity.Carrinho;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import model.entity.Acomodacao;
 import model.entity.ItemCarrinho;
+import model.entity.ItemReserva;
+import model.entity.UsuarioHospede;
 
 public class ReservaManager {
 
@@ -38,14 +43,6 @@ public class ReservaManager {
         return carrinho;
     }
 
-    public void cadastraItemReserva(int idRserva, int idAcomodacao, int dataInicial, int dataFinal, int valor, int idHospede) {
-
-    }
-
-    public Reserva cadastrarReserva(int idUsuarioHospede) {
-        return null;
-    }
-
     public void excluirReserva(int idReserva) {
 
     }
@@ -60,6 +57,16 @@ public class ReservaManager {
 
     public void pagarReserva(int idPessoa, int idReserva) {
 
+    }
+
+    public Integer cadastrarReserva(Carrinho carrinho, Integer idUsuarioHospede) {
+        UsuarioHospede usuarioHospede = (UsuarioHospede) factory.buscar(new UsuarioHospede(), idUsuarioHospede);
+        Collection<ItemReserva> itensReserva = new LinkedList();
+        Reserva reserva = new Reserva(usuarioHospede, itensReserva);
+        carrinho.getItensCarrinho().forEach(item -> 
+                itensReserva.add(new ItemReserva(item.getDataInicial(), item.getDataFinal(), item.getAcomodacao().getValor(), item.getAcomodacao(), item.getHospede(), reserva))
+        );
+        return (int) factory.salvar(reserva);
     }
 
 }

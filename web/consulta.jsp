@@ -53,7 +53,7 @@
                         <label for="dataSaida">Data de check-out</label><br>
                         <input type="date" name="dataSaida" id="dataSaida" <c:choose>
                                    <c:when test="${not empty destino}"> 
-                                       value="${dataEntrada}"
+                                       value="${dataSaida}"
                                    </c:when>
                                </c:choose> required><br>
                     </div>

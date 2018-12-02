@@ -54,7 +54,7 @@ public class Hotel implements Serializable {
     @JoinColumn(name = "idProprietario", referencedColumnName = "idPessoa")
     private UsuarioProprietario proprietario;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel", fetch = FetchType.EAGER)
     private Collection<Acomodacao> acomodacao;
 
     public Hotel() {
@@ -224,8 +224,6 @@ public class Hotel implements Serializable {
         hash = 89 * hash + Objects.hashCode(this.cidade);
         hash = 89 * hash + Objects.hashCode(this.estado);
         hash = 89 * hash + Objects.hashCode(this.pais);
-        hash = 89 * hash + Objects.hashCode(this.proprietario);
-        hash = 89 * hash + Objects.hashCode(this.acomodacao);
         return hash;
     }
 
