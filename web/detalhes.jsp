@@ -10,7 +10,7 @@
 <html lang="pt-br">
     <head>
         <title>TaVago - Detalhes Hotel</title>
-        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
         <link rel="stylesheet" type="text/css" href="styles/swiper.min.css">
         <link rel="stylesheet" type="text/css" href="styles/detalhe.css">
@@ -21,13 +21,13 @@
         <div class="row">
             <div class="logo">
                 <a href="${pageContext.request.contextPath}/home">
-                    <img src="images/logo-tavago.png">
+                    <img src="images/logo-tavago.png" alt="tavago">
                 </a>
             </div>
             <div class="carrinho">
                 <a href="${pageContext.request.contextPath}/carrinho">
-                    <img src="images/carrinho.png">
-                    <a/>
+                    <img src="images/carrinho.png" alt="carrinho">
+                </a>
             </div>     
         </div>
 
@@ -48,7 +48,7 @@
                 <c:forEach var="nmr" begin="1" end="7">
                     <div class="swiper-slide">
                         <div class="img">
-                            <img src="hotel/${hotel.idHotel}/${nmr}.jpg">                            
+                            <img src="hotel/${hotel.idHotel}/${nmr}.jpg" alt="hotel">                            
                         </div>
                         <div class="detalhes">
                             <h3>Hotel<br><span>${hotel.nome}</span></h3>
@@ -65,7 +65,7 @@
 
 
         <!-- Swiper JS -->
-        <script type="text/javascript" src="javascript/swiper.min.js"></script> 
+        <script src="javascript/swiper.min.js"></script> 
 
         <!-- Initialize Swiper -->
         <script>
@@ -115,39 +115,42 @@
             <c:otherwise>
                 <!--Apresenta as acomodacoes do hotel-->
                 <div class="acomodacoes">
-                    <!--Tabbelas com as acomodacoes-->
-                    <table class="lista-acomodacao">
-                        <tr>
-                            <th>Tipo de  Quarto</th>
-                            <th>Selecionar nº de quartos</th>
-                            <th>Preço</th>
-                            <th></th>
-                        </tr>
-                        <c:forEach var="acomodacoes" items="${hotel.acomodacao}">
-
+                    <form method="POST" action="${pageContext.request.contextPath}/carrinho">
+                        <!--Tabbelas com as acomodacoes-->
+                        <table class="lista-acomodacao">
                             <tr>
-                                <td>${acomodacoes.descricao} </td>
-                            <form method="POST" action="${pageContext.request.contextPath}/carrinho">
-                                <td>
-                                    <select name="quantidade" id="quantidade">
-                                        <option value="0">0</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select> 
-                                </td>
-                                <td> R$ ${acomodacoes.valor} </td>
-                                <td>
-                                    <input type="hidden" id="idAcomodacao" name="idAcomodacao" value="${acomodacoes.idAcomodacao}">
-                                    <input type="hidden" id="dataEntrada" name="dataEntrada" value="${dataEntrada}">
-                                    <input type="hidden" id="dataSaida" name="dataSaida" value="${dataSaida}">
-                                    <input type="submit" value="Vou Reservar" id="adicionar" name="adicionar"></td>
-                            </form>
+                                <th>Tipo de  Quarto</th>
+                                <th>Selecionar nº de quartos</th>
+                                <th>Preço</th>
+                                <th></th>
                             </tr>
-                        </c:forEach>
-                    </table>
+                            <c:forEach var="acomodacoes" items="${hotel.acomodacao}">
+
+                                <tr>
+                                    <td>${acomodacoes.descricao} </td>
+
+                                    <td>
+                                        <select name="quantidade" id="${acomodacoes.idAcomodacao}">
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select> 
+                                    </td>
+                                    <td> R$ ${acomodacoes.valor} </td>
+                                    <td>
+                                        <input type="hidden" id="idAcomodacao${acomodacoes.idAcomodacao}" name="idAcomodacao" value="${acomodacoes.idAcomodacao}">
+                                        <input type="hidden" id="dataEntrada${acomodacoes.idAcomodacao}" name="dataEntrada" value="${dataEntrada}">
+                                        <input type="hidden" id="dataSaida${acomodacoes.idAcomodacao}" name="dataSaida" value="${dataSaida}">
+                                        <input type="submit" value="Vou Reservar" id="adicionar${acomodacoes.idAcomodacao}" name="adicionar"></td>
+
+                                </tr>
+                            </c:forEach>
+                        </table>
+                    </form>
+
                 </div>
             </c:otherwise>
         </c:choose>

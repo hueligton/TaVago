@@ -9,10 +9,10 @@ and open the template in the editor.
 */
 
 @font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Roboto Regular'), local('Roboto-Regular'), url(http://themes.googleusercontent.com/static/fonts/roboto/v9/zN7GBFwfMP4uA6AR0HCoLQ.ttf) format('truetype');
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Regular'), local('Roboto-Regular'), url(http://themes.googleusercontent.com/static/fonts/roboto/v9/zN7GBFwfMP4uA6AR0HCoLQ.ttf) format('truetype');
 }
 
 html, body {
@@ -31,7 +31,7 @@ body {
 
 .row {
     overflow: hidden;
-    background-color: #3CB371;
+
 }
 
 .logo img
