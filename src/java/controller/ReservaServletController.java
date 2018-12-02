@@ -224,5 +224,6 @@ public class ReservaServletController extends HttpServlet {
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
         Integer idReserva = reservaManager.cadastrarReserva(carrinho, usuario.getIdPessoa());
         request.setAttribute("idReserva", idReserva);
+        request.getSession().setAttribute("carrinho", null);
     }
 }
