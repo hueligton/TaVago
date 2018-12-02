@@ -83,7 +83,7 @@
 
 
             <!-- Swiper JS -->
-            < type="text/java" src="java/swiper.min.js"></> 
+           <script type="text/javascript" src="javascript/swiper.min.js"></script> 
 
             <!-- Initialize Swiper -->
             <script>
