@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -42,7 +43,15 @@
                 <div class="form-description">
                     <h2>Acessar conta</h2>
                 </div>
+                <c:if test="${acesso==0}">
+                    <div class="error-login">
+                        <h2>Não conseguimos acessar sua conta.</h2>
+                        <h2>Verifique se o e-mail de usuário e senha foram digitados corretamente.</h2>
+                    </div>
+                </c:if>
             </header>
+            
+            
 
             <div class="home-content">
                 <div class="form-wrap">

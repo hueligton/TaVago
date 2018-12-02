@@ -81,6 +81,7 @@ h3.realizar-pagamento{
     transition: 0.3s;
     width: 20%;
     display:inline-grid;
+    vertical-align: bottom;
     background-color: white;
 }
 

@@ -64,6 +64,7 @@ public class ReservaServletController extends HttpServlet {
             login(request);
             if (request.getSession().getAttribute("usuario") == null) {
                 jsp = "/login.jsp";
+                request.getSession().setAttribute("acesso", 0);
             } else {
                 jsp = "/dadoshospede.jsp";
             }

@@ -67,6 +67,15 @@ ul.options {
     opacity: 1;
 }
 
+.error-login {
+    text-align: center;
+    color: red;
+}
+
+.error-login h2 {
+    font-weight: normal;
+}
+
     /* ----------------------- FORMULÁRIO ----------------------- */
     .form-description {
         text-align: center;
