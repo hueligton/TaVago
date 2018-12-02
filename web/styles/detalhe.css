@@ -29,27 +29,44 @@ body {
     color:#000;
 }
 
-.row {
-    overflow: hidden;
 
+
+/* ================== ENVOLTÓRIO DO CABEÇALHO ================== */
+.container-to-grid {
+    width:100%;
+    padding: 25px 0; 
 }
 
-.logo img
-{
-    padding: 40px 20px;
-    float: left;
-    height: 30px;
-    width: 150px;
-    position: relative;
-    left: 80px;
+.container-to-grid .top-bar {
+    max-width:62.5em;
+    margin:0 auto;
 }
 
-.carrinho img{ 
-    padding: 30px 20px;
-    height: auto;
+.logo-tavago, .top-bar-section {
+    display: inline-block;
+    vertical-align: center;
+}
+
+.top-bar .a, .top-bar .ul {
+    text-decoration: none;
+}
+
+ul.options {
+    list-style-type: none;
+}
+
+.top-bar-section {
     float: right;
 }
 
+.logo-tavago {
+    height: 30px;
+    width: 150px;
+}
+
+
+
+/* ================== ENVOLTÓRIO DO CONTEÚDO (POSICIONAMENTO) ================== */   
 .swiper-container {
     width: 100%;
     padding-top: 50px;
@@ -75,16 +92,17 @@ body {
     text-align: center;
 }
 
+.informacaohotel {
+    text-align: center;
+}
+
 .informacaohotel h2{
     position: relative; 
     top: 10px; 
-    margin-left: 80px;
     color: #383838;
 }
 
 .informacaohotel p{
-    position: relative;
-    margin-left: 80px;
     color: #383838;
 }
 
@@ -139,13 +157,13 @@ table th{
     font-weight: 500;
 }
 
-
 td, th {
     padding: .75rem;
     vertical-align: top;
     border-top: 1px solid #f4f5f8;
     text-align: center;
 }
+
 th{
     text-align: inherit;
     font-weight: bold;

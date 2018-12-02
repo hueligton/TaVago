@@ -16,19 +16,36 @@
         <link rel="stylesheet" type="text/css" href="styles/detalhe.css">
         <link rel="shortcut icon" href="images/favicon.ico"/>
     </head>
-    <body>
-        <!--Navegation Bar-->
-        <div class="row">
-            <div class="logo">
-                <a href="${pageContext.request.contextPath}/home">
-                    <img src="images/logo-tavago.png" alt="tavago">
-                </a>
+    <body id="detalhes-page">
+        
+        <!-- Envoltório do cabeçalho -->
+        <div class="header-wrap home-hw">
+
+            <!-- Container da grade de navegação superior -->
+            <div class="container-to-grid">
+
+                <!-- Top bar (logo e opções de navegação) -->
+                <nav class="top-bar">
+
+                    <!-- Logotipo TaVago -->
+                    <div class="logo-tavago">
+                        <a href="${pageContext.request.contextPath}/home">
+                            <img class="logo-tavago" src="images/logo-tavago.png" alt="tavago"/>
+                        </a>
+                    </div>
+
+                    <!-- Seção de opções de navegação -->
+                    <div class="top-bar-section">
+                        <ul class="options">
+                            <li>
+                                <a href="${pageContext.request.contextPath}/carrinho">
+                                    <img class="carrinho" src="images/carrinho.png" alt="carrinho"/>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
             </div>
-            <div class="carrinho">
-                <a href="${pageContext.request.contextPath}/carrinho">
-                    <img src="images/carrinho.png" alt="carrinho">
-                </a>
-            </div>     
         </div>
 
         <div class="informacaohotel">     
