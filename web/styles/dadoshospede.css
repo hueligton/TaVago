@@ -55,6 +55,8 @@ ul.options {
     width: 150px;
 }
 
+
+
 /* ================== ENVOLTÓRIO DO CONTEÚDO PRINCIPAL DO CARRINHO ================== */
 .main-content, .home-content, .cart-room, .cart-summary {
     margin: 0;
@@ -75,6 +77,8 @@ ul.options {
 .error-login h2 {
     font-weight: normal;
 }
+
+
 
     /* ----------------------- FORMULÁRIO ----------------------- */
     .form-description {
@@ -122,7 +126,7 @@ ul.options {
         color: #666;
     }
 
-    input[type=text], input[type=password] {
+    input[type=text], input[type=password], input[type=number] {
         width: 100%;
         max-width: 700px;
         padding: 12px 20px;
