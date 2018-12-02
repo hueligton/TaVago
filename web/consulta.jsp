@@ -5,7 +5,7 @@
 <html lang="pt-br">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="styles/consulta.css"/>
+        <link rel="stylesheet" type="text/css" href="styles/pagamento-consulta.css"/>
         <link rel="shortcut icon" href="images/favicon.ico"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>TaVago - Consulta</title>
@@ -23,7 +23,7 @@
             <!-- Seção de opções de navegação -->
             <div class="top-bar-section">
                 <a href="${pageContext.request.contextPath}/carrinho">
-                    <img class="carrinho" src="images/carrinho.png" alt="carrinho"/>
+                    <img class="carrinho" src="images/shopping-cart.png" alt="carrinho"/>
                 </a>
             </div>
         </div>
@@ -72,7 +72,7 @@
                     </select>
                 </div>
 
-                <input type="submit" value="BUSCAR HOTEL">
+                <input class="buscar-hotel" type="submit" value="BUSCAR HOTEL">
 
             </form>
         </div>

@@ -9,7 +9,7 @@
 <html lang="pt-br">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="styles/pagamento.css"/>
+        <link rel="stylesheet" type="text/css" href="styles/pagamento-consulta.css"/>
         <link rel="shortcut icon" href="images/favicon.ico"/>
         <title>TaVago - Pagamento</title>
     </head>
@@ -26,12 +26,12 @@
             <!-- Seção de opções de navegação -->
             <div class="top-bar-section">
                 <a href="${pageContext.request.contextPath}/carrinho">
-                    <img class="carrinho" src="images/carrinho.png" alt="carrinho"/>
+                    <img class="carrinho" src="images/shopping-cart.png" alt="carrinho"/>
                 </a>
             </div>
         </div>
         <div class="descricao-pagamento">
-            <h3>
+            <h3 class="realizar-pagamento">
                 Realizar pagamento
             </h3>
             <p>
@@ -56,7 +56,7 @@
                     <label for="codigoSeguranca">Código de seguranca: </label><br>
                     <input type="text" name="codigoSeguranca" id="codigoSeguranca" required><br>
                 </div>
-                <input type="submit" name="realizarPagamento" value="REALIZAR PAGAMENTO">
+                <input class="realizar-pagamento-input" type="submit" name="realizarPagamento" value="REALIZAR PAGAMENTO">
             </form>
         </div>
     </body>
