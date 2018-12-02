@@ -100,7 +100,7 @@
                                             </div>
                                             
                                             <div id="input-email" class="input-wrap">
-                                                <label class="input-wrap-label" for="telefone">E-mail</label>
+                                                <label class="input-wrap-label" for="email">E-mail</label>
                                                 <input type="text" id="email" value="${usuario.email}" disabled>
                                             </div>
                                         </fieldset>
@@ -111,22 +111,22 @@
                                             <legend>Cartão cadastrado</legend>
 
                                             <div id="input-titular" class="input-wrap">
-                                                <label class="input-wrap-label" for="nome">Titular</label>
+                                                <label class="input-wrap-label" for="titular">Titular</label>
                                                 <input type="text" id="titular" value="${usuario.cartao.titular}" disabled>
                                             </div>
 
                                             <div id="input-numero-cartao" class="input-wrap">
-                                                <label class="input-wrap-label" for="cpf">Número do cartão</label>
+                                                <label class="input-wrap-label" for="numeroCartao">Número do cartão</label>
                                                 <input type="text" id="numeroCartao" value="${usuario.cartao.numeroCartao}" disabled>
                                             </div>
 
                                             <div id="input-vencimento" class="input-wrap">
-                                                <label class="input-wrap-label" for="telefone">Data vencimento</label>
+                                                <label class="input-wrap-label" for="dataVencimento">Data vencimento</label>
                                                 <input type="text" id="dataVencimento" value="${usuario.cartao.vencimento}" disabled>
                                             </div>
                                             
                                             <div id="input-codigo-seguranca" class="input-wrap">
-                                                <label class="input-wrap-label" for="telefone">Código de seguranca</label>
+                                                <label class="input-wrap-label" for="codigoSeguranca">Código de seguranca</label>
                                                 <input type="text" id="codigoSeguranca" value="${usuario.cartao.codigoSeguranca}" disabled>
                                             </div>
                                         </fieldset>
@@ -146,34 +146,34 @@
                                                 <form class="formulario-pessoa">
                                                     <fieldset class="guest">
                                                         <legend>Acomodação</legend>
-                                                        <div id="input-accommodation" class="input-wrap">
-                                                            <label class="input-wrap-label" for="nome">${itemCarrinho.acomodacao.descricao}</label>
-                                                            <input type="hidden" id="acomodacao" value="${itemCarrinho.acomodacao.valor}" disabled>
+                                                        <div id="input-value-accommodation" class="input-wrap">
+                                                            <label class="input-wrap-label" for="dataEntradaAcomodacao">${itemCarrinho.acomodacao.descricao}</label>
+                                                            <input type="hidden" id="valor" value="${itemCarrinho.acomodacao.valor}" disabled>
                                                         </div>
                                                         
-                                                        <div id="input-accommodation" class="input-wrap">
-                                                            <label class="input-wrap-label" for="nome">Data de entrada</label>
-                                                            <input type="text" id="acomodacao" value="<fmt:formatDate value="${itemCarrinho.dataInicial}" pattern="dd/MM/yyyy" />" disabled>
+                                                        <div id="input-initialdate-accommodation" class="input-wrap">
+                                                            <label class="input-wrap-label" for="dataEntradaAcomodacao">Data de entrada</label>
+                                                            <input type="text" id="dataEntradaAcomodacao" value="<fmt:formatDate value="${itemCarrinho.dataInicial}" pattern="dd/MM/yyyy" />" disabled>
                                                         </div>
-                                                        <div id="input-accommodation" class="input-wrap">
-                                                            <label class="input-wrap-label" for="nome">Data de saída</label>
-                                                            <input type="text" id="acomodacao" value="<fmt:formatDate value="${itemCarrinho.dataFinal}" pattern="dd/MM/yyyy" />" disabled>
+                                                        <div id="input-finaldate-accommodation" class="input-wrap">
+                                                            <label class="input-wrap-label" for="dataSaidaAcomodacao">Data de saída</label>
+                                                            <input type="text" id="dataSaidaAcomodacao" value="<fmt:formatDate value="${itemCarrinho.dataFinal}" pattern="dd/MM/yyyy" />" disabled>
                                                         </div>
                                                     </fieldset>
                                                         
                                                     <fieldset class="guest">    
                                                         <legend>Hóspede responsável</legend>
-                                                        <div id="input-name" class="input-wrap">
-                                                            <label class="input-wrap-label" for="nome">Nome</label>
-                                                            <input type="text" id="nome" value="${itemCarrinho.hospede.nome}" disabled>
+                                                        <div id="input-guest-name" class="input-wrap">
+                                                            <label class="input-wrap-label" for="nomeHospede">Nome</label>
+                                                            <input type="text" id="nomeHospede" value="${itemCarrinho.hospede.nome}" disabled>
                                                         </div>
-                                                        <div id="input-cpf" class="input-wrap">
-                                                            <label class="input-wrap-label" for="cpf">Cpf</label>
-                                                            <input type="text" id="cpf" value="${itemCarrinho.hospede.cpf}" disabled>
+                                                        <div id="input-guest-cpf" class="input-wrap">
+                                                            <label class="input-wrap-label" for="cpfHospede">Cpf</label>
+                                                            <input type="text" id="cpfHospede" value="${itemCarrinho.hospede.cpf}" disabled>
                                                         </div>
-                                                        <div id="input-phone" class="input-wrap">
-                                                            <label class="input-wrap-label" for="telefone">Telefone</label>
-                                                            <input type="text" id="telefone" value="${itemCarrinho.hospede.telefone}" disabled>
+                                                        <div id="input-guest-phone" class="input-wrap">
+                                                            <label class="input-wrap-label" for="telefoneHospede">Telefone</label>
+                                                            <input type="text" id="telefoneHospede" value="${itemCarrinho.hospede.telefone}" disabled>
                                                         </div>
                                                     </fieldset>
                                                 </form>

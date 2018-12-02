@@ -10,7 +10,7 @@
 <html lang="pt-br">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="styles/home.css"/>
+        <link rel="stylesheet" type="text/css" href="styles/home-carrinho-login-dadoshospedes-resultado.css"/>
         <link rel="shortcut icon" href="images/favicon.ico"/>
         <title>TaVago</title>
     </head>
@@ -69,12 +69,12 @@
 
                     <div class="datas">
                         <div class="entrada">
-                            <label for="dataInicial">Data de check-in</label><br>
+                            <label for="dataEntrada">Data de check-in</label><br>
                             <input type="date" name="dataEntrada" id="dataEntrada" required><br>
                         </div>
 
                         <div class="saida">
-                            <label for="dataFinal">Data de check-out</label><br>
+                            <label for="dataSaida">Data de check-out</label><br>
                             <input type="date" name="dataSaida" id="dataSaida" required><br>
                         </div>
                     </div>

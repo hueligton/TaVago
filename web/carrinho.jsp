@@ -11,7 +11,7 @@
 <html lang="pt-br">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="styles/carrinho.css"/>
+        <link rel="stylesheet" type="text/css" href="styles/home-carrinho-login-dadoshospedes-resultado.css"/>
         <link rel="shortcut icon" href="images/favicon.ico"/>
         <title>TaVago - Carrinho</title>
     </head>

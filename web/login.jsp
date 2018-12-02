@@ -10,9 +10,8 @@
 <html lang="pt-br">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="styles/dadoshospede.css"/>
+        <link rel="stylesheet" type="text/css" href="styles/home-carrinho-login-dadoshospedes-resultado.css"/>
         <link rel="shortcut icon" href="images/favicon.ico"/>
-        <meta http-equiv="refresh" content="" >
         <title>TaVago - Login</title>
     </head>
     <body id="login-page">
@@ -56,7 +55,7 @@
             <div class="home-content">
                 <div class="form-wrap">
 
-                    <form role="form" class="formulario-login" method="POST" action="${pageContext.request.contextPath}/dadoshospede">
+                    <form class="formulario-login" method="POST" action="${pageContext.request.contextPath}/dadoshospede">
 
                         <div id="input-email" class="input-wrap">
                             <label class="input-wrap-label" for="email">E-mail</label>

@@ -7,10 +7,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="styles/resultado.css"/>
+        <link rel="stylesheet" type="text/css" href="styles/home-carrinho-login-dadoshospedes-resultado.css"/>
         <link rel="shortcut icon" href="images/favicon.ico"/>
         <title>TaVago - Resultado</title>
     </head>
@@ -43,7 +43,7 @@
                     <c:choose>
                         <c:when test="${not empty idReserva}">
                             <h1 class="good-travel">Sua reserva foi realizada com sucesso!</h1>
-                            <h2 class="good-travel">O número de pedido de sua reserva é ${idReserva}</h1>
+                            <h2 class="good-travel">O número de pedido de sua reserva é ${idReserva}</h2>
                             <h2 class="email-response">Informações adicionais serão enviadas ao endereço de email ${usuario.email}</h2>
                             <h2 class="good-travel">Desejamos uma boa viagem ${usuario.nome}!</h2>
                         </c:when>
