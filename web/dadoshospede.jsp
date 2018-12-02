@@ -43,6 +43,7 @@
             <header id="home-top">
                 <div class="form-description">
                     <h2>Formulário de hóspede - ${qtdHospede+1}/${fn:length(carrinho.itensCarrinho)}</h2>
+                    <h2>Acomodação - ${descricaoAcomodacao}</h2>
                     <p>Preencha as informações abaixo para podermos cadastrar sua reserva</p>
                 </div>
             </header>
