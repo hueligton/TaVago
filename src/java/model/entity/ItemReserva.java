@@ -79,6 +79,15 @@ public class ItemReserva implements Serializable {
         this.hospede = hospede;
     }
 
+    public ItemReserva(Date dataInicial, Date dataFinal, Double valor, Acomodacao acomodacao, Hospede hospede, Reserva reserva) {
+        this.dataInicial = dataInicial;
+        this.dataFinal = dataFinal;
+        this.valor = valor;
+        this.acomodacao = acomodacao;
+        this.hospede = hospede;
+        this.reserva = reserva;
+    }
+
     public Integer getIdItemReserva() {
         return idItemReserva;
     }
@@ -144,7 +153,6 @@ public class ItemReserva implements Serializable {
         hash = 97 * hash + Objects.hashCode(this.valor);
         hash = 97 * hash + Objects.hashCode(this.acomodacao);
         hash = 97 * hash + Objects.hashCode(this.hospede);
-        hash = 97 * hash + Objects.hashCode(this.reserva);
         return hash;
     }
 

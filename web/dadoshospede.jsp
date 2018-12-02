@@ -83,7 +83,7 @@
 
                             <div id="input-house-number" class="input-wrap">
                                 <label class="input-wrap-label" for="numeroCasa">Número casa</label>
-                                <input type="text" class="form-control house-number-mask input-wrap-input" id="numeroCasa" name="numeroCasa" placeholder="Ex.: 343" required>
+                                <input type="number" class="form-control house-number-mask input-wrap-input" id="numeroCasa" name="numeroCasa" placeholder="Ex.: 343" required>
                             </div>
 
                             <div id="input-city" class="input-wrap">

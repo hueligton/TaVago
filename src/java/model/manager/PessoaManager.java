@@ -47,7 +47,6 @@ public class PessoaManager {
             id = (int) factory.salvar(hospede);
             hospede = (Hospede) factory.buscar(new Hospede(), id);
         }
-        System.out.println(hospede.getNome() + hospede.getIdPessoa());
         return hospede;
 
     }
@@ -68,7 +67,7 @@ public class PessoaManager {
 
     }
 
-    public boolean excluir(int id) {
+    public boolean excluirPessoa(int id) {
 
         Pessoa pessoa = (Pessoa) factory.buscar(new Pessoa(), id);
 
@@ -101,23 +100,14 @@ public class PessoaManager {
     }
 
     public Serializable cadastrarCartao(String titular, String numeroCartao, String vencimento, int codigoSeguranca, int idUsuarioHospede) {
-
         UsuarioHospede usuarioHospede = (UsuarioHospede) factory.buscar(new UsuarioHospede(), idUsuarioHospede);
-
-        if (usuarioHospede != null) {
-
+        if (usuarioHospede != null && usuarioHospede.getCartao()==null) {
             Cartao cartao = new Cartao(titular, numeroCartao, vencimento, codigoSeguranca);
-
             usuarioHospede.setCartao(cartao);
-
             factory.editar(usuarioHospede);
-
             return factory.salvar(cartao);
-
         }
-
-        return null;
-
+        return usuarioHospede.getCartao();
     }
 
     public boolean atualizarHospede(int id, String nome, String cpf, String telefone, String rua, int numeroCasa, String cidade, String estado, String pais) {

@@ -45,7 +45,7 @@
                     <input type="text" name="titular" id="titular" required><br>
                 </div>
                 <div class="numeroCartao">
-                    <label for="titular">Número do cartão: </label><br>
+                    <label for="numeroCartao">Número do cartão: </label><br>
                     <input type="text" name="numeroCartao" id="numeroCartao" required><br>
                 </div>
                 <div class="vencimento">

@@ -13,10 +13,6 @@ import javax.persistence.Table;
 @Table(name = "USUARIO")
 public class Usuario extends Pessoa implements Serializable {
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idPessoa", referencedColumnName = "idPessoa", table = "USUARIO")
-    private Pessoa Pessoa;
-
     @Column(unique = true, nullable = false, length = 255)
     private String email;
 
@@ -26,27 +22,19 @@ public class Usuario extends Pessoa implements Serializable {
     public Usuario() {
     }
 
-    public Usuario(Pessoa Pessoa, String email, String senha) {
-        this.Pessoa = Pessoa;
-        this.email = email;
-        this.senha = senha;
-    }
-
-    public Usuario(Pessoa Pessoa, String email, String senha, Integer id, String nome, String cpf, String telefone) {
-        super(id, nome, cpf, telefone);
-        this.Pessoa = Pessoa;
-        this.email = email;
-        this.senha = senha;
-    }
-
-    public Usuario(Pessoa Pessoa, String email, String senha, String nome, String cpf, String telefone) {
-        super(nome, cpf, telefone);
-        this.Pessoa = Pessoa;
-        this.email = email;
-        this.senha = senha;
-    }
-
     public Usuario(String email, String senha) {
+        this.email = email;
+        this.senha = senha;
+    }
+
+    public Usuario(String email, String senha, Integer id, String nome, String cpf, String telefone) {
+        super(id, nome, cpf, telefone);
+        this.email = email;
+        this.senha = senha;
+    }
+
+    public Usuario(String email, String senha, String nome, String cpf, String telefone) {
+        super(nome, cpf, telefone);
         this.email = email;
         this.senha = senha;
     }
@@ -55,20 +43,6 @@ public class Usuario extends Pessoa implements Serializable {
         super(id, nome, cpf, telefone);
         this.email = email;
         this.senha = senha;
-    }
-
-    public Usuario(String nome, String cpf, String telefone, String email, String senha) {
-        super(nome, cpf, telefone);
-        this.email = email;
-        this.senha = senha;
-    }
-
-    public Pessoa getPessoa() {
-        return Pessoa;
-    }
-
-    public void setPessoa(Pessoa Pessoa) {
-        this.Pessoa = Pessoa;
     }
 
     public String getEmail() {
@@ -90,7 +64,6 @@ public class Usuario extends Pessoa implements Serializable {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 29 * hash + Objects.hashCode(this.Pessoa);
         hash = 29 * hash + Objects.hashCode(this.email);
         hash = 29 * hash + Objects.hashCode(this.senha);
         return hash;
@@ -112,9 +85,6 @@ public class Usuario extends Pessoa implements Serializable {
             return false;
         }
         if (!Objects.equals(this.senha, other.senha)) {
-            return false;
-        }
-        if (!Objects.equals(this.Pessoa, other.Pessoa)) {
             return false;
         }
         return true;

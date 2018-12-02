@@ -55,7 +55,7 @@ public class DAO {
             }
         } finally {
             try {
-                //session.close();                                //Destrói a sessão e libera recursos
+                session.close();                                //Destrói a sessão e libera recursos
             } catch (HibernateException e) {
                 throw e;
             }
@@ -80,7 +80,7 @@ public class DAO {
             sucess = false;
         } finally {
             try {
-                //session.close();
+                session.close();
             } catch (HibernateException e) {
                 throw e;
             }
@@ -105,7 +105,7 @@ public class DAO {
             sucess = false;
         } finally {
             try {
-                //session.close();
+                session.close();
             } catch (HibernateException e) {
                 throw e;
             }
@@ -124,7 +124,7 @@ public class DAO {
             throw e;
         } finally {
             try {
-                //session.close();
+                session.close();
             } catch (HibernateException e) {
                 throw e;
             }
@@ -143,7 +143,7 @@ public class DAO {
             throw e;
         } finally {
             try {
-                //session.close();
+                session.close();
             } catch (HibernateException e) {
                 throw e;
             }
