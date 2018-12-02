@@ -16,7 +16,7 @@
     </head>
     <body id="home-page">
 
-        <!-- Envoltório do cabeçalho da página home -->
+        <!-- Envoltório do cabeçalho -->
         <div class="header-wrap home-hw">
 
             <!-- Container da grade de navegação superior -->
@@ -55,11 +55,11 @@
         <!-- Conteúdo da página principal -->
         <div class="main-content"> 
 
-            <!-- <header id="home-top"></header> Espaço para cabeçalho secundário -->
+            <!-- <header id="home-top"></header> -->
 
             <div class="home-content">
 
-                <!-- Formulário de consulta definido no diagrama de navegação -->
+                <!-- Formulário de consulta -->
                 <form class="formulario-consulta" method="GET" action="${pageContext.request.contextPath}/consulta">
 
                     <div class="destino">
@@ -95,9 +95,6 @@
             </div>
 
         </div>
-
-        <!-- #TODO - Verificar necessidade de implementação do footer -->
-        <!-- <footer></footer> -->
 
     </body>
 </html>

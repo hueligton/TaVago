@@ -54,12 +54,6 @@ ul.options {
 .header-welcome {
     text-align: center;
     margin: 100px 0;
-    /* 
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    */
     color: white;
 }
 
@@ -69,8 +63,7 @@ ul.options {
 
 
 
-
-/* ================== ENVOLTÓRIO DO CONTEÚDO PRINCIPAL DA HOME ================== */
+/* ================== ENVOLTÓRIO DO CONTEÚDO (POSICIONAMENTO) ================== */   
 .main-content {
     height: 200px;
     width: 80%;
@@ -91,7 +84,7 @@ ul.options {
 
 
 
-    /* ----------------------- FORMULÁRIO ----------------------- */
+    /* ----------------------- FORMULÁRIO (STYLE) ----------------------- */
     .formulario-consulta {
         background-color: white;
         padding: 10px;
