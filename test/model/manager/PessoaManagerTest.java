@@ -270,7 +270,7 @@ public class PessoaManagerTest {
     @Test
     public void test11_Excluir() {
         
-        if (pessoaManager.excluir(idPessoa)) 
+        if (pessoaManager.excluirPessoa(idPessoa)) 
             
             System.out.println("++++++++ EXLUSAO RELIZADA COM SUCESSO");
         

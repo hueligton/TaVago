@@ -39,7 +39,7 @@
         <!-- Conteúdo da página principal -->
         <section class="main-content">
 
-            <c:if test="${not empty carrinho}">
+            <c:if test="${not empty carrinho.itensCarrinho}">
                 <header id="home-top">
                     <div class="cart-name">
                         <h2>Meu carrinho</h2>

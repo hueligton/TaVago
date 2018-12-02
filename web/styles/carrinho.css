@@ -208,3 +208,19 @@ ul.options {
     .update-price:hover {
         background-color: #4CAF50;
     }
+    
+    input[type=submit] {
+        width: inherit;
+        background-color: whitesmoke;
+        color: black;
+        padding: 14px 20px;
+        margin: 8px 0 0 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        
+    }
+
+    input[type=submit]:hover {
+        background-color: red;
+    }
