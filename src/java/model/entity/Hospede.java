@@ -13,10 +13,6 @@ import javax.persistence.Table;
 @Table(name = "HOSPEDE")
 public class Hospede extends Pessoa implements Serializable {
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idPessoa", referencedColumnName = "idPessoa", table = "USUARIO")
-    private Pessoa pessoa;
-
     @Column(nullable = false, length = 255)
     private String rua;
 
@@ -43,15 +39,6 @@ public class Hospede extends Pessoa implements Serializable {
         this.pais = pais;
     }
 
-    public Hospede(Pessoa pessoa, String rua, Integer numeroCasa, String cidade, String estado, String pais) {
-        this.pessoa = pessoa;
-        this.rua = rua;
-        this.numeroCasa = numeroCasa;
-        this.cidade = cidade;
-        this.estado = estado;
-        this.pais = pais;
-    }
-
     public Hospede(String nome, String cpf, String telefone, String rua, Integer numeroCasa, String cidade, String estado, String pais) {
         super(nome, cpf, telefone);
         this.rua = rua;
@@ -70,9 +57,8 @@ public class Hospede extends Pessoa implements Serializable {
         this.pais = pais;
     }
 
-    public Hospede(Pessoa pessoa, String rua, Integer numeroCasa, String cidade, String estado, String pais, String nome, String cpf, String telefone) {
+    public Hospede(String rua, Integer numeroCasa, String cidade, String estado, String pais, String nome, String cpf, String telefone) {
         super(nome, cpf, telefone);
-        this.pessoa = pessoa;
         this.rua = rua;
         this.numeroCasa = numeroCasa;
         this.cidade = cidade;
@@ -80,22 +66,13 @@ public class Hospede extends Pessoa implements Serializable {
         this.pais = pais;
     }
 
-    public Hospede(Pessoa pessoa, String rua, Integer numeroCasa, String cidade, String estado, String pais, Integer id, String nome, String cpf, String telefone) {
+    public Hospede(String rua, Integer numeroCasa, String cidade, String estado, String pais, Integer id, String nome, String cpf, String telefone) {
         super(id, nome, cpf, telefone);
-        this.pessoa = pessoa;
         this.rua = rua;
         this.numeroCasa = numeroCasa;
         this.cidade = cidade;
         this.estado = estado;
         this.pais = pais;
-    }
-
-    public Pessoa getPessoa() {
-        return pessoa;
-    }
-
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
     }
 
     public String getRua() {
@@ -141,7 +118,6 @@ public class Hospede extends Pessoa implements Serializable {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 53 * hash + Objects.hashCode(this.pessoa);
         hash = 53 * hash + Objects.hashCode(this.rua);
         hash = 53 * hash + Objects.hashCode(this.numeroCasa);
         hash = 53 * hash + Objects.hashCode(this.cidade);
@@ -172,9 +148,6 @@ public class Hospede extends Pessoa implements Serializable {
             return false;
         }
         if (!Objects.equals(this.pais, other.pais)) {
-            return false;
-        }
-        if (!Objects.equals(this.pessoa, other.pessoa)) {
             return false;
         }
         if (!Objects.equals(this.numeroCasa, other.numeroCasa)) {

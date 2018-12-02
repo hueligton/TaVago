@@ -45,7 +45,6 @@ public class ReservaServletController extends HttpServlet {
             jsp = "/carrinho.jsp";
         } else if (request.getRequestURI().endsWith("/confirmacao")) {
             dadosPagamento(request);
-//            confirmacao(request);
             jsp = "/confirmacao.jsp";
         } else if (request.getRequestURI().endsWith("/consulta")) {
             consulta(request);
@@ -62,7 +61,6 @@ public class ReservaServletController extends HttpServlet {
             if (request.getSession().getAttribute("usuario") == null) {
                 jsp = "/login.jsp";
             } else {
-                request.getSession().setAttribute("qtdHospede", 0);
                 jsp = "/dadoshospede.jsp";
             }
         } else if (request.getRequestURI().endsWith("/detalhes")) {
@@ -76,7 +74,7 @@ public class ReservaServletController extends HttpServlet {
                 jsp = "/pagamento.jsp";
             }
         } else if (request.getRequestURI().endsWith("/resultado")) {
-//            resultado(request);
+            salvarReserva(request);
             jsp = "/resultado.jsp";
         } else if (request.getRequestURI().endsWith("/login")) {
             jsp = "/login.jsp";
@@ -211,12 +209,10 @@ public class ReservaServletController extends HttpServlet {
         pessoaManager.cadastrarCartao(titular, numCartao, vencimento, codSeguranca, usuario.getIdPessoa());
     }
 
-    public void confirmacao(HttpServletRequest request) {
-
+    public void salvarReserva(HttpServletRequest request) {
+        Carrinho carrinho = (Carrinho) request.getSession().getAttribute("carrinho");
+        Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+        Integer idReserva = reservaManager.cadastrarReserva(carrinho, usuario.getIdPessoa());
+        request.setAttribute("idReserva", idReserva);
     }
-
-    public void resultado(HttpServletRequest request) {
-
-    }
-
 }

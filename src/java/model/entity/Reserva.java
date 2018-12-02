@@ -25,7 +25,7 @@ public class Reserva implements Serializable {
     @Column(nullable = false)
     private Integer idReserva;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "idUsuarioHospede", referencedColumnName = "idPessoa")
     private UsuarioHospede usuarioHospede;
 
@@ -46,6 +46,11 @@ public class Reserva implements Serializable {
         this.itemReserva = itemReserva;
     }
 
+    public Reserva(UsuarioHospede usuarioHospede, Collection<ItemReserva> itemReserva) {
+        this.usuarioHospede = usuarioHospede;
+        this.itemReserva = itemReserva;
+    }
+    
     public Integer getIdReserva() {
         return idReserva;
     }
@@ -74,7 +79,6 @@ public class Reserva implements Serializable {
     public int hashCode() {
         int hash = 7;
         hash = 31 * hash + Objects.hashCode(this.idReserva);
-        hash = 31 * hash + Objects.hashCode(this.usuarioHospede);
         hash = 31 * hash + Objects.hashCode(this.itemReserva);
         return hash;
     }

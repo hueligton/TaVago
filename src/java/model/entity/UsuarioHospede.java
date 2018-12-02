@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -15,14 +16,10 @@ import javax.persistence.Table;
 public class UsuarioHospede extends Usuario implements Serializable {
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idPessoa", referencedColumnName = "idPessoa", table = "USUARIO")
-    private Pessoa pessoa;
-
-    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "numeroCartao", referencedColumnName = "numeroCartao")
     private Cartao cartao;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idReserva")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Collection<Reserva> reserva;
 
     public UsuarioHospede() {
@@ -43,15 +40,8 @@ public class UsuarioHospede extends Usuario implements Serializable {
         this.reserva = reserva;
     }
 
-    public UsuarioHospede(model.entity.Pessoa pessoa, Cartao numeroCartao, Collection<Reserva> reserva) {
-        this.pessoa = pessoa;
-        this.cartao = numeroCartao;
-        this.reserva = reserva;
-    }
-
-    public UsuarioHospede(model.entity.Pessoa pessoa, Cartao numeroCartao, Collection<Reserva> reserva, String email, String senha) {
+    public UsuarioHospede(Cartao numeroCartao, Collection<Reserva> reserva, String email, String senha) {
         super(email, senha);
-        this.pessoa = pessoa;
         this.cartao = numeroCartao;
         this.reserva = reserva;
     }
@@ -68,26 +58,16 @@ public class UsuarioHospede extends Usuario implements Serializable {
         this.reserva = reserva;
     }
 
-    public UsuarioHospede(model.entity.Pessoa pessoa, Cartao numeroCartao, Collection<Reserva> reserva, String nome, String cpf, String telefone, String email, String senha) {
+    public UsuarioHospede(Cartao numeroCartao, Collection<Reserva> reserva, String nome, String cpf, String telefone, String email, String senha) {
         super(nome, cpf, telefone, email, senha);
-        this.pessoa = pessoa;
         this.cartao = numeroCartao;
         this.reserva = reserva;
     }
 
-    public UsuarioHospede(model.entity.Pessoa pessoa, Cartao numeroCartao, Collection<Reserva> reserva, Integer id, String nome, String cpf, String telefone, String email, String senha) {
+    public UsuarioHospede(Cartao numeroCartao, Collection<Reserva> reserva, Integer id, String nome, String cpf, String telefone, String email, String senha) {
         super(id, nome, cpf, telefone, email, senha);
-        this.pessoa = pessoa;
         this.cartao = numeroCartao;
         this.reserva = reserva;
-    }
-
-    public model.entity.Pessoa getPessoa() {
-        return pessoa;
-    }
-
-    public void setPessoa(model.entity.Pessoa pessoa) {
-        this.pessoa = pessoa;
     }
 
     public Cartao getCartao() {
@@ -109,7 +89,6 @@ public class UsuarioHospede extends Usuario implements Serializable {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 31 * hash + Objects.hashCode(this.pessoa);
         hash = 31 * hash + Objects.hashCode(this.cartao);
         hash = 31 * hash + Objects.hashCode(this.reserva);
         return hash;
@@ -127,9 +106,6 @@ public class UsuarioHospede extends Usuario implements Serializable {
             return false;
         }
         final UsuarioHospede other = (UsuarioHospede) obj;
-        if (!Objects.equals(this.pessoa, other.pessoa)) {
-            return false;
-        }
         if (!Objects.equals(this.cartao, other.cartao)) {
             return false;
         }
