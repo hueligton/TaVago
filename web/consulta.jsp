@@ -11,71 +11,92 @@
         <title>TaVago - Consulta</title>
     </head>
     <body id="consulta-page">
-        <div class="top-bar">
+        
+        <!-- Envoltório do cabeçalho -->
+        <div class="header-wrap home-hw">
 
-            <!-- Logotipo TaVago -->
-            <div class="logo-tavago">
-                <a href="${pageContext.request.contextPath}/home">
-                    <img class="logo-tavago" src="images/logo-tavago.png" alt="tavago"/>
-                </a>
-            </div>
+            <!-- Container da grade de navegação superior -->
+            <div class="container-to-grid">
 
-            <!-- Seção de opções de navegação -->
-            <div class="top-bar-section">
-                <a href="${pageContext.request.contextPath}/carrinho">
-                    <img class="carrinho" src="images/shopping-cart.png" alt="carrinho"/>
-                </a>
+                <!-- Top bar (logo e opções de navegação) -->
+                <nav class="top-bar">
+
+                    <!-- Logotipo TaVago -->
+                    <div class="logo-tavago">
+                        <a href="${pageContext.request.contextPath}/home">
+                            <img class="logo-tavago" src="images/logo-tavago.png" alt="tavago"/>
+                        </a>
+                    </div>
+
+                    <!-- Seção de opções de navegação -->
+                    <div class="top-bar-section">
+                        <ul class="options">
+                            <li>
+                                <a href="${pageContext.request.contextPath}/carrinho">
+                                    <img class="carrinho" src="images/carrinho.png" alt="carrinho"/>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
             </div>
         </div>
+                                    
         <div class="consulta">
+            
+            <!-- Formulário de consulta -->
             <form class="formulario-consulta" method="GET" action="${pageContext.request.contextPath}/consulta">
 
                 <div class="destino">
                     <label for="destino">Destino</label><br>
-                    <input type="text" name="destino" id="destino" <c:choose>
-                               <c:when test="${not empty destino}"> 
-                                   value="${destino}"
-                               </c:when>
-                           </c:choose> required><br>
+                    <input type="text" name="destino" id="destino" 
+                        <c:choose>
+                            <c:when test="${not empty destino}"> 
+                                value="${destino}"
+                            </c:when>
+                        </c:choose> required><br>
                 </div>
 
                 <div class="datas">
                     <div class="entrada">
                         <label for="dataEntrada">Data de check-in</label><br>
-                        <input type="date" name="dataEntrada" id="dataEntrada" <c:choose>
-                                   <c:when test="${not empty destino}"> 
-                                       value="${dataEntrada}"
-                                   </c:when>
-                               </c:choose> required><br>
+                        <input type="date" name="dataEntrada" id="dataEntrada" 
+                            <c:choose>
+                                <c:when test="${not empty destino}"> 
+                                    value="${dataEntrada}"
+                                </c:when>
+                            </c:choose> required><br>
                     </div>
 
                     <div class="saida">
                         <label for="dataSaida">Data de check-out</label><br>
-                        <input type="date" name="dataSaida" id="dataSaida" <c:choose>
-                                   <c:when test="${not empty destino}"> 
-                                       value="${dataSaida}"
-                                   </c:when>
-                               </c:choose> required><br>
+                        <input type="date" name="dataSaida" id="dataSaida" 
+                            <c:choose>
+                                <c:when test="${not empty destino}"> 
+                                    value="${dataSaida}"
+                                </c:when>
+                            </c:choose> required><br>
                     </div>
                 </div>
 
                 <div class="quantidade">
                     <label for="quantidadePessoas">Quantidade hóspedes</label><br>
                     <select name="quantidadePessoas" id="quantidadePessoas">
-                        <c:forEach begin="1" end="9" var="qtd">
-                            <option value="${qtd}" <c:choose>
-                                        <c:when test="${qtdPessoas==qtd}"> 
-                                            selected
-                                        </c:when>
-                                    </c:choose>>${qtd}</option>
+                        <c:forEach begin="1" end="9" var="qtd"> 
+                            <option value="${qtd}" 
+                                <c:choose>
+                                    <c:when test="${qtdPessoas==qtd}"> 
+                                        selected
+                                    </c:when>
+                                </c:choose>>${qtd}</option>
                         </c:forEach>
                     </select>
                 </div>
 
                 <input class="buscar-hotel" type="submit" value="BUSCAR HOTEL">
-
             </form>
         </div>
+            
         <div class="card-view">
             <c:choose>
                 <c:when test="${empty consulta}"> 

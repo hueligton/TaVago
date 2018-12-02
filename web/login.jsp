@@ -5,13 +5,13 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="styles/dadoshospede.css"/>
+        <link rel="stylesheet" type="text/css" href="styles/home-carrinho-login-dadoshospedes-resultado.css"/>
         <link rel="shortcut icon" href="images/favicon.ico"/>
-        <meta http-equiv="refresh" content="" >
         <title>TaVago - Login</title>
     </head>
     <body id="login-page">
@@ -42,12 +42,20 @@
                 <div class="form-description">
                     <h2>Acessar conta</h2>
                 </div>
+                <c:if test="${acesso==0}">
+                    <div class="error-login">
+                        <h2>Não conseguimos acessar sua conta.</h2>
+                        <h2>Verifique se o e-mail de usuário e senha foram digitados corretamente.</h2>
+                    </div>
+                </c:if>
             </header>
+            
+            
 
             <div class="home-content">
                 <div class="form-wrap">
 
-                    <form role="form" class="formulario-login" method="POST" action="${pageContext.request.contextPath}/dadoshospede">
+                    <form class="formulario-login" method="POST" action="${pageContext.request.contextPath}/dadoshospede">
 
                         <div id="input-email" class="input-wrap">
                             <label class="input-wrap-label" for="email">E-mail</label>

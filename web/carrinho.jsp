@@ -11,7 +11,7 @@
 <html lang="pt-br">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="styles/carrinho.css"/>
+        <link rel="stylesheet" type="text/css" href="styles/home-carrinho-login-dadoshospedes-resultado.css"/>
         <link rel="shortcut icon" href="images/favicon.ico"/>
         <title>TaVago - Carrinho</title>
     </head>
@@ -39,7 +39,7 @@
         <!-- Conteúdo da página principal -->
         <section class="main-content">
 
-            <c:if test="${not empty carrinho}">
+            <c:if test="${not empty carrinho.itensCarrinho}">
                 <header id="home-top">
                     <div class="cart-name">
                         <h2>Meu carrinho</h2>

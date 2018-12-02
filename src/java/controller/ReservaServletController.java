@@ -51,6 +51,10 @@ public class ReservaServletController extends HttpServlet {
             jsp = "/consulta.jsp";
         } else if (request.getRequestURI().endsWith("/login")) {
             request.getSession().setAttribute("qtdHospede", 0);
+            request.getSession().setAttribute("descricaoAcomodacao", ((Carrinho) request.getSession().getAttribute("carrinho"))
+                    .getItensCarrinho().get(
+                            (int) request.getSession().getAttribute("qtdHospede")).getAcomodacao().getDescricao()
+            );
             if (request.getSession().getAttribute("usuario") == null) {
                 jsp = "/login.jsp";
             } else {
@@ -60,6 +64,7 @@ public class ReservaServletController extends HttpServlet {
             login(request);
             if (request.getSession().getAttribute("usuario") == null) {
                 jsp = "/login.jsp";
+                request.getSession().setAttribute("acesso", 0);
             } else {
                 jsp = "/dadoshospede.jsp";
             }
@@ -198,6 +203,11 @@ public class ReservaServletController extends HttpServlet {
         Carrinho carrinho = (Carrinho) request.getSession().getAttribute("carrinho");
         carrinho.addHospedeItemCarrinho(qtdHospede, hospede);
         request.getSession().setAttribute("qtdHospede", ++qtdHospede);
+        if ((int) request.getSession().getAttribute("qtdHospede") < carrinho.getItensCarrinho().size())
+        request.getSession().setAttribute("descricaoAcomodacao", ((Carrinho) request.getSession().getAttribute("carrinho"))
+                    .getItensCarrinho().get(
+                            (int) request.getSession().getAttribute("qtdHospede")).getAcomodacao().getDescricao()
+            );
     }
 
     public void dadosPagamento(HttpServletRequest request) {
