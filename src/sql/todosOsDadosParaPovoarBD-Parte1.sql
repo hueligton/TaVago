@@ -82,3 +82,13 @@ Os quartos da Pousada do Vale apresentam roupas de cama coloridas de 200 fios, p
 WHERE idHotel = 4;
 
 
+INSERT INTO HOTEL VALUES(5, 'Ez Aclimação Hotel', 5, '1133467799', 'Av. Armando Ferrentini',  668,  'Sao Paulo', 'Sao Paulo', 'Brasil', 4, 'Situado a apenas 1 km do Parque da Aclimação de São Paulo e Shopping Pátio Paulista, o Ez Aclimação dispõe de piscina, sauna, academia, 2 restaurantes, bar e Wi-Fi gratuito. Com frigobar e cofre, todos os quartos têm ar-condicionado. O serviço de quarto também está disponível.');
+INSERT INTO HOTEL VALUES(6, 'Ibis Sao Paulo Ibirapuera', 5, '1143808877', 'Avenida Santo Amaro', 1411, 'Sao Paulo', 'Sao Paulo', 'Brasil', 4, 'O Ibis Sao Paulo Ibirapuera está localizado em São Paulo, a 1 km da Avenida Faria Lima x Avenida Juscelino Kubitschek. Você pode desfrutar de um bar no local. Os quartos do hotel dispõem de ar-condicionado, TV e um banheiro privativo. Para sua comodidade, produtos de banho gratuitos e secador de cabelo são fornecidos.');
+
+INSERT INTO ACOMODACAO VALUES(5,13, 3, ' Apartamento de 2 Quartos com 4 Camas de Solteiro, acomoda quatro pessoas', 412.00);
+INSERT INTO ACOMODACAO VALUES(5,14, 3, 'Estúdio Superior com 1 Cama de Casal, acomoda duas pessoas', 241.00);
+INSERT INTO ACOMODACAO VALUES(5,15, 3, 'Estúdio, acomoda duas pessoas', 198.00);
+INSERT INTO ACOMODACAO VALUES(6,16, 3, ' Quarto Duplo Standard, acomoda duas pessoas', 329.70);
+INSERT INTO ACOMODACAO VALUES(6,17, 3, 'Quarto Standard com 2 Camas de Solteiro, acomoda duas pessoas', 329.70);
+
+
