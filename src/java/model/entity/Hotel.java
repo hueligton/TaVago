@@ -56,11 +56,14 @@ public class Hotel implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel", fetch = FetchType.EAGER)
     private Collection<Acomodacao> acomodacao;
-
+    
+    @Column(nullable = false, length = 255)
+    private String descricao;
+    
     public Hotel() {
     }
 
-    public Hotel(String nome, Integer quantidadeEstrela, String telefone, String rua, Integer numeroHotel, String cidade, String estado, String pais, Collection<Acomodacao> acomodacao, UsuarioProprietario proprietario) {
+    public Hotel(String nome, Integer quantidadeEstrela, String telefone, String rua, Integer numeroHotel, String cidade, String estado, String pais, Collection<Acomodacao> acomodacao, UsuarioProprietario proprietario, String descricao) {
         this.nome = nome;
         this.quantidadeEstrela = quantidadeEstrela;
         this.telefone = telefone;
@@ -73,7 +76,7 @@ public class Hotel implements Serializable {
         this.proprietario = proprietario;
     }
 
-    public Hotel(String nome, Integer quantidadeEstrela, String telefone, String rua, Integer numeroHotel, String cidade, String estado, String pais, UsuarioProprietario proprietario) {
+    public Hotel(String nome, Integer quantidadeEstrela, String telefone, String rua, Integer numeroHotel, String cidade, String estado, String pais, UsuarioProprietario proprietario, String descricao) {
         this.nome = nome;
         this.quantidadeEstrela = quantidadeEstrela;
         this.telefone = telefone;
@@ -83,6 +86,7 @@ public class Hotel implements Serializable {
         this.estado = estado;
         this.pais = pais;
         this.proprietario = proprietario;
+        this.descricao = descricao;
     }
 
     public Hotel(String nome, Integer quantidadeEstrela, String telefone, String rua, Integer numeroHotel, String cidade, String estado, String pais) {
@@ -96,7 +100,7 @@ public class Hotel implements Serializable {
         this.pais = pais;
     }
 
-    public Hotel(Integer idHotel, String nome, Integer quantidadeEstrela, String telefone, String rua, Integer numeroHotel, String cidade, String estado, String pais, Collection<Acomodacao> acomodacao, UsuarioProprietario proprietario) {
+    public Hotel(Integer idHotel, String nome, Integer quantidadeEstrela, String telefone, String rua, Integer numeroHotel, String cidade, String estado, String pais, Collection<Acomodacao> acomodacao, UsuarioProprietario proprietario, String descricao) {
         this.idHotel = idHotel;
         this.nome = nome;
         this.quantidadeEstrela = quantidadeEstrela;
@@ -108,6 +112,7 @@ public class Hotel implements Serializable {
         this.pais = pais;
         this.acomodacao = acomodacao;
         this.proprietario = proprietario;
+        this.descricao = descricao;
     }
 
     public Integer getIdHotel() {
@@ -198,7 +203,15 @@ public class Hotel implements Serializable {
         this.proprietario = proprietario;
     }
 
-    public Hotel(Integer idHotel, String nome, Integer quantidadeEstrela, String telefone, String rua, Integer numeroHotel, String cidade, String estado, String pais, UsuarioProprietario proprietario, Collection<Acomodacao> acomodacao) {
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public Hotel(Integer idHotel, String nome, Integer quantidadeEstrela, String telefone, String rua, Integer numeroHotel, String cidade, String estado, String pais, UsuarioProprietario proprietario, Collection<Acomodacao> acomodacao, String descricao) {
         this.idHotel = idHotel;
         this.nome = nome;
         this.quantidadeEstrela = quantidadeEstrela;
@@ -210,6 +223,8 @@ public class Hotel implements Serializable {
         this.pais = pais;
         this.proprietario = proprietario;
         this.acomodacao = acomodacao;
+        this.descricao = descricao;
+        
     }
 
     @Override
@@ -224,6 +239,7 @@ public class Hotel implements Serializable {
         hash = 89 * hash + Objects.hashCode(this.cidade);
         hash = 89 * hash + Objects.hashCode(this.estado);
         hash = 89 * hash + Objects.hashCode(this.pais);
+        hash = 89 * hash + Objects.hashCode(this.descricao);
         return hash;
     }
 
@@ -270,6 +286,9 @@ public class Hotel implements Serializable {
             return false;
         }
         if (!Objects.equals(this.acomodacao, other.acomodacao)) {
+            return false;
+        }
+        if (!Objects.equals(this.descricao, other.descricao)) {
             return false;
         }
         return true;
