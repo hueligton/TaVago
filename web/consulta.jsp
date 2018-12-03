@@ -105,7 +105,7 @@
                 <c:otherwise>
                     <c:forEach var="consulta" items="${consulta}">
                         <div class="card">
-                            <img src="hotel/${consulta.idHotel}/1.jpg" style="width:100%">
+                            <img src="hotel/${consulta.idHotel}/1.jpg" style="width:100%" alt="hotel">
                             <div class="container">
                                 <h4><b>${consulta.nome}</b></h4> 
                                 <p>Avaliação:
@@ -116,10 +116,10 @@
                                 </p>
                                 <p>Endereço: ${consulta.rua}, ${consulta.cidade}, ${conulta.estado}</p>
                                 <form method="GET" action="${pageContext.request.contextPath}/detalhes">
-                                    <input id="idHotel" name="idHotel" value="${consulta.idHotel}" type="hidden">
-                                    <input id="dataEntrada" name="dataEntrada" value="${dataEntrada}" type="hidden">
-                                    <input id="dataSaida" name="dataSaida" value="${dataSaida}" type="hidden">
-                                    <input class="detail" type="submit" value="DETALHES">
+                                    <input id="idHotel${consulta.idHotel}" name="idHotel" value="${consulta.idHotel}" type="hidden">
+                                    <input id="dataEntrada${consulta.idHotel}" name="dataEntrada" value="${dataEntrada}" type="hidden">
+                                    <input id="dataSaida${consulta.idHotel}" name="dataSaida" value="${dataSaida}" type="hidden">
+                                    <input class="detail${consulta.idHotel}" type="submit" value="DETALHES">
                                 </form>
                             </div>
                         </div>
