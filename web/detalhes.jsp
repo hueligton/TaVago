@@ -106,23 +106,9 @@
         <!--Apresenta a descricao do hotel-->
         <div class="descricao">
             <p>
-                A ${hotel.nome} dispõe de piscina ao ar livre e está situada em Fernando de Noronha, a 900 metros da Vila dos Remédios. Esta pousada oferece transfer de cortesia e Wi-Fi gratuito. O Porto de Santo Antônio fica a 2,2 km.
+                 ${hotel.descricao}    
             </p>
 
-            <p>
-                Alguns quartos possuem varanda com vista do mar. Certas unidades da Tesouro de Noronha oferecem vista da piscina, e todas apresentam banheiro privativo. Outras comodidades incluem ar-condicionado, mesa de trabalho, guarda-roupa e TV de tela plana.
-            </p>
-
-            <p>
-                O buffet de café da manhã é servido diariamente na Tesouro de Noronha.
-            </p>
-
-            <p>
-                A pousada fica a 2,2 km da Praia do Sueste. O Aeroporto de Fernando de Noronha é o mais próximo, localizado a 1 km. 
-            </p>
-
-            <p>    
-                ${hotel.nome} tem recebido hóspedes do TAVAgo.com desde 03 de dez. de 2018.</p>
         </div>
         <!--Verifica se existe acomodacoes relacionada ao hotel-->
         <c:choose>

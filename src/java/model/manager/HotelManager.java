@@ -21,9 +21,9 @@ public class HotelManager {
 
     }
 
-    public void cadastrarHotel(String nome, int quantidadeEstrela, String telefone, String rua, int numero, String cidade, String estado, String pais, List<Integer> idCategoria, List<String> descricao, List<Double> valor, Integer idProprietario) throws CreateException {
+    public void cadastrarHotel(String nome, int quantidadeEstrela, String telefone, String rua, int numero, String cidade, String estado, String pais, String descricaoHotel, List<Integer> idCategoria, List<String> descricao, List<Double> valor, Integer idProprietario) throws CreateException {
         UsuarioProprietario proprietario = (UsuarioProprietario) factory.buscar(new UsuarioProprietario(), idProprietario);
-        Hotel hotel = new Hotel(nome, quantidadeEstrela, telefone, rua, numero, cidade, estado, pais, proprietario);
+        Hotel hotel = new Hotel(nome, quantidadeEstrela, telefone, rua, numero, cidade, estado, pais, proprietario, descricaoHotel);
         //Collection<Hotel> cHotel = new LinkedList<>();
         //cHotel.add(hotel);
         //proprietario.setHotel(cHotel);
@@ -78,7 +78,7 @@ public class HotelManager {
         return lista.stream().filter(x -> x.getCidade().equals(destino)).collect(Collectors.toList());
     }
 
-    public void atualizarHotel(int id, String nome, int quantidadeEstrela, String telefone, String rua, int numero, String cidade, String estado, String pais) {
+    public void atualizarHotel(int id, String nome, int quantidadeEstrela, String telefone, String rua, int numero, String cidade, String estado, String pais, String descricaoHotel) {
 
     }
 
