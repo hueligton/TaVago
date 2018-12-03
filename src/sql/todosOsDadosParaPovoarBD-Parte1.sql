@@ -55,3 +55,30 @@ INSERT INTO RESERVA VALUES (3, 3); --Reserva em nome de Ana Maria--
 INSERT INTO ITEMRESERVA VALUES(1, 1, 1, 1, '2018-12-31', '2019-01-07', 5600);
 INSERT INTO ITEMRESERVA VALUES(2, 2, 2, 2, '2019-10-25', '2019-10-27', 1360);
 INSERT INTO ITEMRESERVA VALUES(3, 3, 3, 3, '2018-11-30', '2019-02-04', 51188);
+
+UPDATE HOTEL
+SET descricao = 'A Tesouro de Noronha dispõe de piscina ao ar livre e está situada em Fernando de Noronha, a 900 metros da Vila dos Remédios. Esta pousada oferece transfer de cortesia e Wi-Fi gratuito. O Porto de Santo Antônio fica a 2,2 km.
+
+Alguns quartos possuem varanda com vista do mar. Certas unidades da Tesouro de Noronha oferecem vista da piscina, e todas apresentam banheiro privativo. Outras comodidades incluem ar-condicionado, mesa de trabalho, guarda-roupa e TV de tela plana.'
+WHERE idHotel = 1;
+
+UPDATE HOTEL
+SET descricao = 'Uma das nossas principais opções em Fernando de Noronha.A Pousada Lua Bela, localizada a apenas 10 minutos a pé das praias do Cachorro e da Conceição, oferece uma piscina e buffet de café-da-manhã diário. O centro histórico, na Vila dos Remédios, fica a 1 km de distância.
+
+Todos os quartos da Lua Bela apresentam decoração simples, ar-condicionado, TV, frigobar, roupa de cama, toalhas e banheiro privativo.'
+
+WHERE idHotel = 2;
+
+UPDATE HOTEL
+SET descricao = 'Situada a 200 metros de bares e restaurantes e a 2 km do centro histórico de Fernando de Noronha, a Pousada Zé Maria oferece uma bela piscina com vista da paisagem.
+
+A propriedade dispõe de quartos e casas de férias climatizadas. As acomodações incluem TV Sky HD, frigobar e banheiro privativo com chuveiro aquecido. As Casas de Férias Deluxe possuem varanda com banheira de hidromassagem.'
+WHERE idHotel = 3;
+
+UPDATE HOTEL
+SET descricao = 'Esta bela pousada está localizada na maravilhosa ilha de Fernando de Noronha, a apenas 250 metros da Praia do Cachorro. A propriedade oferece massagens para casal, spa, piscina natural, jardins no local e um pomar, além de estacionamento gratuito.
+
+Os quartos da Pousada do Vale apresentam roupas de cama coloridas de 200 fios, piso frio e cortinas blackout. Todos dispõem de ar-condicionado, TV a cabo e frigobar. O WiFi gratuito está disponível nos quartos e em todo o hotel.'
+WHERE idHotel = 4;
+
+
