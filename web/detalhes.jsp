@@ -17,7 +17,7 @@
         <link rel="shortcut icon" href="images/favicon.ico"/>
     </head>
     <body id="detalhes-page">
-        
+
         <!-- Envoltório do cabeçalho -->
         <div class="header-wrap home-hw">
 
@@ -106,7 +106,7 @@
         <!--Apresenta a descricao do hotel-->
         <div class="descricao">
             <p>
-                 ${hotel.descricao}    
+                ${hotel.descricao}    
             </p>
 
         </div>
@@ -118,17 +118,17 @@
             <c:otherwise>
                 <!--Apresenta as acomodacoes do hotel-->
                 <div class="acomodacoes">
-                    <form method="POST" action="${pageContext.request.contextPath}/carrinho">
-                        <!--Tabbelas com as acomodacoes-->
-                        <table class="lista-acomodacao">
-                            <tr>
-                                <th>Tipo de  Quarto</th>
-                                <th>Selecionar nº de quartos</th>
-                                <th>Preço</th>
-                                <th></th>
-                            </tr>
-                            <c:forEach var="acomodacoes" items="${hotel.acomodacao}">
 
+                    <!--Tabbelas com as acomodacoes-->
+                    <table class="lista-acomodacao">
+                        <tr>
+                            <th>Tipo de  Quarto</th>
+                            <th>Selecionar nº de quartos</th>
+                            <th>Preço</th>
+                            <th></th>
+                        </tr>
+                        <c:forEach var="acomodacoes" items="${hotel.acomodacao}">
+                            <form method="POST" action="${pageContext.request.contextPath}/carrinho">
                                 <tr>
                                     <td>${acomodacoes.descricao} </td>
 
@@ -144,16 +144,15 @@
                                     </td>
                                     <td> R$ ${acomodacoes.valor} </td>
                                     <td>
-                                        <input type="hidden" id="idAcomodacao${acomodacoes.idAcomodacao}" name="idAcomodacao" value="${acomodacoes.idAcomodacao}">
-                                        <input type="hidden" id="dataEntrada${acomodacoes.idAcomodacao}" name="dataEntrada" value="${dataEntrada}">
-                                        <input type="hidden" id="dataSaida${acomodacoes.idAcomodacao}" name="dataSaida" value="${dataSaida}">
-                                        <input type="submit" value="Vou Reservar" id="adicionar${acomodacoes.idAcomodacao}" name="adicionar"></td>
+                                        <input type="hidden" id="idAcomodacao" name="idAcomodacao" value="${acomodacoes.idAcomodacao}">
+                                        <input type="hidden" id="dataEntrada" name="dataEntrada" value="${dataEntrada}">
+                                        <input type="hidden" id="dataSaida" name="dataSaida" value="${dataSaida}">
+                                        <input type="submit" value="Vou Reservar" id="adicionar" name="adicionar"></td>
 
                                 </tr>
-                            </c:forEach>
-                        </table>
-                    </form>
-
+                            </form>
+                        </c:forEach>
+                    </table>
                 </div>
             </c:otherwise>
         </c:choose>
